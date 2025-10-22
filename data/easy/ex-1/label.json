@@ -1,0 +1,17 @@
+{
+  "arr_1": {
+    "sequence": ["6900 2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_2" : {
+    "sequence": ["6900 2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_3": {
+    "sequence": ["6902 2RS", "spacer", "6902 2RS"],
+    "type": "BSB",
+    "notes": null
+  }
+}

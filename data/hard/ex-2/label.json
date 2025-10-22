@@ -1,0 +1,82 @@
+{
+  "arr_1": {
+    "sequence": ["6802V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_2" : {
+    "sequence": ["6802V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_3": {
+    "sequence": ["6803V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_4": {
+    "sequence": ["15267V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_5": {
+    "sequence": ["17286V-2RS", "spacer", "17286V-2RS"],
+    "type": "BSB",
+    "notes": null
+  },
+  "arr_6": {
+    "sequence": ["6801V-2RS", "spacer", "6801V-2RS"],
+    "type": "BSB",
+    "notes": "the spacer is a washer"
+  },
+  "arr_7": {
+    "sequence": ["6801V-2RS", "spacer", "6801V-2RS"],
+    "type": "BSB",
+    "notes": "the spacer is a washer"
+  },
+  "arr_8": {
+    "sequence": ["15267V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_9": {
+    "sequence": ["15267V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_10": {
+    "sequence": ["6801V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_11": {
+    "sequence": ["6801V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_12": {
+    "sequence": ["6801V-2RS", "spacer", "6801V-2RS"],
+    "type": "BSB",
+    "notes": "the spacer is a washer"
+  },
+  "arr_13": {
+    "sequence": ["6901V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_14": {
+    "sequence": ["6901V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_15": {
+    "sequence": ["6901V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_16": {
+    "sequence": ["6901V-2RS"],
+    "type": "simple pivot",
+    "notes": null
+  }
+}

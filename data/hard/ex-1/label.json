@@ -1,0 +1,32 @@
+{
+  "arr_1": {
+    "sequence": ["61804 2RSR", "axle", "61804 2RSR"],
+    "type": "over-axle",
+    "notes": null
+  },
+  "arr_2" : {
+    "sequence": ["61900 2Z"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_3": {
+    "sequence": ["61900 2Z"],
+    "type": "simple pivot",
+    "notes": null
+  },
+  "arr_4": {
+    "sequence": ["61803 2RSR", "spacer", "61803 2RSR", "61803 2RSR"],
+    "type": "BSB",
+    "notes": "right double-stacked bearing"
+  },
+  "arr_5": {
+    "sequence": ["61801 2RSR", "spacer", "61801 2RSR"],
+    "type": "BSB",
+    "notes": "the spacer is a washer"
+  },
+  "arr_6": {
+    "sequence": ["61801 2RSR", "spacer", "61801 2RSR"],
+    "type": "BSB",
+    "notes": "the spacer is a washer"
+  }
+}
