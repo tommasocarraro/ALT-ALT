@@ -24,6 +24,38 @@ type SpacerMobility = "moves" | "stuck";
 
 type OAType = "short" | "long";
 
+type PieceEntry = {
+  piece: string;
+  variant: string | null;
+  quantity_sets: number;
+  notes: string | null;
+  bearing_code: string | null;
+};
+
+type PhaseBuckets = {
+  leverage: PieceEntry[];
+  press: PieceEntry[];
+  center: PieceEntry[];
+  clearance: PieceEntry[];
+  support: PieceEntry[];
+  extra: PieceEntry[];
+};
+
+type ArrangementPiecesSuggestion = {
+  arrangement_id: number;
+  name: string;
+  removal: PhaseBuckets;
+  insertion: PhaseBuckets;
+};
+
+type ProjectSummaryRow = {
+  piece: string;
+  variant: string | null;
+  function: "leverage"|"press"|"center"|"clearance"|"support"|"extra";
+  quantity_sets: number;
+  pack_size: number;
+};
+
 interface ArrangementBSBDetails {
   hasSpacer: boolean | null;
   spacerLenGe10mm: boolean | null;
@@ -157,6 +189,9 @@ function WorkspacePage() {
   const navigate = useNavigate();
   const [project, setProject] = useState<Project | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<ArrangementPiecesSuggestion[] | null>(null);
+  const [summary, setSummary] = useState<ProjectSummaryRow[] | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0); // bump to refetch after saves
 
   useEffect(() => {
     (async () => {
@@ -177,11 +212,38 @@ function WorkspacePage() {
     })();
   }, [id]);
 
+  useEffect(() => {
+    if (!project) return;
+    (async () => {
+      try {
+        const [sugRes, sumRes] = await Promise.all([
+          fetch(`/projects/${project.id}/pieces_suggestions`),
+          fetch(`/projects/${project.id}/pieces_summary`),
+        ]);
+        if (!sugRes.ok) throw new Error("Failed to load suggestions");
+        if (!sumRes.ok) throw new Error("Failed to load summary");
+        setSuggestions(await sugRes.json());
+        setSummary(await sumRes.json());
+      } catch (e) {
+        console.error(e);
+        setSuggestions([]);
+        setSummary([]);
+      }
+    })();
+  }, [project, refreshKey]);
+
   if (error) return <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-red-700">{error}</div>;
   if (!project) return <div className="text-slate-600">Loading workspace…</div>;
 
   return (
-    <ProjectWorkspace project={project} onBack={() => navigate("/")} onUpdate={setProject} />
+    <ProjectWorkspace
+      project={project}
+      onBack={() => navigate("/")}
+      onUpdate={(p) => { setProject(p); setRefreshKey(k => k+1); }}
+      suggestions={suggestions}
+      summary={summary}
+      onRefetch={() => setRefreshKey(k => k+1)}
+    />
   );
 }
 
@@ -328,7 +390,11 @@ function NewProjectModal({ onClose, onCreated }: { onClose: () => void; onCreate
 // Workspace (PDF on left, interaction on right)
 // -------------------------------
 
-function ProjectWorkspace({ project, onBack, onUpdate }: { project: Project; onBack: () => void; onUpdate: (p: Project) => void }) {
+function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onRefetch }:
+  { project: Project; onBack: () => void; onUpdate: (p: Project) => void;
+    suggestions: ArrangementPiecesSuggestion[] | null;
+    summary: ProjectSummaryRow[] | null;
+    onRefetch: () => void }) {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [page, setPage] = useState(1);
   const [scale, setScale] = useState(1.2);
@@ -337,6 +403,7 @@ function ProjectWorkspace({ project, onBack, onUpdate }: { project: Project; onB
   const canNext = numPages ? page < numPages : false;
 
   return (
+    <>
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
       {/* Left: PDF viewer */}
       <div className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-3 shadow-sm">
@@ -373,12 +440,80 @@ function ProjectWorkspace({ project, onBack, onUpdate }: { project: Project; onB
       </div>
 
       {/* Right: Interaction */}
-      <ProjectInteractionPanel project={project} onUpdate={onUpdate} />
+      <ProjectInteractionPanel project={project} onUpdate={onUpdate} onRefetch={onRefetch} />
     </div>
+
+    <div className="mt-8 space-y-8 w-full">
+      <div className="mt-6 space-y-4">
+        <h3 className="text-lg font-semibold">Suggested pieces by arrangement</h3>
+        {(!suggestions || suggestions.length === 0) ? (
+          <div className="text-sm text-slate-500">No suggestions yet.</div>
+        ) : (
+          suggestions.map(sug => (
+            <div key={sug.arrangement_id} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <div className="font-medium">{sug.name}</div>
+                <div className="text-xs text-slate-500">Arrangement #{sug.arrangement_id}</div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Removal */}
+                <div>
+                  <div className="text-sm font-medium mb-2">REMOVE</div>
+                  <PhaseGroupBuckets buckets={sug.removal} />
+                </div>
+
+                {/* Insertion */}
+                <div>
+                  <div className="text-sm font-medium mb-2">INSERT</div>
+                  <PhaseGroupBuckets buckets={sug.insertion} />
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      <div className="h-px bg-slate-200 my-6" />
+
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold">Project pieces (deduped)</h3>
+        {!summary || summary.length === 0 ? (
+          <div className="text-sm text-slate-500">No pieces yet.</div>
+        ) : (
+          <div className="overflow-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="text-left border-b">
+                  <th className="py-2 pr-4">Function</th>
+                  <th className="py-2 pr-4">Piece</th>
+                  <th className="py-2 pr-4">Variant</th>
+                  <th className="py-2 pr-4">Qty (sets)</th>
+                  <th className="py-2 pr-4">Pack</th>
+                </tr>
+              </thead>
+              <tbody>
+                {summary.map((r, i) => (
+                  <tr key={i} className="border-b last:border-0">
+                    <td className="py-2 pr-4 capitalize">{r.function}</td>
+                    <td className="py-2 pr-4">{r.piece}</td>
+                    <td className="py-2 pr-4">{r.variant || "—"}</td>
+                    <td className="py-2 pr-4">{r.quantity_sets}</td>
+                    <td className="py-2 pr-4">{r.pack_size}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+    </>
   );
 }
 
-function ProjectInteractionPanel({ project, onUpdate }: { project: Project; onUpdate: (p: Project) => void }) {
+function ProjectInteractionPanel({ project, onUpdate, onRefetch }:
+  { project: Project; onUpdate: (p: Project) => void; onRefetch: () => void }) {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ArrangementForm>(() => initialArrangementForm(project.bearingCodes));
@@ -438,6 +573,7 @@ function ProjectInteractionPanel({ project, onUpdate }: { project: Project; onUp
       ? project.arrangements.map((a) => (a.id === editingId ? savedArr : a))
       : [...project.arrangements, savedArr];
     onUpdate({ ...project, arrangements: nextArrs });
+    onRefetch();
     setShowForm(false);
     setEditingId(null);
   };
@@ -502,6 +638,39 @@ function initialArrangementForm(allBearingCodes: string[]): ArrangementForm {
     isHub: null,
     hasCenterLock: null,
   };
+}
+
+function PhaseGroupBuckets({ buckets }: { buckets: PhaseBuckets }) {
+  const order: Array<keyof PhaseBuckets> = ["leverage","press","center","clearance","support","extra"];
+  const label: Record<keyof PhaseBuckets, string> = {
+    leverage: "LEVERAGE", press: "PRESS", center: "CENTER",
+    clearance: "CLEARANCE", support: "SUPPORT", extra: "EXTRA"
+  };
+
+  return (
+    <div className="space-y-3">
+      {order.map(k => {
+        const items = buckets[k];
+        if (!items || items.length === 0) return null;
+        return (
+          <div key={k}>
+            <div className="text-xs font-semibold tracking-wide text-slate-600 mb-1">{label[k]}</div>
+            <ul className="space-y-1">
+              {items.map((it, idx) => (
+                <li key={idx} className="text-sm">
+                  <span className="font-medium">{it.piece}</span>
+                  {it.variant ? <span> — {it.variant}</span> : null}
+                  {it.quantity_sets > 1 ? <span className="ml-1 text-slate-500">(×{it.quantity_sets})</span> : null}
+                  {it.bearing_code ? <span className="ml-1 text-slate-400">[{it.bearing_code}]</span> : null}
+                  {it.notes ? <span className="ml-1 text-slate-400">• {it.notes}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 function ArrangementFormView({ form, onChange, onSave, onCancel, allBearingCodes }: {
