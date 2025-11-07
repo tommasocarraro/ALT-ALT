@@ -33,12 +33,10 @@ type PieceEntry = {
 };
 
 type PhaseBuckets = {
-  leverage: PieceEntry[];
-  press: PieceEntry[];
-  center: PieceEntry[];
-  clearance: PieceEntry[];
-  support: PieceEntry[];
-  extra: PieceEntry[];
+  LEVERAGE: PieceEntry[];
+  PRESS: PieceEntry[];
+  CENTER: PieceEntry[];
+  CLEARANCE: PieceEntry[];
 };
 
 type ArrangementPiecesSuggestion = {
@@ -51,9 +49,8 @@ type ArrangementPiecesSuggestion = {
 type ProjectSummaryRow = {
   piece: string;
   variant: string | null;
-  function: "leverage"|"press"|"center"|"clearance"|"support"|"extra";
+  function: "LEVERAGE"|"PRESS"|"CENTER"|"CLEARANCE";
   quantity_sets: number;
-  pack_size: number;
 };
 
 interface ArrangementBSBDetails {
@@ -485,21 +482,15 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
             <table className="min-w-full text-sm">
               <thead>
                 <tr className="text-left border-b">
-                  <th className="py-2 pr-4">Function</th>
                   <th className="py-2 pr-4">Piece</th>
-                  <th className="py-2 pr-4">Variant</th>
                   <th className="py-2 pr-4">Qty (sets)</th>
-                  <th className="py-2 pr-4">Pack</th>
                 </tr>
               </thead>
               <tbody>
                 {summary.map((r, i) => (
                   <tr key={i} className="border-b last:border-0">
-                    <td className="py-2 pr-4 capitalize">{r.function}</td>
-                    <td className="py-2 pr-4">{r.piece}</td>
                     <td className="py-2 pr-4">{r.variant || "—"}</td>
                     <td className="py-2 pr-4">{r.quantity_sets}</td>
-                    <td className="py-2 pr-4">{r.pack_size}</td>
                   </tr>
                 ))}
               </tbody>
@@ -641,10 +632,10 @@ function initialArrangementForm(allBearingCodes: string[]): ArrangementForm {
 }
 
 function PhaseGroupBuckets({ buckets }: { buckets: PhaseBuckets }) {
-  const order: Array<keyof PhaseBuckets> = ["leverage","press","center","clearance","support","extra"];
+  const order: Array<keyof PhaseBuckets> = ["LEVERAGE","PRESS","CENTER","CLEARANCE"];
   const label: Record<keyof PhaseBuckets, string> = {
-    leverage: "LEVERAGE", press: "PRESS", center: "CENTER",
-    clearance: "CLEARANCE", support: "SUPPORT", extra: "EXTRA"
+    LEVERAGE: "LEVERAGE", PRESS: "PRESS", CENTER: "CENTER",
+    CLEARANCE: "CLEARANCE"
   };
 
   return (
@@ -658,8 +649,7 @@ function PhaseGroupBuckets({ buckets }: { buckets: PhaseBuckets }) {
             <ul className="space-y-1">
               {items.map((it, idx) => (
                 <li key={idx} className="text-sm">
-                  <span className="font-medium">{it.piece}</span>
-                  {it.variant ? <span> — {it.variant}</span> : null}
+                  {it.variant ? <span>{it.variant}</span> : null}
                   {it.quantity_sets > 1 ? <span className="ml-1 text-slate-500">(×{it.quantity_sets})</span> : null}
                   {it.bearing_code ? <span className="ml-1 text-slate-400">[{it.bearing_code}]</span> : null}
                   {it.notes ? <span className="ml-1 text-slate-400">• {it.notes}</span> : null}

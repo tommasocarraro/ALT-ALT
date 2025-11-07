@@ -46,7 +46,7 @@ arrangement_type_t = SAEnum("SP", "BSB", "OA", name="arrangement_type_t", native
 oa_axle_length_t = SAEnum("short", "long", name="oa_axle_length_t", native_enum=False)
 spacer_mobility_t = SAEnum("moves", "stuck", name="spacer_mobility_t", native_enum=False)
 PieceFunction = SAEnum(
-    "press", "leverage", "center", "clearance", "support", "extra",
+    "PRESS", "LEVERAGE", "CENTER", "CLEARANCE", "SUPPORT",
     name="piece_function_t", native_enum=False
 )
 SizeType = SAEnum("ID", "OD", "ID_OD", "NONE", name="size_type_t", native_enum=False)
@@ -133,9 +133,6 @@ class Piece(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     slug: Mapped[str] = mapped_column(Text, unique=True, nullable=False)  # e.g., 'drift_re'
     name: Mapped[str] = mapped_column(Text, nullable=False)
-    function: Mapped[str] = mapped_column(PieceFunction, nullable=False)  # primary UI group
-    pack_size: Mapped[int] = mapped_column(Integer, nullable=False, default=1)  # 2 for pairs (drift_re, over_axle_drift)
-    meta: Mapped[dict | None] = mapped_column(JSON)
 
     variants: Mapped[list["PieceVariant"]] = relationship("PieceVariant", back_populates="piece", cascade="all, delete-orphan")
 
@@ -147,7 +144,6 @@ class PieceVariant(Base):
     size_id_mm: Mapped[int | None] = mapped_column(Integer)
     size_od_mm: Mapped[int | None] = mapped_column(Integer)
     label: Mapped[str] = mapped_column(Text, nullable=False)
-    meta: Mapped[dict | None] = mapped_column(JSON)
 
     piece: Mapped["Piece"] = relationship("Piece", back_populates="variants")
 
@@ -166,6 +162,12 @@ class ArrangementRequiredPiece(Base):
     notes: Mapped[str | None] = mapped_column(Text)          # e.g., "=ID", ">ID", "<ID", "FD match", "hub substitution"
 
     piece_variant: Mapped["PieceVariant"] = relationship("PieceVariant")
+
+
+class PieceFunctionMap(Base):
+    __tablename__ = "piece_functions"
+    piece_id: Mapped[int] = mapped_column(ForeignKey("pieces.id", ondelete="CASCADE"), primary_key=True)
+    function: Mapped[str] = mapped_column(PieceFunction, primary_key=True)
 
 # -----------------------------
 # Pydantic schemas
@@ -222,79 +224,94 @@ def _save_pdf_bytes(diagram_url: str, pdf_bytes: bytes) -> str:
 
 CATALOG = {
     "pieces": [
-        {"slug": "drift_re",        "name": "Drift RE (pair)",         "function": "press",  "pack_size": 2},
-        {"slug": "pilot_short",     "name": "Pilot (Short)",           "function": "center"},
-        {"slug": "pilot_long",      "name": "Pilot (Long)",            "function": "center"},
-        {"slug": "sleeve",          "name": "Sleeve",                  "function": "leverage"},
-        {"slug": "sleeve_long",     "name": "Sleeve (Long)",           "function": "leverage"},
-        {"slug": "alt_ext",         "name": "ALT EXT",                 "function": "center"},
-        {"slug": "alt_drift",       "name": "ALT Drift",               "function": "press"},
-        {"slug": "alt_rod",         "name": "ALT Rod",                 "function": "press"},
-        {"slug": "over_axle_drift", "name": "Over-Axle Drift (pair)",  "function": "clearance", "pack_size": 2},
-        {"slug": "step",            "name": "Step",                    "function": "leverage"},
-        {"slug": "stud",            "name": "Stud",                    "function": "support"},
-        {"slug": "stud_stop",       "name": "Stud Stop",               "function": "support"},
-        {"slug": "handle",          "name": "Handle",                  "function": "support"},
-        {"slug": "spacer_tube",     "name": "Spacer Tube",             "function": "support"},
-        {"slug": "o_ring_set",      "name": "O-Ring Set",              "function": "support"},
-        {"slug": "sleeve_6",        "name": "Sleeve 6 (fixed)",        "function": "leverage",  "meta": {"fixed": True}},
-        {"slug": "stop_oal",        "name": "Stop OAL (fixed)",        "function": "clearance", "meta": {"fixed": True, "also_centers": True}},
+        {"slug": "drift_re",        "name": "DRIFT RE",         "functions": ["PRESS", "LEVERAGE", "CLEARANCE"]},
+        {"slug": "pilot_short",     "name": "SHORT PILOT",      "functions": ["PRESS", "CENTER"]},
+        {"slug": "pilot_long",      "name": "LONG PILOT",       "functions": ["PRESS", "CENTER"]},
+        {"slug": "sleeve",          "name": "SLEEVE",           "functions": ["LEVERAGE", "CLEARANCE"]},
+        {"slug": "sleeve_long",     "name": "SLEEVE LONG",      "functions": ["LEVERAGE", "CLEARANCE", "CENTER"]},
+        {"slug": "alt_ext",         "name": "ALT EXT",          "functions": ["PRESS"]},
+        {"slug": "alt_drift",       "name": "ALT DRIFT",        "functions": ["PRESS"]},
+        {"slug": "alt_rod",         "name": "ALT ROD",          "functions": ["PRESS"]},
+        {"slug": "over_axle_drift", "name": "OVER-AXLE DRIFT",  "functions": ["PRESS", "CLEARANCE"]},
+        {"slug": "step",            "name": "STEP",             "functions": ["LEVERAGE", "CLEARANCE"]},
+        {"slug": "stud",            "name": "STUD",             "functions": ["SUPPORT"]},
+        {"slug": "stud_stop",       "name": "STUD STOP",        "functions": ["SUPPORT"]},
+        {"slug": "handle",          "name": "HANDLE",           "functions": ["SUPPORT"]},
+        {"slug": "spacer_tube",     "name": "SPACER TUBE",      "functions": ["PRESS"]},
+        {"slug": "o_ring_set",      "name": "O-RING SET",       "functions": ["SUPPORT"]},
+        {"slug": "sleeve_6",        "name": "SLEEVE 6",         "functions": ["LEVERAGE", "CLEARANCE"]},
+        {"slug": "stop_oal",        "name": "STOP OAL",         "functions": ["LEVERAGE", "CLEARANCE", "CENTER"]},
     ],
     "variants": {
         "drift_re":        {"size_type": "OD",    "ods": [16,19,21,22,24,26,28,30,32,35,37,41]},
-        "pilot_short":     {"size_type": "ID",    "ids": [10,11,12,15,17,18,20,23,25], "meta":{"length":"short"}},
-        "pilot_long":      {"size_type": "ID",    "ids": [10,11,12,15,17,18,20,23,25], "meta":{"length":"long"}},
+        "pilot_short":     {"size_type": "ID",    "ids": [10,11,12,15,17,18,20,23,25]},
+        "pilot_long":      {"size_type": "ID",    "ids": [10,11,12,15,17,18,20,23,25]},
         "sleeve":          {"size_type": "OD",    "ods": [16,19,22,24,26,28,30,32,35,37]},
-        "sleeve_long":     {"size_type": "OD",    "ods": [16,19,22,24,26,28,30,32,35,37], "meta":{"length":"long"}},
+        "sleeve_long":     {"size_type": "OD",    "ods": [16,19,22,24,26,28,30,32,35,37]},
         "alt_ext":         {"size_type": "ID",    "ids": [10,12,15,17,18,20,25]},
         "alt_drift":       {"size_type": "ID",    "ids": [15,17,18,20,25]},
         "over_axle_drift": {"size_type": "ID_OD", "id_od": [[15,24],[15,26],[15,28],[15,30],[15,32],[17,26],[17,28],[17,30],[17,35],[18,30],[18,32],[20,32],[20,37],[25,37]]},
-        # fixed-size pieces (no variants needed): step, stud, stud_stop, handle, spacer_tube, o_ring_set, sleeve_6, stop_oal
+        # fixed-size pieces (NONE variants seeded below): step, stud, stud_stop, handle, spacer_tube, o_ring_set, sleeve_6, stop_oal
     }
 }
 
 def seed_catalog(db: Session):
-    # upsert pieces
+    # upsert pieces (no single function, no piece.meta)
     existing = {p.slug: p for p in db.query(Piece).all()}
     for p in CATALOG["pieces"]:
         piece = existing.get(p["slug"])
         if not piece:
-            piece = Piece(slug=p["slug"], name=p["name"], function=p["function"], pack_size=p.get("pack_size", 1), meta=p.get("meta"))
+            piece = Piece(
+                slug=p["slug"],
+                name=p["name"]
+            )
             db.add(piece); db.flush()
             existing[p["slug"]] = piece
         else:
             piece.name = p["name"]
-            piece.function = p["function"]
-            piece.pack_size = p.get("pack_size", piece.pack_size)
-            piece.meta = p.get("meta")
             db.flush()
 
-    # upsert variants
+    # upsert multi-functions (wipe & insert)
+    db.query(PieceFunctionMap).delete()  # simple reset; or per-piece delete/insert if you prefer
+    for p in CATALOG["pieces"]:
+        piece = existing[p["slug"]]
+        for fn in p.get("functions", []):
+            db.add(PieceFunctionMap(piece_id=piece.id, function=fn))
+
+    # upsert variants (recreate per piece for simplicity)
     for slug, spec in CATALOG.get("variants", {}).items():
         piece = existing[slug]
         st = spec["size_type"]
-        # clear & recreate (simple)
         db.query(PieceVariant).filter(PieceVariant.piece_id == piece.id).delete()
         if st == "ID":
             for v in spec["ids"]:
-                db.add(PieceVariant(piece_id=piece.id, size_type="ID", size_id_mm=v, size_od_mm=None,
-                                    label=f"{piece.name} {v} mm", meta=spec.get("meta")))
+                db.add(PieceVariant(
+                    piece_id=piece.id, size_type="ID",
+                    size_id_mm=v, size_od_mm=None,
+                    label=f"{piece.name} {v} mm"
+                ))
         elif st == "OD":
             for v in spec["ods"]:
-                db.add(PieceVariant(piece_id=piece.id, size_type="OD", size_id_mm=None, size_od_mm=v,
-                                    label=f"{piece.name} {v} mm", meta=spec.get("meta")))
+                db.add(PieceVariant(
+                    piece_id=piece.id, size_type="OD",
+                    size_id_mm=None, size_od_mm=v,
+                    label=f"{piece.name} {v} mm"
+                ))
         elif st == "ID_OD":
             for id_mm, od_mm in spec["id_od"]:
-                db.add(PieceVariant(piece_id=piece.id, size_type="ID_OD", size_id_mm=id_mm, size_od_mm=od_mm,
-                                    label=f"{piece.name} {id_mm}×{od_mm} mm", meta=spec.get("meta")))
+                db.add(PieceVariant(
+                    piece_id=piece.id, size_type="ID_OD",
+                    size_id_mm=id_mm, size_od_mm=od_mm,
+                    label=f"{piece.name} {id_mm}×{od_mm} mm"
+                ))
         else:
             raise ValueError(f"Unknown size_type {st}")
 
+    # seed fixed NONE-variant pieces so FK is always valid
     FIXED_WITH_VARIANTS = [
         "step", "stud", "stud_stop", "handle",
-        "spacer_tube", "o_ring_set", "sleeve_6", "stop_oal"
+        "spacer_tube", "o_ring_set", "sleeve_6", "stop_oal", "alt_rod"
     ]
-
     for slug in FIXED_WITH_VARIANTS:
         piece = existing[slug]
         has = db.query(PieceVariant).filter(
@@ -304,8 +321,9 @@ def seed_catalog(db: Session):
             db.add(PieceVariant(
                 piece_id=piece.id, size_type="NONE",
                 size_id_mm=None, size_od_mm=None,
-                label=piece.name, meta=None
+                label=piece.name
             ))
+
 
 
 # ----- helpers -----
@@ -402,11 +420,29 @@ def pick_variant(db: Session, piece_slug: str, selector: dict, *, bearing: dict,
 
     raise HTTPException(400, f"Unknown selector.by {by}")
 
-def add_row(rows, *, piece: Piece, variant: PieceVariant | None, function: str, bearing_code: str | None, notes: str | None, quantity_units: int = 1):
+def add_row(rows, *, piece: Piece, variant: PieceVariant | None,
+            intended_fn: str, bearing_code: str | None, notes: str | None,
+            quantity_units: int = 1):
     rows.append({
-        "piece_id": piece.id, "piece_variant_id": variant.id if variant else None,
-        "function": function, "bearing_code": bearing_code, "notes": notes, "quantity_units": quantity_units
+        "piece_id": piece.id,
+        "piece_variant_id": variant.id if variant else None,
+        "function": intended_fn,            # PRESS | LEVERAGE | CENTER | CLEARANCE | SUPPORT
+        "bearing_code": bearing_code,
+        "notes": notes,
+        "quantity_units": quantity_units,   # <--- use this instead of duplicating rows
     })
+
+
+def add_rows_for_functions(rows, *, piece, variant, functions: list[str], bearing_code, notes, quantity_units: int = 1):
+    for fn in functions:
+        rows.append({
+            "piece_id": piece.id,
+            "piece_variant_id": variant.id if variant else None,
+            "function": fn,
+            "bearing_code": bearing_code,
+            "notes": notes,
+            "quantity_units": quantity_units,  # <-- always present
+        })
 
 # ----- resolver core -----
 def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement):
@@ -455,18 +491,6 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
     def build_phase(phase: str) -> list[dict]:
         rows: list[dict] = []
 
-        # ----- GLOBAL DEFAULTS (every configuration) -----
-        # 2x Spacer Tube (support, fixed)
-        spacer_piece = db.query(Piece).filter(Piece.slug == "spacer_tube").one()
-        spacer_variant = db.query(PieceVariant).filter(PieceVariant.piece_id == spacer_piece.id).first()
-        add_row(rows, piece=spacer_piece, variant=spacer_variant,
-                function=spacer_piece.function, bearing_code=None, notes=None, quantity_units=2)
-        # 1x O-Ring set (support, fixed)
-        oring_piece = db.query(Piece).filter(Piece.slug == "o_ring_set").one()
-        oring_variant = db.query(PieceVariant).filter(PieceVariant.piece_id == oring_piece.id).first()
-        add_row(rows, piece=oring_piece, variant=oring_variant,
-                function=oring_piece.function, bearing_code=None, notes=None, quantity_units=1)
-
         # ----- RULES PER ARRANGEMENT -----
 
         # SIMPLE PIVOT
@@ -480,36 +504,43 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
                     # Press/Center: ALT EXT = ID ; Leverage: SLEEVE=OD, STEP ; Support: STUD STOP
                     for bearing in each_bearing():
                         piece, variant, note = pick_variant(db, "alt_ext", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function=piece.function, bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         # sleeve (OD or FD on removal)
                         piece, variant, note = pick_variant(db, "sleeve", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="stud_stop").one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
                 else:
                     # Press: LONG PILOT > ID ; Center: SHORT PILOT = ID ; Leverage: SLEEVE=OD, STEP ; Support: STUD, HANDLE, STUD STOP
                     for bearing in each_bearing():
                         piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":">"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "pilot_short", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER", bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "sleeve", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    for slug in ("stud","handle","stud_stop"):
-                        add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
+
 
             if phase == "insertion":
                 # Press: DRIFT RE = OD ; Center: SHORT PILOT = ID ; Leverage: DRIFT RE = OD ; Support: STUD, STUD STOP, HANDLE
                 for bearing in each_bearing():
                     piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
+                    add_rows_for_functions(rows, piece=piece, variant=variant,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=bearing["code"], notes=note)
                     piece, variant, note = pick_variant(db, "pilot_short", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
-                    piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                for slug in ("stud","stud_stop","handle"):
-                    add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="CENTER", bearing_code=bearing["code"], notes=note)
 
         # OVER-AXLE
         if is_oa:
@@ -518,36 +549,42 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
                     for bearing in each_bearing():
                         # Press: DRIFT RE > ID
                         piece, variant, note = pick_variant(db, "drift_re", {"by":"ID","mode":">"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         # Center: 2 × LONG PILOT < ID
-                        for _ in range(2):
-                            piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"<"}, bearing=bearing, phase=phase)
-                            add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        piece, variant, note = pick_variant(db, "pilot_long", {"by": "ID", "mode": "<"},
+                                                            bearing=bearing, phase=phase)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER",
+                                bearing_code=bearing["code"], notes=note, quantity_units=2)
                         # Leverage: LONG SLEEVE, STEP
                         piece, variant, note = pick_variant(db, "sleeve_long", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    for slug in ("handle","stud_stop","stud"):
-                        add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
 
                 if phase == "insertion":
                     for bearing in each_bearing():
                         # Press: OVER-AXLE DRIFT = ID×OD, DRIFT RE = OD
                         piece, variant, note = pick_variant(db, "over_axle_drift", {"by":"ID_OD"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         # Center: 2 × LONG PILOT < ID
-                        for _ in range(2):
-                            piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"<"}, bearing=bearing, phase=phase)
-                            add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        piece, variant, note = pick_variant(db, "pilot_long", {"by": "ID", "mode": "<"},
+                                                            bearing=bearing, phase=phase)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER",
+                                bearing_code=bearing["code"], notes=note, quantity_units=2)
                         # Leverage: OVER-AXLE DRIFT, DRIFT RE
                         piece, variant, note = pick_variant(db, "over_axle_drift", {"by":"ID_OD"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="clearance", bearing_code=bearing["code"], notes=note)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    for slug in ("stud","stud_stop","handle"):
-                        add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
 
             else:
                 # OA SHORT
@@ -555,35 +592,38 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
                     for bearing in each_bearing():
                         # Press: LONG PILOT = ID
                         piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         # Center: 2 × LONG PILOT < ID
-                        for _ in range(2):
-                            piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"<"}, bearing=bearing, phase=phase)
-                            add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        piece, variant, note = pick_variant(db, "pilot_long", {"by": "ID", "mode": "<"},
+                                                            bearing=bearing, phase=phase)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER",
+                                bearing_code=bearing["code"], notes=note, quantity_units=2)
                         # Leverage: SLEEVE, STEP
                         piece, variant, note = pick_variant(db, "sleeve", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    for slug in ("stud","stud_stop","handle"):
-                        add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
 
                 if phase == "insertion":
                     for bearing in each_bearing():
                         # Press: DRIFT RE = OD
                         piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         # Center: 2× LONG PILOT = ID; SHORT PILOT = ID
-                        piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
-                        piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        piece, variant, note = pick_variant(db, "pilot_long", {"by": "ID", "mode": "="},
+                                                            bearing=bearing, phase=phase)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER",
+                                bearing_code=bearing["code"], notes=note, quantity_units=2)
                         piece, variant, note = pick_variant(db, "pilot_short", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="CENTER", bearing_code=bearing["code"], notes=note)
                         # Leverage: DRIFT RE = OD
                         piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    for slug in ("stud","stud_stop","handle"):
-                        add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
 
         # BSB
         if is_bsb:
@@ -594,76 +634,116 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
             mobility = (bsb.spacer_mobility if bsb else None)
 
             if phase == "removal":
-                if (spacer is False) or (mobility == "moves"):
-                    # NO SPACER / SPACER THAT MOVES
+                if (spacer is False) or (mobility == "moves" and spacer_ge10 is True):
+                    # NO SPACER / SPACER THAT MOVES and at least 10 mm long
                     for bearing in each_bearing():
-                        add_row(rows, piece=db.query(Piece).filter_by(slug="alt_rod").one(), variant=None, function="press", bearing_code=None, notes=None)
+                        add_row(rows, piece=piece_alt_rod, variant=pv_alt_rod, intended_fn="PRESS", bearing_code=None, notes=None)
                         piece, variant, note = pick_variant(db, "alt_drift", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "sleeve", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="stud_stop").one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
                 else:
                     # SPACER STUCK or DOUBLE-STACKED
                     for bearing in each_bearing():
                         piece, variant, note = pick_variant(db, "alt_ext", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                        add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                         piece, variant, note = pick_variant(db, "sleeve", {"by":"OD_OR_FD_REMOVE"}, bearing=bearing, phase=phase)
-                        add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="step").one(), variant=None, function="leverage", bearing_code=None, notes=None)
-                    add_row(rows, piece=db.query(Piece).filter_by(slug="stud_stop").one(), variant=None, function="support", bearing_code=None, notes=None)
+                        add_rows_for_functions(rows, piece=piece, variant=variant,
+                                               functions=["LEVERAGE", "CLEARANCE"],
+                                               bearing_code=bearing["code"], notes=note)
+                    add_rows_for_functions(rows, piece=piece_step, variant=pv_step,
+                                           functions=["LEVERAGE", "CLEARANCE"],
+                                           bearing_code=None, notes=None)
 
             if phase == "insertion":
                 for bearing in each_bearing():
                     piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="press", bearing_code=bearing["code"], notes=note)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="PRESS", bearing_code=bearing["code"], notes=note)
                     piece, variant, note = pick_variant(db, "pilot_short", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="CENTER", bearing_code=bearing["code"], notes=note)
                     piece, variant, note = pick_variant(db, "pilot_long", {"by":"ID","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="center", bearing_code=bearing["code"], notes=note)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="CENTER", bearing_code=bearing["code"], notes=note)
                     piece, variant, note = pick_variant(db, "drift_re", {"by":"OD","mode":"="}, bearing=bearing, phase=phase)
-                    add_row(rows, piece=piece, variant=variant, function="leverage", bearing_code=bearing["code"], notes=note)
-                for slug in ("stud","stud_stop","handle"):
-                    add_row(rows, piece=db.query(Piece).filter_by(slug=slug).one(), variant=None, function="support", bearing_code=None, notes=None)
+                    add_row(rows, piece=piece, variant=variant, intended_fn="LEVERAGE", bearing_code=bearing["code"], notes=note)
 
         # ----- HUB substitutions -----
         if arrangement.is_hub:
-            # load hub flags (we stored has_center_lock nullable)
             has_cl = arrangement.has_center_lock is True
             arr_type = arrangement.type
-            # substitute sleeves in rows
+
+            # prefetch pieces/variants we'll need
+            piece_sleeve_long = db.query(Piece).filter_by(slug="sleeve_long").one()
+
             new_rows = []
             for r in rows:
                 pv = db.query(PieceVariant).get(r["piece_variant_id"]) if r["piece_variant_id"] else None
-                piece = db.query(Piece).get(r["piece_id"])
+                p = db.query(Piece).get(r["piece_id"])
 
-                # only intercept sleeves (leverage group) produced earlier
-                if piece.slug in ("sleeve","sleeve_long") and piece.function == "leverage":
+                # only intercept sleeves produced earlier (regardless of function bucket)
+                if p.slug in ("sleeve", "sleeve_long"):
                     if has_cl:
-                        # replace sleeve -> sleeve_long (keep size if any)
-                        rep_piece = db.query(Piece).filter_by(slug="sleeve_long").one()
+                        # hub with centerlock: sleeve -> sleeve_long (keep function and OD if present)
                         rep_variant = None
-                        if pv and pv.size_type == "OD":
-                            rep_variant = db.query(PieceVariant).filter_by(piece_id=rep_piece.id, size_type="OD", size_od_mm=pv.size_od_mm).first()
-                        new_rows.append({**r, "piece_id": rep_piece.id, "piece_variant_id": rep_variant.id if rep_variant else None, "notes": (r["notes"] or "") + " (hub centerlock→long sleeve)"})
+                        if pv and pv.size_type == "OD" and pv.size_od_mm is not None:
+                            rep_variant = db.query(PieceVariant).filter_by(
+                                piece_id=piece_sleeve_long.id, size_type="OD", size_od_mm=pv.size_od_mm
+                            ).first()
+                        new_rows.append({
+                            **r,
+                            "piece_id": piece_sleeve_long.id,
+                            "piece_variant_id": rep_variant.id if rep_variant else None,
+                            # DO NOT change r["function"]; keep LEVERAGE/CLEARANCE as-is
+                            "notes": ((r["notes"] or "") + " (hub centerlock→SLEEVE LONG)").strip()
+                        })
                     else:
                         if arr_type == "OA":
-                            # replace with STOP OAL (fixed, clearance/center)
-                            rep_piece = db.query(Piece).filter_by(slug="stop_oal").one()
-                            new_rows.append({**r, "piece_id": rep_piece.id, "piece_variant_id": None, "function": rep_piece.function, "notes": (r["notes"] or "") + " (hub no-CL→STOP OAL)"})
+                            # hub without centerlock and OA: sleeve -> STOP OAL (fixed)
+                            new_rows.append({
+                                **r,
+                                "piece_id": piece_stop_oal.id,
+                                "piece_variant_id": pv_stop_oal.id if pv_stop_oal else None,
+                                # DO NOT change function; keep original LEVERAGE/CLEARANCE
+                                "notes": ((r["notes"] or "") + " (hub no-CL→STOP OAL)").strip()
+                            })
                         else:
-                            # SP/BSB → Sleeve 6 (fixed)
-                            rep_piece = db.query(Piece).filter_by(slug="sleeve_6").one()
-                            new_rows.append({**r, "piece_id": rep_piece.id, "piece_variant_id": None, "notes": (r["notes"] or "") + " (hub no-CL→SLEEVE 6)"})
+                            # hub without centerlock and NOT OA: sleeve -> SLEEVE 6 (fixed)
+                            new_rows.append({
+                                **r,
+                                "piece_id": piece_sleeve_6.id,
+                                "piece_variant_id": pv_sleeve_6.id if pv_sleeve_6 else None,
+                                # DO NOT change function; keep original LEVERAGE/CLEARANCE
+                                "notes": ((r["notes"] or "") + " (hub no-CL→SLEEVE 6)").strip()
+                            })
                 else:
                     new_rows.append(r)
+
             rows = new_rows
+
+            # If STOP OAL present in this phase, drop STEP rows (STOP OAL does not require STEP)
+            stop_oal_present = any(db.query(Piece).get(r["piece_id"]).slug == "stop_oal" for r in rows)
+            if stop_oal_present:
+                rows = [r for r in rows if db.query(Piece).get(r["piece_id"]).slug != "step"]
 
         return rows
 
     # wipe old
     db.query(ArrangementRequiredPiece).filter(ArrangementRequiredPiece.arrangement_id == arrangement.id).delete()
+
+    # Prefetch fixed NONE variants to reuse everywhere
+    def fixed_variant(db, slug: str):
+        piece = db.query(Piece).filter_by(slug=slug).one()
+        pv = db.query(PieceVariant).filter_by(piece_id=piece.id, size_type="NONE").first()
+        return piece, pv
+
+    piece_step, pv_step = fixed_variant(db, "step")
+    piece_sleeve_6, pv_sleeve_6 = fixed_variant(db, "sleeve_6")
+    piece_stop_oal, pv_stop_oal = fixed_variant(db, "stop_oal")
+    piece_alt_rod, pv_alt_rod = fixed_variant(db, "alt_rod")
 
     # build & persist both phases
     for phase in ("removal", "insertion"):
@@ -674,7 +754,7 @@ def resolve_and_persist_arrangement_pieces(db: Session, arrangement: Arrangement
             db.add(ArrangementRequiredPiece(
                 arrangement_id=arrangement.id, phase=phase,
                 piece_variant_id=pv_id,
-                function=r["function"], quantity_units=r["quantity_units"], bearing_code=r["bearing_code"], notes=r["notes"]
+                function=r["function"], quantity_units=r.get("quantity_units", 1), bearing_code=r["bearing_code"], notes=r["notes"]
             ))
 
 
@@ -1005,8 +1085,8 @@ def pieces_suggestions(project_id: int):
                 .join(Piece, Piece.id == PieceVariant.piece_id, isouter=True)\
                 .filter(ArrangementRequiredPiece.arrangement_id == a.id).all()
 
-            grouped = {"removal": {"leverage": [], "press": [], "center": [], "clearance": [], "support": [], "extra": []},
-                       "insertion": {"leverage": [], "press": [], "center": [], "clearance": [], "support": [], "extra": []}}
+            grouped = {"removal": {"LEVERAGE": [], "PRESS": [], "CENTER": [], "CLEARANCE": []},
+                       "insertion": {"LEVERAGE": [], "PRESS": [], "CENTER": [], "CLEARANCE": []}}
             for r, piece, variant in rows:
                 entry = {
                     "piece": piece.name if piece else "Unknown",
@@ -1023,43 +1103,66 @@ def pieces_suggestions(project_id: int):
 @app.get("/projects/{project_id}/pieces_summary")
 def pieces_summary(project_id: int):
     with SessionLocal() as db:
-        # join all arrangements in project
-        rows = db.execute(text("""
-          SELECT arp.piece_variant_id, p.name as piece_name, pv.label as variant_label, p.function, p.pack_size,
-                 SUM(arp.quantity_units) as qty_sets
-          FROM arrangements a
-          JOIN arrangement_required_pieces arp ON arp.arrangement_id = a.id
-          JOIN piece_variants pv ON pv.id = arp.piece_variant_id
-          JOIN pieces p ON p.id = pv.piece_id
-          WHERE a.project_id = :pid
-          GROUP BY arp.piece_variant_id, p.name, pv.label, p.function, p.pack_size
-          ORDER BY p.function, p.name, pv.label
-        """), {"pid": project_id}).fetchall()
-
-        # also include fixed pieces with NONE variants (like sleeve_6, stop_oal, step, stud, etc.)
-        fixed = db.execute(text("""
-          SELECT 0 as piece_variant_id, p.name as piece_name, NULL as variant_label, p.function, p.pack_size,
-                 COUNT(*) as qty_sets
-          FROM arrangements a
-          JOIN arrangement_required_pieces arp ON arp.arrangement_id = a.id
-          JOIN pieces p ON p.id = (SELECT piece_id FROM piece_variants WHERE id = arp.piece_variant_id LIMIT 1)
-          WHERE a.project_id = :pid AND NOT EXISTS (
-              SELECT 1 FROM piece_variants pv WHERE pv.id = arp.piece_variant_id AND pv.size_type != 'NONE'
+        # Step 1: collapse per arrangement to avoid double-counting same variant across functions
+        collapsed = db.execute(text("""
+          WITH per_arr AS (
+            SELECT
+              a.id                              AS arrangement_id,
+              pv.id                             AS piece_variant_id,
+              p.id                              AS piece_id,
+              p.name                            AS piece_name,
+              pv.label                          AS variant_label,
+              MAX(arp.quantity_units)           AS qty_units_per_arr
+            FROM arrangements a
+            JOIN arrangement_required_pieces arp ON arp.arrangement_id = a.id
+            LEFT JOIN piece_variants pv ON pv.id = arp.piece_variant_id
+            LEFT JOIN pieces p ON p.id = pv.piece_id
+            WHERE a.project_id = :pid
+            GROUP BY a.id, pv.id, p.id, p.name, pv.label
           )
-          GROUP BY p.name, p.function, p.pack_size
+          SELECT
+            piece_variant_id,
+            piece_id,
+            piece_name,
+            variant_label,
+            SUM(qty_units_per_arr) AS qty_units_project
+          FROM per_arr
+          GROUP BY piece_variant_id, piece_id, piece_name, variant_label
+          ORDER BY piece_name, variant_label
         """), {"pid": project_id}).fetchall()
 
-        # merge (simple)
-        def pack(row):
-            return {
-                "piece": row.piece_name,
-                "variant": row.variant_label,
-                "function": row.function,
-                "quantity_sets": int(row.qty_sets),
-                "pack_size": int(row.pack_size)
-            }
-        grouped = [pack(r) for r in rows] + [pack(r) for r in fixed]
-        return grouped
+        # Step 2: build response rows
+        out = []
+        for r in collapsed:
+            out.append({
+                "piece": r.piece_name,
+                "variant": r.variant_label,        # can be None for fixed NONE-variant items
+                "quantity_sets": int(r.qty_units_project or 0),
+            })
+
+        # Step 3: append final fixed items (once per project)
+        # Find the fixed variant IDs (size_type="NONE") so joins stay consistent
+        fixed_map = {slug: db.query(Piece).filter_by(slug=slug).one() for slug in
+                     ["spacer_tube","o_ring_set","stud","stud_stop","handle"]}
+        fixed_variants = {}
+        for slug, piece in fixed_map.items():
+            pv = db.query(PieceVariant).filter_by(piece_id=piece.id, size_type="NONE").first()
+            fixed_variants[slug] = (piece, pv)
+
+        # Add (once) with their required quantities
+        out.append({"piece": fixed_map["spacer_tube"].name, "variant": fixed_map["spacer_tube"].name, "quantity_sets": 2})
+        out.append({"piece": fixed_map["o_ring_set"].name, "variant": fixed_map["o_ring_set"].name, "quantity_sets": 1})
+        out.append({"piece": fixed_map["stud"].name, "variant": fixed_map["stud"].name, "quantity_sets": 1})
+        out.append({"piece": fixed_map["stud_stop"].name, "variant": fixed_map["stud_stop"].name, "quantity_sets": 1})
+        out.append({"piece": fixed_map["handle"].name, "variant": fixed_map["handle"].name, "quantity_sets": 1})
+
+        # Optional: sort by piece name then variant
+        # out.sort(key=lambda x: (x["piece"], x["variant"] or ""))
+
+        return out
 
 
 # todo add drag and drop with the mouse
+# todo difference between carbon/alloy
+# todo possibility to change the final piece list
+# todo save the final piece list in the db
