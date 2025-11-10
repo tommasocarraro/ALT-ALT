@@ -7,7 +7,7 @@ from pydantic import BaseModel, HttpUrl
 import json
 from sqlalchemy import (
     create_engine, Column, Integer, Text, Numeric, ForeignKey, JSON,
-    UniqueConstraint, event, Enum as SAEnum, Boolean, text
+    UniqueConstraint, event, Enum as SAEnum, Boolean, text, DateTime
 )
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker, Mapped, mapped_column, Session
 from sqlalchemy.exc import IntegrityError
@@ -66,6 +66,14 @@ class Project(Base):
     # this is like the opposite of a foreign key. This means this table has a relationship with the table ProjectBearing
     bearings: Mapped[List["ProjectBearing"]] = relationship(
         "ProjectBearing", back_populates="project", cascade="all, delete-orphan"
+    )
+
+    final_kits: Mapped[list["FinalKit"]] = relationship(
+        "FinalKit",
+        back_populates="project",
+        cascade="all, delete-orphan",  # <-- put delete-orphan here
+        single_parent=True,  # <-- required if you want orphan checks
+        passive_deletes=True,  # <-- plays well with FK ondelete="CASCADE"
     )
 
 
@@ -168,6 +176,46 @@ class PieceFunctionMap(Base):
     __tablename__ = "piece_functions"
     piece_id: Mapped[int] = mapped_column(ForeignKey("pieces.id", ondelete="CASCADE"), primary_key=True)
     function: Mapped[str] = mapped_column(PieceFunction, primary_key=True)
+
+
+class FinalKit(Base):
+    __tablename__ = "final_kits"
+    id = mapped_column(Integer, primary_key=True)
+    project_id = mapped_column(
+        ForeignKey("projects.id", ondelete="CASCADE"),  # <-- let DB cascade
+        nullable=False
+    )
+    name = mapped_column(Text, nullable=False)
+    created_at = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    project: Mapped["Project"] = relationship(
+        "Project",
+        back_populates="final_kits",
+        # IMPORTANT: no delete-orphan here
+    )
+
+    items: Mapped[list["FinalKitItem"]] = relationship(
+        "FinalKitItem",
+        back_populates="final_kit",
+        cascade="all, delete-orphan",
+        single_parent=True,
+        passive_deletes=True,
+    )
+
+
+class FinalKitItem(Base):
+    __tablename__ = "final_kit_items"
+    id = mapped_column(Integer, primary_key=True)
+    final_kit_id = mapped_column(
+        ForeignKey("final_kits.id", ondelete="CASCADE"),
+        nullable=False
+    )
+    piece_variant_id = mapped_column(ForeignKey("piece_variants.id", ondelete="RESTRICT"), nullable=False)
+    quantity_units = mapped_column(Integer, default=1, nullable=False)
+    notes = mapped_column(Text)
+
+    final_kit: Mapped["FinalKit"] = relationship("FinalKit", back_populates="items")
 
 # -----------------------------
 # Pydantic schemas
@@ -1135,34 +1183,60 @@ def pieces_summary(project_id: int):
         out = []
         for r in collapsed:
             out.append({
-                "piece": r.piece_name,
-                "variant": r.variant_label,        # can be None for fixed NONE-variant items
+                "piece_variant_id": r.piece_variant_id,  # needed for change-size & merge
+                "piece_id": r.piece_id,  # needed to list variants for this piece
+                "piece": (r.variant_label or r.piece_name),  # UI shows one column called “Piece”
                 "quantity_sets": int(r.qty_units_project or 0),
             })
 
-        # Step 3: append final fixed items (once per project)
-        # Find the fixed variant IDs (size_type="NONE") so joins stay consistent
+        # Step 3: append final fixed items (once per project), WITH IDs
         fixed_map = {slug: db.query(Piece).filter_by(slug=slug).one() for slug in
-                     ["spacer_tube","o_ring_set","stud","stud_stop","handle"]}
-        fixed_variants = {}
+                     ["spacer_tube", "o_ring_set", "stud", "stud_stop", "handle"]}
+
         for slug, piece in fixed_map.items():
             pv = db.query(PieceVariant).filter_by(piece_id=piece.id, size_type="NONE").first()
-            fixed_variants[slug] = (piece, pv)
+            # safety: NONE variant should exist; label should equal piece.name
+            label = pv.label if pv and pv.label else piece.name
+            qty = 2 if slug == "spacer_tube" else 1
+            out.append({
+                "piece_variant_id": pv.id if pv else None,
+                "piece_id": piece.id,
+                "piece": label,  # single “Piece” column in UI
+                "quantity_sets": qty,
+            })
 
-        # Add (once) with their required quantities
-        out.append({"piece": fixed_map["spacer_tube"].name, "variant": fixed_map["spacer_tube"].name, "quantity_sets": 2})
-        out.append({"piece": fixed_map["o_ring_set"].name, "variant": fixed_map["o_ring_set"].name, "quantity_sets": 1})
-        out.append({"piece": fixed_map["stud"].name, "variant": fixed_map["stud"].name, "quantity_sets": 1})
-        out.append({"piece": fixed_map["stud_stop"].name, "variant": fixed_map["stud_stop"].name, "quantity_sets": 1})
-        out.append({"piece": fixed_map["handle"].name, "variant": fixed_map["handle"].name, "quantity_sets": 1})
-
-        # Optional: sort by piece name then variant
-        # out.sort(key=lambda x: (x["piece"], x["variant"] or ""))
-
+        # Optional consistent ordering
+        # out.sort(key=lambda x: (x["piece"] or "", x.get("piece_variant_id") or 0))
         return out
 
 
-# todo add drag and drop with the mouse
+# GET /catalog/grouped -> [{piece_id, piece_name, variants:[{id,label}]}]
+@app.get("/catalog/grouped")
+def catalog_grouped():
+    with SessionLocal() as db:
+        rows = db.execute(text("""
+          SELECT p.id AS piece_id, p.name AS piece_name, pv.id AS variant_id, pv.label AS variant_label
+          FROM pieces p
+          JOIN piece_variants pv ON pv.piece_id = p.id
+          ORDER BY p.name, pv.label
+        """)).fetchall()
+        grouped = {}
+        for r in rows:
+            g = grouped.setdefault((r.piece_id, r.piece_name), [])
+            g.append({"id": r.variant_id, "label": r.variant_label})
+        return [{"piece_id": pid, "piece_name": pname, "variants": vars} for (pid, pname), vars in grouped.items()]
+
+# GET /catalog/pieces/{piece_id}/variants -> [{id,label}]
+@app.get("/catalog/pieces/{piece_id}/variants")
+def piece_variants(piece_id: int):
+    with SessionLocal() as db:
+        rows = db.execute(text("""
+          SELECT id, label FROM piece_variants WHERE piece_id = :pid ORDER BY label
+        """), {"pid": piece_id}).fetchall()
+        return [{"id": r.id, "label": r.label} for r in rows]
+
+
+# todo add a regular expression to extract bearing codes and if it is possible, create a database with all dimensions to avoid the AI model inference cost
 # todo difference between carbon/alloy
 # todo possibility to change the final piece list
 # todo save the final piece list in the db

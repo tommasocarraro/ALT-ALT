@@ -120,6 +120,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<ProjectsPage />} />
             <Route path="/projects/:id" element={<WorkspacePage />} />
+            <Route path="/projects/:id/finalize" element={<FinalizePage />} />
           </Routes>
         </main>
       </div>
@@ -395,6 +396,38 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
   const [numPages, setNumPages] = useState<number | null>(null);
   const [page, setPage] = useState(1);
   const [scale, setScale] = useState(1.2);
+  const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const [isPanning, setIsPanning] = useState(false);
+  const panStart = React.useRef<{x:number; y:number; left:number; top:number} | null>(null);
+  const navigate = useNavigate();
+
+  // handlers
+  const onPanStart = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsPanning(true);
+    scrollRef.current.style.cursor = "grabbing";
+    panStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      left: scrollRef.current.scrollLeft,
+      top: scrollRef.current.scrollTop,
+    };
+  };
+
+  const onPanMove = (e: React.MouseEvent) => {
+    if (!isPanning || !scrollRef.current || !panStart.current) return;
+    const dx = e.clientX - panStart.current.x;
+    const dy = e.clientY - panStart.current.y;
+    // invert to “grab” feel
+    scrollRef.current.scrollLeft = panStart.current.left - dx;
+    scrollRef.current.scrollTop  = panStart.current.top  - dy;
+  };
+
+  const onPanEnd = () => {
+    setIsPanning(false);
+    if (scrollRef.current) scrollRef.current.style.cursor = "";
+    panStart.current = null;
+  };
 
   const canPrev = page > 1;
   const canNext = numPages ? page < numPages : false;
@@ -419,12 +452,25 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
             <button onClick={() => setScale(s => Math.min(5, Number((s + 0.1).toFixed(2))))} className="px-2 py-1 rounded-lg border border-slate-300">+</button>
           </div>
         </div>
-        <div className="relative overflow-auto max-h-[75vh] py-3">
-          {/* wrapper can grow wider than the container, enabling horizontal scroll */}
-          <div className="inline-block min-w-max">
-            <Document file={project.pdfUrl}
-                      onLoadSuccess={(doc) => setNumPages(doc.numPages)}
-                      loading={<div className="p-10 text-slate-500">Loading PDF…</div>}>
+        <div
+          ref={scrollRef}
+          className={clsx(
+            "overflow-auto max-h-[75vh] py-3",
+            "select-none",                            // avoid text selection while dragging
+            isPanning ? "cursor-grabbing" : "cursor-grab"
+          )}
+          onMouseDown={onPanStart}
+          onMouseMove={onPanMove}
+          onMouseUp={onPanEnd}
+          onMouseLeave={onPanEnd}
+        >
+          {/* keep content wider than container to enable horizontal pan */}
+          <div className="min-w-max inline-block mx-auto">
+            <Document
+              file={project.pdfUrl}
+              onLoadSuccess={(doc) => setNumPages(doc.numPages)}
+              loading={<div className="p-10 text-slate-500">Loading PDF…</div>}
+            >
               <Page
                 pageNumber={page}
                 scale={scale}
@@ -473,32 +519,13 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
 
       <div className="h-px bg-slate-200 my-6" />
 
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold">Project pieces (deduped)</h3>
-        {!summary || summary.length === 0 ? (
-          <div className="text-sm text-slate-500">No pieces yet.</div>
-        ) : (
-          <div className="overflow-auto">
-            <table className="min-w-full text-sm">
-              <thead>
-                <tr className="text-left border-b">
-                  <th className="py-2 pr-4">Piece</th>
-                  <th className="py-2 pr-4">Qty (sets)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {summary.map((r, i) => (
-                  <tr key={i} className="border-b last:border-0">
-                    <td className="py-2 pr-4">{r.variant || "—"}</td>
-                    <td className="py-2 pr-4">{r.quantity_sets}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
     </div>
+    <button
+      className="mt-6 px-4 py-2 rounded-2xl bg-slate-900 text-white hover:bg-slate-800"
+      onClick={() => navigate(`/projects/${project.id}/finalize`)}
+    >
+      Create final piece list
+    </button>
     </>
   );
 }
@@ -818,6 +845,397 @@ function RowChoices<T extends string>({ label, value, choices, onChange }: { lab
           <button key={c} type="button" className={clsx("px-3 py-1.5 rounded-xl border", value === c ? "bg-slate-900 text-white border-slate-900" : "border-slate-300 hover:bg-slate-50")} onClick={() => onChange(c)}>{String(c)}</button>
         ))}
       </div>
+    </div>
+  );
+}
+
+function SuggestionBucketGroup({ data }: { data: PhaseBuckets }) {
+  const order: Array<keyof PhaseBuckets> = ["LEVERAGE","PRESS","CENTER","CLEARANCE"];
+  return (
+    <div className="space-y-3">
+      {order.map(k => {
+        const items = data[k] || [];
+        if (!items.length) return null;
+        return (
+          <div key={k}>
+            <div className="text-xs font-semibold tracking-wide text-slate-600 mb-1">{k}</div>
+            <ul className="space-y-1.5">
+              {items.map((it, idx) => (
+                <li key={idx} className="text-sm leading-6">
+                  <span className="font-medium">{it.variant || it.piece}</span>
+                  {it.quantity_sets > 1 ? <span className="ml-1 text-slate-500">(×{it.quantity_sets})</span> : null}
+                  {it.bearing_code ? <span className="ml-1 text-slate-400">[{it.bearing_code}]</span> : null}
+                  {it.notes ? <span className="ml-1 text-slate-400">• {it.notes}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+
+function FinalizePage() {
+  type DraftRow = {
+    variant_id: number;
+    label: string;
+    quantity: number;
+    notes?: string;
+    piece_id: number;
+    piece_name: string;
+  };
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const onBack = () => navigate(-1);
+
+  const [project, setProject] = useState<Project | null>(null);
+  const [suggestions, setSuggestions] = useState<ArrangementPiecesSuggestion[] | null>(null);
+  const [draft, setDraft] = useState<DraftRow[]>([]);
+
+  const [numPages, setNumPages] = useState<number | null>(null);
+  const [page, setPage] = useState(1);
+  const [scale, setScale] = useState(1.2);
+  const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const [isPanning, setIsPanning] = useState(false);
+  const panStart = React.useRef<{x:number; y:number; left:number; top:number} | null>(null);
+
+  const canPrev = page > 1;
+  const canNext = numPages ? page < numPages : false;
+
+  // handlers
+  const onPanStart = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsPanning(true);
+    scrollRef.current.style.cursor = "grabbing";
+    panStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      left: scrollRef.current.scrollLeft,
+      top: scrollRef.current.scrollTop,
+    };
+  };
+
+  const onPanMove = (e: React.MouseEvent) => {
+    if (!isPanning || !scrollRef.current || !panStart.current) return;
+    const dx = e.clientX - panStart.current.x;
+    const dy = e.clientY - panStart.current.y;
+    // invert to “grab” feel
+    scrollRef.current.scrollLeft = panStart.current.left - dx;
+    scrollRef.current.scrollTop  = panStart.current.top  - dy;
+  };
+
+  const onPanEnd = () => {
+    setIsPanning(false);
+    if (scrollRef.current) scrollRef.current.style.cursor = "";
+    panStart.current = null;
+  };
+
+  // load project (for PDF), suggestions (right), and prefill draft from summary
+  useEffect(() => {
+    (async () => {
+      const [pRes, sugRes, sumRes] = await Promise.all([
+        fetch(`/projects/${id}`),
+        fetch(`/projects/${id}/pieces_suggestions`),
+        fetch(`/projects/${id}/pieces_summary`),
+      ]);
+      const p = await pRes.json();
+      setProject({
+        id: p.id,
+        title: p.title,
+        diagramUrl: p.diagram_url,
+        pdfUrl: mapServerPathToPublicUrl(p.diagram_pdf_path),
+        bearingCodes: p.bearing_codes,
+        arrangements: p.arrangements || [],
+      });
+      setSuggestions(await sugRes.json());
+      const summary = await sumRes.json(); // [{ piece: "SLEEVE 30 mm", variant: "SLEEVE 30 mm", quantity_sets: 1 }, ...]
+      setDraft(summary.map((r: any) => ({
+        variant_id: r.piece_variant_id,
+        label: r.piece,              // already variant label
+        quantity: r.quantity_sets ?? 1,
+        piece_id: r.piece_id,
+        piece_name: r.piece_name ?? "",
+      })));
+    })();
+  }, [id]);
+
+  const addOrMergeDraft = (v: { id: number; label: string; piece_id: number; piece_name: string }, qty = 1) => {
+    setDraft(prev => {
+      const i = prev.findIndex(x => x.variant_id === v.id);
+      if (i >= 0) {
+        const next = [...prev];
+        next[i] = { ...next[i], quantity: next[i].quantity + qty };
+        return next;
+      }
+      return [...prev, { variant_id: v.id, label: v.label, quantity: qty, piece_id: v.piece_id, piece_name: v.piece_name }];
+    });
+  };
+
+  const updateQuantity = (variantId: number, quantity: number) => {
+    setDraft(prev => prev.map(x => x.variant_id === variantId ? { ...x, quantity: Math.max(1, quantity) } : x));
+  };
+
+  const removeItem = (variantId: number) => {
+    setDraft(prev => prev.filter(x => x.variant_id !== variantId));
+  };
+
+  const changeVariant = async (oldVariantId: number, newVariant: { id: number; label: string }) => {
+    setDraft(prev => {
+      // if new already exists, merge quantities
+      const existing = prev.find(x => x.variant_id === newVariant.id);
+      const old = prev.find(x => x.variant_id === oldVariantId);
+      if (!old) return prev;
+      if (existing) {
+        return prev
+          .filter(x => x.variant_id !== oldVariantId)
+          .map(x => x.variant_id === existing.variant_id ? { ...x, quantity: x.quantity + old.quantity } : x);
+      }
+      return prev.map(x => x.variant_id === oldVariantId ? { ...x, variant_id: newVariant.id, label: newVariant.label } : x);
+    });
+  };
+
+  const [saving, setSaving] = useState(false);
+  const saveKit = async () => {
+    const name = prompt("Name this list", `Kit ${new Date().toLocaleString()}`);
+    if (!name) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/projects/${id}/final_kits`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          items: draft.map(x => ({ piece_variant_id: x.variant_id, quantity_units: x.quantity, notes: x.notes || "" })),
+        }),
+      });
+      if (!res.ok) throw new Error(`Save failed (${res.status})`);
+      await res.json();
+      navigate(`/projects/${id}`); // back to workspace
+    } catch (e: any) {
+      alert(e.message || "Failed to save");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (!project || !suggestions) return <div className="text-slate-600">Loading…</div>;
+
+  return (
+    <div className="space-y-4">
+
+      {/* Top grid: PDF (left) + Suggestions (right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* PDF left: reuse your working viewer block (with pan/zoom/page) */}
+        <div className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="flex items-center justify-between px-2 pb-2 border-b border-slate-200">
+            <div className="flex items-center gap-2">
+              <button className="px-3 py-1.5 rounded-xl border border-slate-300 hover:bg-slate-50" onClick={onBack}>← Back</button>
+              <div className="text-sm text-slate-600">{project.title}</div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button disabled={!canPrev} onClick={() => setPage(p => Math.max(1, p - 1))} className="px-2 py-1 rounded-lg border border-slate-300 disabled:opacity-50">Prev</button>
+              <span className="text-sm">Page {page}{numPages ? ` / ${numPages}` : ""}</span>
+              <button disabled={!canNext} onClick={() => setPage(p => (numPages ? Math.min(numPages, p + 1) : p))} className="px-2 py-1 rounded-lg border border-slate-300 disabled:opacity-50">Next</button>
+              <div className="w-px h-5 bg-slate-300 mx-1" />
+              <button onClick={() => setScale(s => Math.max(0.2, Number((s - 0.1).toFixed(2))))} className="px-2 py-1 rounded-lg border border-slate-300">−</button>
+              <span className="w-10 text-center text-sm">{Math.round(scale * 100)}%</span>
+              <button onClick={() => setScale(s => Math.min(5, Number((s + 0.1).toFixed(2))))} className="px-2 py-1 rounded-lg border border-slate-300">+</button>
+            </div>
+          </div>
+          <div
+            ref={scrollRef}
+            className={clsx(
+              "overflow-auto max-h-[75vh] py-3",
+              "select-none",                            // avoid text selection while dragging
+              isPanning ? "cursor-grabbing" : "cursor-grab"
+            )}
+            onMouseDown={onPanStart}
+            onMouseMove={onPanMove}
+            onMouseUp={onPanEnd}
+            onMouseLeave={onPanEnd}
+          >
+            {/* keep content wider than container to enable horizontal pan */}
+            <div className="min-w-max inline-block mx-auto">
+              <Document
+                file={project.pdfUrl}
+                onLoadSuccess={(doc) => setNumPages(doc.numPages)}
+                loading={<div className="p-10 text-slate-500">Loading PDF…</div>}
+              >
+                <Page
+                  pageNumber={page}
+                  scale={scale}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
+              </Document>
+            </div>
+          </div>
+        </div>
+
+        {/* Suggestions right */}
+        <div className="lg:col-span-5 rounded-3xl border bg-white p-4">
+          <h3 className="text-lg font-semibold mb-3">Suggested pieces by arrangement</h3>
+          <div className="space-y-3">
+            {suggestions.map((sug) => (
+              <div key={sug.arrangement_id} className="rounded-2xl border p-3">
+                <div className="font-medium mb-2">{sug.name}</div>
+
+                <div className="mb-3">
+                  <div className="text-sm font-semibold mb-1">REMOVE</div>
+                  <SuggestionBucketGroup data={sug.removal} />
+                </div>
+
+                <div>
+                  <div className="text-sm font-semibold mb-1">INSERT</div>
+                  <SuggestionBucketGroup data={sug.insertion} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Editable final list at the bottom */}
+      <div className="rounded-3xl border bg-white p-4">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-lg font-semibold">Final piece list (editable)</h3>
+          <div className="flex items-center gap-2">
+            <AddPieceMenu onPick={(v) => addOrMergeDraft(v)} />
+            <button
+              className="px-4 py-2 rounded-2xl bg-slate-900 text-white hover:bg-slate-800"
+              onClick={saveKit}
+              disabled={saving}
+            >
+              {saving ? "Saving…" : "Save list"}
+            </button>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="min-w-[680px] text-sm">
+            <thead>
+              <tr className="text-left border-b">
+                <th className="py-2 pr-4">Piece</th>
+                <th className="py-2 pr-4">Qty</th>
+                <th className="py-2 pr-4">Notes</th>
+                <th className="py-2 pr-4"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {draft.map(row => (
+                <tr key={row.variant_id} className="border-b last:border-0">
+                  <td className="py-2 pr-4">
+                    <div className="flex items-center gap-2">
+                      <span>{row.label}</span>
+                      <ChangeVariantMenu
+                        pieceId={row.piece_id}
+                        onPick={(v) => changeVariant(row.variant_id, { id: v.id, label: v.label })}
+                      />
+                    </div>
+                  </td>
+                  <td className="py-2 pr-4">
+                    <input
+                      type="number" min={1}
+                      className="w-20 rounded-lg border px-2 py-1"
+                      value={row.quantity}
+                      onChange={(e) => updateQuantity(row.variant_id, parseInt(e.target.value || "1", 10))}
+                    />
+                  </td>
+                  <td className="py-2 pr-4">
+                    <input
+                      className="w-full rounded-lg border px-2 py-1"
+                      value={row.notes || ""}
+                      onChange={(e) => setDraft(prev => prev.map(x => x.variant_id === row.variant_id ? { ...x, notes: e.target.value } : x))}
+                    />
+                  </td>
+                  <td className="py-2 pr-4 text-right">
+                    <button className="px-3 py-1 rounded-lg border hover:bg-slate-50" onClick={() => removeItem(row.variant_id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+              {draft.length === 0 && (
+                <tr><td className="py-4 text-slate-500" colSpan={4}>No items yet. Add from suggestions or search above.</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function AddPieceMenu({ onPick }: { onPick: (v: { id: number; label: string; piece_id: number; piece_name: string }) => void }) {
+  const [open, setOpen] = useState(false);
+  const [groups, setGroups] = useState<Array<{ piece_id: number; piece_name: string; variants: { id:number; label:string }[] }>>([]);
+
+  useEffect(() => {
+    if (!open || groups.length) return;
+    (async () => {
+      const res = await fetch("/catalog/grouped");
+      const data = await res.json();
+      setGroups(data);
+    })();
+  }, [open, groups.length]);
+
+  return (
+    <div className="relative">
+      <button className="px-3 py-1.5 rounded-xl border hover:bg-slate-50" onClick={() => setOpen(o => !o)}>
+        Add piece
+      </button>
+      {open && (
+        <div className="absolute z-20 mt-2 w-80 max-h-96 overflow-auto rounded-xl border bg-white shadow">
+          {groups.map(g => (
+            <div key={g.piece_id} className="border-b last:border-0">
+              <div className="px-3 py-2 text-xs font-semibold text-slate-600">{g.piece_name}</div>
+              {g.variants.map(v => (
+                <div
+                  key={v.id}
+                  className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-sm"
+                  onClick={() => { onPick({ id: v.id, label: v.label, piece_id: g.piece_id, piece_name: g.piece_name }); setOpen(false); }}
+                >
+                  {v.label}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+function ChangeVariantMenu({ pieceId, onPick }: { pieceId: number; onPick: (v: { id:number; label:string }) => void }) {
+  const [open, setOpen] = useState(false);
+  const [opts, setOpts] = useState<Array<{ id:number; label:string }>>([]);
+
+  useEffect(() => {
+    if (!open) return;
+    (async () => {
+      const res = await fetch(`/catalog/pieces/${pieceId}/variants`);
+      setOpts(await res.json());
+    })();
+  }, [open, pieceId]);
+
+  return (
+    <div className="relative">
+      <button className="text-xs px-2 py-1 rounded-lg border hover:bg-slate-50" onClick={() => setOpen(o => !o)}>
+        Change size
+      </button>
+      {open && (
+        <div className="absolute z-20 mt-1 w-64 max-h-80 overflow-auto rounded-xl border bg-white shadow">
+          {opts.map(o => (
+            <div key={o.id} className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-sm"
+                 onClick={() => { onPick(o); setOpen(false); }}>
+              {o.label}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
