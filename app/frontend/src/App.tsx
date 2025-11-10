@@ -33,10 +33,9 @@ type PieceEntry = {
 };
 
 type PhaseBuckets = {
-  LEVERAGE: PieceEntry[];
+  LEVERAGE_CLEARANCE: PieceEntry[];
   PRESS: PieceEntry[];
   CENTER: PieceEntry[];
-  CLEARANCE: PieceEntry[];
 };
 
 type ArrangementPiecesSuggestion = {
@@ -49,7 +48,7 @@ type ArrangementPiecesSuggestion = {
 type ProjectSummaryRow = {
   piece: string;
   variant: string | null;
-  function: "LEVERAGE"|"PRESS"|"CENTER"|"CLEARANCE";
+  function: "LEVERAGE_CLEARANCE"|"PRESS"|"CENTER";
   quantity_sets: number;
 };
 
@@ -659,10 +658,9 @@ function initialArrangementForm(allBearingCodes: string[]): ArrangementForm {
 }
 
 function PhaseGroupBuckets({ buckets }: { buckets: PhaseBuckets }) {
-  const order: Array<keyof PhaseBuckets> = ["LEVERAGE","PRESS","CENTER","CLEARANCE"];
+  const order: Array<keyof PhaseBuckets> = ["LEVERAGE_CLEARANCE","PRESS","CENTER"];
   const label: Record<keyof PhaseBuckets, string> = {
-    LEVERAGE: "LEVERAGE", PRESS: "PRESS", CENTER: "CENTER",
-    CLEARANCE: "CLEARANCE"
+    LEVERAGE_CLEARANCE: "LEVERAGE/CLEARANCE", PRESS: "PRESS", CENTER: "CENTER"
   };
 
   return (
@@ -850,7 +848,7 @@ function RowChoices<T extends string>({ label, value, choices, onChange }: { lab
 }
 
 function SuggestionBucketGroup({ data }: { data: PhaseBuckets }) {
-  const order: Array<keyof PhaseBuckets> = ["LEVERAGE","PRESS","CENTER","CLEARANCE"];
+  const order: Array<keyof PhaseBuckets> = ["LEVERAGE_CLEARANCE","PRESS","CENTER"];
   return (
     <div className="space-y-3">
       {order.map(k => {
