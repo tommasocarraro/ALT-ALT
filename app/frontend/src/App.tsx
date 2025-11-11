@@ -32,10 +32,17 @@ type PieceEntry = {
   bearing_code: string | null;
 };
 
+type FnKey = "PRESS" | "CENTER" | "LEVERAGE_CLEARANCE";
+
 type PhaseBuckets = {
   LEVERAGE_CLEARANCE: PieceEntry[];
   PRESS: PieceEntry[];
   CENTER: PieceEntry[];
+};
+
+type CustomBuckets = {
+  removal: PhaseBuckets;
+  insertion: PhaseBuckets;
 };
 
 type ArrangementPiecesSuggestion = {
@@ -45,11 +52,18 @@ type ArrangementPiecesSuggestion = {
   insertion: PhaseBuckets;
 };
 
+// type ProjectSummaryRow = {
+//   piece: string;
+//   variant: string | null;
+//   function: "LEVERAGE_CLEARANCE"|"PRESS"|"CENTER";
+//   quantity_sets: number;
+// };
+
 type ProjectSummaryRow = {
-  piece: string;
-  variant: string | null;
-  function: "LEVERAGE_CLEARANCE"|"PRESS"|"CENTER";
-  quantity_sets: number;
+  piece_variant_id: number;
+  piece_id: number;
+  piece: string;           // variant label (or piece name for NONE variants)
+  quantity_sets: number;   // summed quantity across project
 };
 
 interface ArrangementBSBDetails {
@@ -189,6 +203,7 @@ function WorkspacePage() {
   const [suggestions, setSuggestions] = useState<ArrangementPiecesSuggestion[] | null>(null);
   const [summary, setSummary] = useState<ProjectSummaryRow[] | null>(null);
   const [refreshKey, setRefreshKey] = useState(0); // bump to refetch after saves
+  const [editRefreshKey, setEditRefreshKey] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -227,7 +242,7 @@ function WorkspacePage() {
         setSummary([]);
       }
     })();
-  }, [project, refreshKey]);
+  }, [project?.id, refreshKey]);
 
   if (error) return <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-red-700">{error}</div>;
   if (!project) return <div className="text-slate-600">Loading workspace…</div>;
@@ -236,10 +251,15 @@ function WorkspacePage() {
     <ProjectWorkspace
       project={project}
       onBack={() => navigate("/")}
-      onUpdate={(p) => { setProject(p); setRefreshKey(k => k+1); }}
+      onUpdate={(p) => { setProject(p); setRefreshKey(k => k + 1); }}  // unchanged
       suggestions={suggestions}
       summary={summary}
-      onRefetch={() => setRefreshKey(k => k+1)}
+      onRefetch={() => setRefreshKey(k => k + 1)}                      // unchanged
+      editRefreshKey={editRefreshKey}                                  // NEW
+      onGlobalChange={() => {                                          // NEW
+        setEditRefreshKey(k => k + 1);  // refresh the right editor
+        setRefreshKey(k => k + 1);      // refresh summary/final list
+      }}
     />
   );
 }
@@ -387,18 +407,19 @@ function NewProjectModal({ onClose, onCreated }: { onClose: () => void; onCreate
 // Workspace (PDF on left, interaction on right)
 // -------------------------------
 
-function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onRefetch }:
+function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onRefetch, editRefreshKey, onGlobalChange }:
   { project: Project; onBack: () => void; onUpdate: (p: Project) => void;
     suggestions: ArrangementPiecesSuggestion[] | null;
     summary: ProjectSummaryRow[] | null;
-    onRefetch: () => void }) {
+    onRefetch: () => void;
+    editRefreshKey?: number;            // optional
+    onGlobalChange?: () => void;}) {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [page, setPage] = useState(1);
   const [scale, setScale] = useState(1.2);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const [isPanning, setIsPanning] = useState(false);
   const panStart = React.useRef<{x:number; y:number; left:number; top:number} | null>(null);
-  const navigate = useNavigate();
 
   // handlers
   const onPanStart = (e: React.MouseEvent) => {
@@ -487,7 +508,7 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
 
     <div className="mt-8 space-y-8 w-full">
       <div className="mt-6 space-y-4">
-        <h3 className="text-lg font-semibold">Suggested pieces by arrangement</h3>
+        <h3 className="text-lg font-semibold">Pieces by arrangement</h3>
         {(!suggestions || suggestions.length === 0) ? (
           <div className="text-sm text-slate-500">No suggestions yet.</div>
         ) : (
@@ -498,17 +519,33 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
                 <div className="text-xs text-slate-500">Arrangement #{sug.arrangement_id}</div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {/* Removal */}
-                <div>
-                  <div className="text-sm font-medium mb-2">REMOVE</div>
-                  <PhaseGroupBuckets buckets={sug.removal} />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                {/* LEFT: suggested (read-only), keep REMOVE / INSERT */}
+                <div className="lg:col-span-6 rounded-2xl border border-slate-200 p-3">
+                  <div className="text-sm font-semibold mb-2">Suggested (read-only)</div>
+
+                  <div className="mb-4">
+                    <div className="text-xs font-semibold tracking-wide text-slate-600 mb-1">REMOVE</div>
+                    <PhaseGroupBuckets buckets={sug.removal} />
+                  </div>
+
+                  <div>
+                    <div className="text-xs font-semibold tracking-wide text-slate-600 mb-1">INSERT</div>
+                    <PhaseGroupBuckets buckets={sug.insertion} />
+                  </div>
                 </div>
 
-                {/* Insertion */}
-                <div>
-                  <div className="text-sm font-medium mb-2">INSERT</div>
-                  <PhaseGroupBuckets buckets={sug.insertion} />
+                {/* RIGHT: editable per-arrangement portal */}
+                <div className="lg:col-span-6 rounded-2xl border border-slate-200 p-3">
+                  <div className="text-sm font-semibold mb-2">Edit arrangement pieces</div>
+                  <ArrangementEditorRight
+                    arrangementId={sug.arrangement_id}
+                    refreshKey={editRefreshKey ?? 0}
+                    onAnyChange={() => {                       // bubble up without removing old behavior
+                      onGlobalChange?.();                      // refresh both editor + summary
+                      onRefetch?.();                           // preserve your existing refetch hook
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -518,13 +555,49 @@ function ProjectWorkspace({ project, onBack, onUpdate, suggestions, summary, onR
 
       <div className="h-px bg-slate-200 my-6" />
 
+      <div className="mt-6">
+        <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-lg font-semibold">Final piece summary</h3>
+          </div>
+
+          <p className="text-sm text-gray-500 mb-4">
+            <span className="font-semibold">Note:</span> 2 spacer tubes, one o-ring set, stud, stud stop, and handle are automatically added to the piece list.
+          </p>
+
+          {!summary ? (
+            <div className="text-sm text-slate-500">Loading…</div>
+          ) : summary.length === 0 ? (
+            <div className="text-sm text-slate-500">No pieces yet.</div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="min-w-[420px] text-sm">
+                <thead>
+                  <tr className="text-left border-b">
+                    <th className="py-2 pr-4 w-full">Piece</th>
+                    <th className="py-2 pr-2 text-right">Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {summary
+                    .slice() // don’t mutate original
+                    .sort((a: ProjectSummaryRow, b: ProjectSummaryRow) =>
+                      a.piece.localeCompare(b.piece) || a.piece_variant_id - b.piece_variant_id
+                    )
+                    .map((r: ProjectSummaryRow) => (
+                      <tr key={r.piece_variant_id} className="border-b last:border-0">
+                        <td className="py-2 pr-4">{r.piece}</td>
+                        <td className="py-2 pr-2 text-right">{r.quantity_sets}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </div>
+
     </div>
-    <button
-      className="mt-6 px-4 py-2 rounded-2xl bg-slate-900 text-white hover:bg-slate-800"
-      onClick={() => navigate(`/projects/${project.id}/finalize`)}
-    >
-      Create final piece list
-    </button>
     </>
   );
 }
@@ -534,6 +607,7 @@ function ProjectInteractionPanel({ project, onUpdate, onRefetch }:
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ArrangementForm>(() => initialArrangementForm(project.bearingCodes));
+  const [editRefreshKey, setEditRefreshKey] = useState(0);
 
   useEffect(() => {
     setShowForm(false);
@@ -585,12 +659,17 @@ function ProjectInteractionPanel({ project, onUpdate, onRefetch }:
     if (!res.ok) throw new Error(`Save failed (${res.status})`);
     const saved = await res.json();
 
+    const arrangementId = editingId ?? saved.id;
+    await fetch(`/arrangements/${arrangementId}/custom/init?force=1`, { method: "POST" });
+    setEditRefreshKey(k => k + 1);   // triggers the right portal to refetch
+
     const savedArr: SavedArrangement = { id: saved.id, ...form };
     const nextArrs = editingId
       ? project.arrangements.map((a) => (a.id === editingId ? savedArr : a))
       : [...project.arrangements, savedArr];
     onUpdate({ ...project, arrangements: nextArrs });
     onRefetch();
+    setEditRefreshKey((k) => k + 1);
     setShowForm(false);
     setEditingId(null);
   };
@@ -618,6 +697,22 @@ function ProjectInteractionPanel({ project, onUpdate, onRefetch }:
                       </div>
                     </div>
                     <button className="text-sm px-3 py-1 rounded-xl border border-slate-300" onClick={() => startEdit(a)}>Edit</button>
+                    <button
+                      className="text-sm px-3 py-1 rounded-xl border border-red-300 text-red-700 hover:bg-red-50"
+                      onClick={async () => {
+                        if (!window.confirm(`Delete arrangement "${a.name}"? This will remove its pieces as well.`)) return;
+                        const res = await fetch(`/arrangements/${a.id}`, { method: "DELETE" });
+                        if (!res.ok) { alert(`Delete failed (${res.status})`); return; }
+                        // remove from project state
+                        onUpdate({ ...project, arrangements: project.arrangements.filter(x => x.id !== a.id) });
+                        // refresh bottom portals + final summary
+                        onRefetch?.();
+                        // if you have an edit refresh key for modifiable portals, bump it:
+                        setEditRefreshKey(k => k + 1);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               ))}
@@ -1130,6 +1225,7 @@ function FinalizePage() {
                       <span>{row.label}</span>
                       <ChangeVariantMenu
                         pieceId={row.piece_id}
+                        excludeVariantIds={[row.variant_id]}
                         onPick={(v) => changeVariant(row.variant_id, { id: v.id, label: v.label })}
                       />
                     </div>
@@ -1207,33 +1303,387 @@ function AddPieceMenu({ onPick }: { onPick: (v: { id: number; label: string; pie
 }
 
 
-function ChangeVariantMenu({ pieceId, onPick }: { pieceId: number; onPick: (v: { id:number; label:string }) => void }) {
-  const [open, setOpen] = useState(false);
-  const [opts, setOpts] = useState<Array<{ id:number; label:string }>>([]);
+function ChangeVariantMenu({
+  pieceId,
+  onPick,
+  excludeVariantIds = []
+}: {
+  pieceId: number;
+  onPick: (v: { id: number; label: string }) => void;
+  excludeVariantIds?: number[];
+}) {
+  const btnRef = React.useRef<HTMLButtonElement | null>(null);
+  const [open, setOpen] = React.useState(false);
+  const [opts, setOpts] = React.useState<Array<{ id: number; label: string }>>([]);
+  const [pos, setPos] = React.useState<{ top: number; left: number; width: number }>({ top: 0, left: 0, width: 240 });
 
-  useEffect(() => {
+  // compute position relative to viewport (fixed positioning)
+  const computePos = React.useCallback(() => {
+    const btn = btnRef.current;
+    if (!btn) return;
+    const r = btn.getBoundingClientRect();
+    setPos({ top: r.bottom + 6, left: r.left, width: Math.max(240, r.width) });
+  }, []);
+
+  // open → fetch + compute position
+  React.useEffect(() => {
     if (!open) return;
     (async () => {
       const res = await fetch(`/catalog/pieces/${pieceId}/variants`);
-      setOpts(await res.json());
-    })();
-  }, [open, pieceId]);
+      const all = res.ok ? await res.json() : [];
+      const blocked = new Set(excludeVariantIds);
+      setOpts(all.filter((o: any) => !blocked.has(o.id)));
+          })();
+    computePos();
+
+    const onClick = (e: MouseEvent) => {
+      const menu = document.getElementById("change-variant-menu");
+      if (menu && (menu.contains(e.target as Node) || btnRef.current?.contains(e.target as Node))) return;
+      setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+
+    // ✅ Keep menu open on scroll; just reposition it
+    const onScroll = () => { computePos(); };
+
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", onScroll, true); // capture to catch scrollable parents
+
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", onScroll, true);
+    };
+  }, [open, pieceId, computePos]);
 
   return (
-    <div className="relative">
-      <button className="text-xs px-2 py-1 rounded-lg border hover:bg-slate-50" onClick={() => setOpen(o => !o)}>
+    <>
+      <button
+        ref={btnRef}
+        type="button"
+        className="ml-2 text-xs px-2 py-1 rounded-lg border hover:bg-slate-50"
+        onClick={() => setOpen(o => !o)}
+      >
         Change size
       </button>
-      {open && (
-        <div className="absolute z-20 mt-1 w-64 max-h-80 overflow-auto rounded-xl border bg-white shadow">
-          {opts.map(o => (
-            <div key={o.id} className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-sm"
-                 onClick={() => { onPick(o); setOpen(false); }}>
-              {o.label}
-            </div>
-          ))}
-        </div>
-      )}
+
+      {open &&
+        createPortal(
+          <div
+            id="change-variant-menu"
+            style={{ position: "fixed", top: pos.top, left: pos.left, width: pos.width, zIndex: 9999 }}
+            className="max-h-80 overflow-auto rounded-xl border bg-white shadow"
+          >
+            {opts.length === 0 ? (
+              <div className="px-3 py-2 text-sm text-slate-500">No sizes available</div>
+            ) : (
+              opts.map(o => (
+                <div
+                  key={o.id}
+                  className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-sm"
+                  onClick={() => { onPick(o); setOpen(false); }}
+                >
+                  {o.label}
+                </div>
+              ))
+            )}
+          </div>,
+          document.body
+        )}
+    </>
+  );
+}
+
+
+function ArrangementEditorRight({
+  arrangementId,
+  onAnyChange,          // optional
+  refreshKey = 0,       // if parent passes one
+}: {
+  arrangementId: number;
+  onAnyChange?: () => void;
+  refreshKey?: number;
+}) {
+  const [custom, setCustom] = React.useState<CustomBuckets | null>(null);
+
+  // 1) Silent reload (no parent notify)
+  const reload = React.useCallback(async () => {
+    const res = await fetch(`/arrangements/${arrangementId}/custom`);
+    setCustom(await res.json());
+  }, [arrangementId]);
+
+  // 2) Reload + notify (use ONLY after user actions)
+  const reloadAndNotify = React.useCallback(async () => {
+    await reload();
+    onAnyChange?.();                  // notify parent once
+  }, [reload, onAnyChange]);
+
+  // (optional) run init only once per arrangementId
+  const didInitRef = React.useRef<number | null>(null);
+  React.useEffect(() => {
+    (async () => {
+      if (didInitRef.current !== arrangementId) {
+        // seed only when first time opening this arrangement editor
+        await fetch(`/arrangements/${arrangementId}/custom/init`, { method: "POST" });
+        didInitRef.current = arrangementId;
+      }
+      await reload();                 // <- silent
+    })();
+  }, [arrangementId, reload]);
+
+  // if parent bumps refreshKey (e.g. after arrangement save), just reload silently
+  React.useEffect(() => {
+    reload();                         // <- silent
+  }, [reload, refreshKey]);
+
+  if (!custom) return <div className="text-sm text-slate-500">Loading…</div>;
+
+  return (
+    <div className="space-y-4">
+      <EditableBucket
+        title="REMOVE"
+        arrangementId={arrangementId}
+        phase="removal"
+        buckets={custom.removal}
+        onChanged={reloadAndNotify}    // user actions notify
+      />
+      <EditableBucket
+        title="INSERT"
+        arrangementId={arrangementId}
+        phase="insertion"
+        buckets={custom.insertion}
+        onChanged={reloadAndNotify}    // user actions notify
+      />
     </div>
+  );
+}
+
+
+function EditableBucket({
+  title, arrangementId, phase, buckets, onChanged
+}: {
+  title: string;
+  arrangementId: number;
+  phase: "removal" | "insertion";
+  buckets: PhaseBuckets;
+  onChanged: () => void;
+}) {
+  const order: FnKey[] = ["PRESS","CENTER","LEVERAGE_CLEARANCE"];
+
+  return (
+    <div className="rounded-2xl border border-slate-200 p-3">
+      <div className="text-sm font-semibold mb-2">{title}</div>
+      <div className="space-y-4">
+        {order.map((fnKey) => {
+          const rows = buckets[fnKey] || [];
+          return (
+            <div key={fnKey}>
+              <div className="flex items-center justify-between mb-1">
+                <div className="text-xs font-semibold tracking-wide text-slate-600">{fnKey}</div>
+                <AddPieceForBucket arrId={arrangementId} phase={phase} fn={fnKey} onAdded={onChanged} excludeVariantIds={(rows || []).map((r: any) => r.variant_id).filter(Boolean)}/>
+              </div>
+
+              {rows.length === 0 ? (
+                <div className="text-xs text-slate-500">No pieces in this section.</div>
+              ) : (
+                <ul className="space-y-1.5">
+                  {rows.map((it: any) => (
+                    <li key={it.custom_id} className="text-sm flex items-center justify-between gap-2">
+                      <div className="truncate">
+                        <span className="font-medium">{it.piece}</span>
+                        {/* show Change size only if the variant is not NONE */}
+                        {it.size_type !== "NONE" && (
+                          <ChangeVariantMenu
+                            pieceId={it.piece_id}
+                            excludeVariantIds={[it.variant_id].filter(Boolean)}
+                            onPick={async (v) => {
+                              await fetch(`/arrangements/custom/items/${it.custom_id}`, {
+                                method:"PUT",
+                                headers:{ "Content-Type":"application/json" },
+                                body: JSON.stringify({
+                                  phase, function: fnKey,
+                                  piece_variant_id: v.id,
+                                  quantity_units: it.quantity,
+                                  notes: it.notes || "",
+                                }),
+                              });
+                              onChanged();
+                            }}
+                          />
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <input
+                          type="number" min={1}
+                          className="w-16 rounded-lg border px-2 py-1 text-sm"
+                          value={it.quantity}
+                          onChange={async (e) => {
+                            const newQty = Math.max(1, parseInt(e.target.value || "1", 10));
+                            await fetch(`/arrangements/custom/items/${it.custom_id}/quantity?qty=${newQty}`, { method:"PATCH" });
+                            onChanged();
+                          }}
+                        />
+                        <button
+                          className="text-xs px-2 py-1 rounded-lg border hover:bg-slate-50"
+                          onClick={async () => {
+                            await fetch(`/arrangements/custom/items/${it.custom_id}`, { method:"DELETE" });
+                            onChanged();
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function AddPieceForBucket({
+  arrId, phase, fn, onAdded, excludeVariantIds = []
+}: {
+  arrId: number;
+  phase: "removal" | "insertion";
+  fn: "PRESS" | "CENTER" | "LEVERAGE_CLEARANCE" | "SUPPORT";
+  onAdded: () => void;
+  excludeVariantIds?: number[];
+}) {
+  const btnRef = React.useRef<HTMLButtonElement | null>(null);
+  const menuRef = React.useRef<HTMLDivElement | null>(null);
+
+  const [open, setOpen] = React.useState(false);
+  const [groups, setGroups] = React.useState<any[]>([]);
+  const [pos, setPos] = React.useState<{ top: number; left: number; width: number }>({
+    top: 0,
+    left: 0,
+    width: 280,
+  });
+
+  const computePos = React.useCallback(() => {
+    const btn = btnRef.current;
+    if (!btn) return;
+    const r = btn.getBoundingClientRect();
+    setPos({
+      top: r.bottom + 6,
+      left: r.left,
+      width: Math.max(280, r.width),
+    });
+  }, []);
+
+  // Open → fetch options + position
+  React.useEffect(() => {
+    if (!open) return;
+
+    // fetch once per open
+    (async () => {
+      const res = await fetch(`/catalog/grouped_by_function?function=${fn}`);
+      if (!res.ok) throw new Error("Failed to load pieces");
+      const data = await res.json();
+      const blocked = new Set(excludeVariantIds);
+      const pruned = data
+        .map((g: any) => ({
+          ...g,
+          variants: g.variants.filter((v: any) => !blocked.has(v.id)),
+        }))
+        .filter((g: any) => g.variants.length > 0);   // drop empty groups
+      setGroups(pruned);
+    })();
+
+    computePos();
+
+    const onDocClick = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (menuRef.current?.contains(target)) return;
+      if (btnRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onScrollOrResize = () => {
+      computePos(); // keep aligned, don’t close
+    };
+
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("scroll", onScrollOrResize, true);
+    window.addEventListener("resize", onScrollOrResize);
+
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", onScrollOrResize, true);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, [open, fn, computePos]);
+
+  const addVariant = async (variantId: number) => {
+    await fetch(`/arrangements/${arrId}/custom/items`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phase, function: fn, piece_variant_id: variantId, quantity_units: 1 }),
+    });
+    setOpen(false);
+    onAdded();
+  };
+
+  return (
+    <>
+      <button
+        ref={btnRef}
+        className="text-xs px-2 py-1 rounded-lg border hover:bg-slate-50"
+        onClick={() => setOpen(o => !o)}
+        type="button"
+      >
+        Add piece
+      </button>
+
+      {open &&
+        createPortal(
+          <div
+            ref={menuRef}
+            style={{
+              position: "fixed",
+              top: pos.top,
+              left: pos.left,
+              width: pos.width,
+              zIndex: 10000,
+            }}
+            className="max-h-96 overflow-auto rounded-xl border bg-white shadow"
+          >
+            {groups.length === 0 ? (
+              <div className="px-3 py-2 text-sm text-slate-500">No options</div>
+            ) : (
+              groups.map((g: any) => (
+                <div key={g.piece_id} className="border-b last:border-0">
+                  <div className="px-3 py-2 text-xs font-semibold text-slate-600">
+                    {g.piece_name}
+                  </div>
+                  {g.variants.map((v: any) => (
+                    <div
+                      key={v.id}
+                      className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-sm"
+                      onClick={() => addVariant(v.id)}
+                    >
+                      {v.label}
+                    </div>
+                  ))}
+                </div>
+              ))
+            )}
+          </div>,
+          document.body
+        )}
+    </>
   );
 }

@@ -1,15 +1,15 @@
 import hashlib
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Dict, Any, Tuple, Literal
 from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, conint
 import json
 from sqlalchemy import (
     create_engine, Column, Integer, Text, Numeric, ForeignKey, JSON,
     UniqueConstraint, event, Enum as SAEnum, Boolean, text, DateTime
 )
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker, Mapped, mapped_column, Session
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker, Mapped, mapped_column, Session, backref
 from sqlalchemy.exc import IntegrityError
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -172,6 +172,24 @@ class ArrangementRequiredPiece(Base):
     piece_variant: Mapped["PieceVariant"] = relationship("PieceVariant")
 
 
+class ArrangementCustomPiece(Base):
+    __tablename__ = "arrangement_custom_pieces"
+    id = mapped_column(Integer, primary_key=True, autoincrement=True)
+    arrangement_id = mapped_column(ForeignKey("arrangements.id", ondelete="CASCADE"), index=True, nullable=False)
+    phase = mapped_column(Text, nullable=False)      # 'removal' | 'insertion'
+    function = mapped_column(Text, nullable=False)   # 'PRESS' | 'CENTER' | 'LEVERAGE_CLEARANCE' | 'SUPPORT'
+    piece_variant_id = mapped_column(ForeignKey("piece_variants.id", ondelete="RESTRICT"), nullable=True, index=True)
+    quantity_units = mapped_column(Integer, nullable=False, default=1)
+    notes = mapped_column(Text)
+
+    arrangement = relationship(
+        "Arrangement",
+        backref=backref("custom_pieces", passive_deletes=True),
+        passive_deletes=True
+    )
+    piece_variant = relationship("PieceVariant")
+
+
 class PieceFunctionMap(Base):
     __tablename__ = "piece_functions"
     piece_id: Mapped[int] = mapped_column(ForeignKey("pieces.id", ondelete="CASCADE"), primary_key=True)
@@ -255,6 +273,15 @@ class ArrangementIn(BaseModel):
     has_center_lock: Optional[bool] = None
     bsb: Optional[ArrangementBSBIn] = None
     oa: Optional[ArrangementOAIn] = None
+
+
+class CustomItemIn(BaseModel):
+    phase: Literal["removal","insertion"]
+    function: Literal["PRESS","CENTER","LEVERAGE_CLEARANCE"]
+    piece_variant_id: Optional[int] = None
+    quantity_units: conint(strict=True, ge=1) = 1
+    notes: str | None = None
+
 
 
 # -----------------------------
@@ -1104,66 +1131,88 @@ def pieces_suggestions(project_id: int):
         return out
 
 
+# GET /projects/{project_id}/pieces_summary
 @app.get("/projects/{project_id}/pieces_summary")
-def pieces_summary(project_id: int):
+def project_pieces_summary(project_id: int):
     with SessionLocal() as db:
-        # Step 1: collapse per arrangement to avoid double-counting same variant across functions
-        collapsed = db.execute(text("""
-          WITH per_arr AS (
-            SELECT
-              a.id                              AS arrangement_id,
-              pv.id                             AS piece_variant_id,
-              p.id                              AS piece_id,
-              p.name                            AS piece_name,
-              pv.label                          AS variant_label,
-              MAX(arp.quantity_units)           AS qty_units_per_arr
-            FROM arrangements a
-            JOIN arrangement_required_pieces arp ON arp.arrangement_id = a.id
-            LEFT JOIN piece_variants pv ON pv.id = arp.piece_variant_id
-            LEFT JOIN pieces p ON p.id = pv.piece_id
-            WHERE a.project_id = :pid
-            GROUP BY a.id, pv.id, p.id, p.name, pv.label
-          )
-          SELECT
-            piece_variant_id,
-            piece_id,
-            piece_name,
-            variant_label,
-            SUM(qty_units_per_arr) AS qty_units_project
-          FROM per_arr
-          GROUP BY piece_variant_id, piece_id, piece_name, variant_label
-          ORDER BY piece_name, variant_label
-        """), {"pid": project_id}).fetchall()
+        # 1) find all arrangement ids in project
+        arr_ids = [r[0] for r in db.execute(
+            text("SELECT id FROM arrangements WHERE project_id = :pid"),
+            {"pid": project_id}
+        ).fetchall()]
+        if not arr_ids:
+            # Only essentials when no arrangements exist
+            return _summary_with_essentials_only(db)
 
-        # Step 2: build response rows
-        out = []
-        for r in collapsed:
-            out.append({
-                "piece_variant_id": r.piece_variant_id,  # needed for change-size & merge
-                "piece_id": r.piece_id,  # needed to list variants for this piece
-                "piece": (r.variant_label or r.piece_name),  # UI shows one column called “Piece”
-                "quantity_sets": int(r.qty_units_project or 0),
-            })
+        totals: dict[int, dict] = {}
 
-        # Step 3: append final fixed items (once per project), WITH IDs
-        fixed_map = {slug: db.query(Piece).filter_by(slug=slug).one() for slug in
-                     ["spacer_tube", "o_ring_set", "stud", "stud_stop", "handle"]}
+        # helper to add one row to totals
+        def acc(pv_id: int, piece_id: int, label: str, qty: int):
+            t = totals.setdefault(pv_id, {"piece_id": piece_id, "piece": label, "quantity_sets": 0})
+            t["quantity_sets"] += max(0, int(qty or 0))
 
-        for slug, piece in fixed_map.items():
+        # 2) For each arrangement, prefer CUSTOM; if none exists, use REQUIRED (suggested)
+        for aid in arr_ids:
+            has_custom = db.execute(
+                text("SELECT 1 FROM arrangement_custom_pieces WHERE arrangement_id = :aid LIMIT 1"),
+                {"aid": aid}
+            ).fetchone() is not None
+
+            if has_custom:
+                rows = db.execute(text("""
+                    SELECT acp.quantity_units AS qty, pv.id AS pv_id, p.id AS piece_id,
+                           COALESCE(pv.label, p.name) AS label
+                    FROM arrangement_custom_pieces acp
+                    JOIN piece_variants pv ON pv.id = acp.piece_variant_id
+                    JOIN pieces p ON p.id = pv.piece_id
+                    WHERE acp.arrangement_id = :aid
+                """), {"aid": aid}).fetchall()
+            else:
+                rows = db.execute(text("""
+                    SELECT arp.quantity_units AS qty, pv.id AS pv_id, p.id AS piece_id,
+                           COALESCE(pv.label, p.name) AS label
+                    FROM arrangement_required_pieces arp
+                    LEFT JOIN piece_variants pv ON pv.id = arp.piece_variant_id
+                    LEFT JOIN pieces p ON p.id = pv.piece_id
+                    WHERE arp.arrangement_id = :aid
+                """), {"aid": aid}).fetchall()
+
+            for r in rows:
+                if r.pv_id is None:
+                    # skip unresolved variant suggestions (no size) in the final summary
+                    continue
+                acc(r.pv_id, r.piece_id, r.label, r.qty or 0)
+
+        # 3) add essentials (fixed NONE-variant)
+        essentials = ["spacer_tube", "o_ring_set", "stud", "stud_stop", "handle"]
+        req_qty = {"spacer_tube": 2, "o_ring_set": 1, "stud": 1, "stud_stop": 1, "handle": 1}
+
+        for slug in essentials:
+            piece = db.query(Piece).filter_by(slug=slug).one()
             pv = db.query(PieceVariant).filter_by(piece_id=piece.id, size_type="NONE").first()
-            # safety: NONE variant should exist; label should equal piece.name
-            label = pv.label if pv and pv.label else piece.name
-            qty = 2 if slug == "spacer_tube" else 1
-            out.append({
-                "piece_variant_id": pv.id if pv else None,
-                "piece_id": piece.id,
-                "piece": label,  # single “Piece” column in UI
-                "quantity_sets": qty,
-            })
+            if pv:
+                acc(pv.id, piece.id, pv.label or piece.name, req_qty[slug])
 
-        # Optional consistent ordering
-        # out.sort(key=lambda x: (x["piece"] or "", x.get("piece_variant_id") or 0))
+        # 4) shape output
+        out = [{"piece_variant_id": vid, **v} for vid, v in totals.items()]
+        out.sort(key=lambda x: (x["piece"], x["piece_variant_id"]))
         return out
+
+
+def _summary_with_essentials_only(db: Session):
+    essentials = ["spacer_tube", "o_ring_set", "stud", "stud_stop", "handle"]
+    req_qty = {"spacer_tube": 2, "o_ring_set": 1, "stud": 1, "stud_stop": 1, "handle": 1}
+    out = []
+    for slug in essentials:
+        piece = db.query(Piece).filter_by(slug=slug).one()
+        pv = db.query(PieceVariant).filter_by(piece_id=piece.id, size_type="NONE").first()
+        out.append({
+            "piece_variant_id": pv.id,
+            "piece_id": piece.id,
+            "piece": pv.label or piece.name,
+            "quantity_sets": req_qty[slug],
+        })
+    return out
 
 
 # GET /catalog/grouped -> [{piece_id, piece_name, variants:[{id,label}]}]
@@ -1190,6 +1239,169 @@ def piece_variants(piece_id: int):
           SELECT id, label FROM piece_variants WHERE piece_id = :pid ORDER BY label
         """), {"pid": piece_id}).fetchall()
         return [{"id": r.id, "label": r.label} for r in rows]
+
+
+@app.post("/arrangements/{arr_id}/custom/init")
+def init_custom_from_suggestions(arr_id: int, force: bool = Query(False)):
+    with SessionLocal() as db:
+        if force:
+            # hard-reset custom rows for this arrangement
+            db.query(ArrangementCustomPiece).filter_by(arrangement_id=arr_id).delete(synchronize_session=False)
+
+        has = db.query(ArrangementCustomPiece).filter_by(arrangement_id=arr_id).first()
+        if has:
+            return {"status": "exists"}  # nothing to do unless force=true
+
+        rows = db.query(ArrangementRequiredPiece).filter_by(arrangement_id=arr_id).all()
+        # aggregate by (phase,function,piece_variant_id) and sum quantities
+        agg: dict[tuple[str, str, int | None], int] = {}
+        for r in rows:
+            key = (r.phase, r.function, r.piece_variant_id)
+            agg[key] = agg.get(key, 0) + (r.quantity_units or 1)
+
+        for (phase, function, pv_id), qty in agg.items():
+            db.add(ArrangementCustomPiece(
+                arrangement_id=arr_id,
+                phase=phase,
+                function=function,
+                piece_variant_id=pv_id,  # may be None (see bug #3)
+                quantity_units=qty,
+                notes=None,  # keep req notes if you want; optional
+            ))
+        db.commit()
+        return {"status": "recreated" if force else "created"}
+
+
+@app.get("/arrangements/{arr_id}/custom")
+def get_custom(arr_id: int):
+    with SessionLocal() as db:
+        rows = (
+            db.query(ArrangementCustomPiece, PieceVariant, Piece)
+              .join(PieceVariant, PieceVariant.id == ArrangementCustomPiece.piece_variant_id)
+              .join(Piece, Piece.id == PieceVariant.piece_id)
+              .filter(ArrangementCustomPiece.arrangement_id == arr_id)
+              .all()
+        )
+        # Build buckets for new function set
+        def empty(): return {"PRESS":[], "CENTER":[], "LEVERAGE_CLEARANCE":[], "SUPPORT":[]}
+        result = {"removal": empty(), "insertion": empty()}
+        for cp, pv, p in rows:
+            label = pv.label if pv else (p.name if p else "(unavailable size)")
+            result[cp.phase][cp.function].append({
+                "custom_id": cp.id,
+                "variant_id": pv.id if pv else None,
+                "piece_id": p.id if p else None,
+                "piece": label,            # show variant label only
+                "quantity": cp.quantity_units,
+                "notes": cp.notes or "",
+                "size_type": pv.size_type if pv else "NONE",    # 'ID','OD','ID_OD','NONE' => used to hide Change size
+            })
+        return result
+
+
+@app.get("/catalog/grouped_by_function")
+def catalog_grouped_by_function(function: str):
+    with SessionLocal() as db:
+        rows = db.execute(text("""
+          SELECT p.id AS piece_id, p.name AS piece_name, pv.id AS variant_id, pv.label AS variant_label
+          FROM pieces p
+          JOIN piece_functions pf ON pf.piece_id = p.id
+          JOIN piece_variants pv ON pv.piece_id = p.id
+          WHERE pf.function = :fn
+          ORDER BY p.name, pv.label
+        """), {"fn": function}).fetchall()
+        grouped = {}
+        for r in rows:
+            grouped.setdefault((r.piece_id, r.piece_name), []).append({"id": r.variant_id, "label": r.variant_label})
+        return [{"piece_id": pid, "piece_name": pname, "variants": vs} for (pid, pname), vs in grouped.items()]
+
+
+@app.post("/arrangements/{arr_id}/custom/items")
+def add_custom_item(arr_id: int, item: CustomItemIn):
+    with SessionLocal() as db:
+        # if a variant id is provided, upsert/merge by (phase,function,variant)
+        if item.piece_variant_id is not None:
+            pv = db.query(PieceVariant).filter(PieceVariant.id == item.piece_variant_id).first()
+            if not pv:
+                raise HTTPException(400, "Unknown piece_variant_id")
+
+        existing = db.query(ArrangementCustomPiece).filter_by(
+            arrangement_id=arr_id,
+            phase=item.phase,
+            function=item.function,
+            piece_variant_id=item.piece_variant_id,  # None merges the "unavailable" bucket too
+        ).first()
+
+        if existing:
+            existing.quantity_units += int(item.quantity_units)
+            if item.notes:  # keep a human note if provided
+                existing.notes = item.notes
+            db.commit()
+            return {"status": "ok", "id": existing.id}
+
+        cp = ArrangementCustomPiece(
+            arrangement_id=arr_id,
+            phase=item.phase,
+            function=item.function,
+            piece_variant_id=item.piece_variant_id,  # may be None
+            quantity_units=int(item.quantity_units),
+            notes=item.notes,
+        )
+        db.add(cp)
+        db.commit()
+        return {"status": "ok", "id": cp.id}
+
+# ---- UPDATE an existing custom row (swap size, change phase/function/qty/notes) ----
+@app.put("/arrangements/custom/items/{custom_id}")
+def update_custom_item(custom_id: int, item: CustomItemIn):
+    with SessionLocal() as db:
+        cp = db.query(ArrangementCustomPiece).filter(ArrangementCustomPiece.id == custom_id).first()
+        if not cp:
+            raise HTTPException(404, "Custom item not found")
+        pv = db.query(PieceVariant).filter(PieceVariant.id == item.piece_variant_id).first()
+        if not pv:
+            raise HTTPException(400, "Unknown piece_variant_id")
+
+        cp.phase = item.phase
+        cp.function = item.function
+        cp.piece_variant_id = item.piece_variant_id
+        cp.quantity_units = int(item.quantity_units)
+        cp.notes = item.notes
+        db.commit()
+        return {"status": "ok"}
+
+# ---- PATCH only quantity ----
+@app.patch("/arrangements/custom/items/{custom_id}/quantity")
+def patch_custom_item_quantity(custom_id: int, qty: conint(strict=True, ge=1)):
+    with SessionLocal() as db:
+        cp = db.query(ArrangementCustomPiece).filter(ArrangementCustomPiece.id == custom_id).first()
+        if not cp:
+            raise HTTPException(404, "Custom item not found")
+        cp.quantity_units = int(qty)
+        db.commit()
+        return {"status": "ok"}
+
+# ---- DELETE a custom row ----
+@app.delete("/arrangements/custom/items/{custom_id}")
+def delete_custom_item(custom_id: int):
+    with SessionLocal() as db:
+        cp = db.query(ArrangementCustomPiece).filter(ArrangementCustomPiece.id == custom_id).first()
+        if not cp:
+            raise HTTPException(404, "Custom item not found")
+        db.delete(cp)
+        db.commit()
+        return {"status": "deleted"}
+
+
+@app.delete("/arrangements/{arr_id}")
+def delete_arrangement(arr_id: int):
+    with SessionLocal() as db:
+        arr = db.query(Arrangement).get(arr_id)
+        if not arr:
+            raise HTTPException(status_code=404, detail="Arrangement not found")
+        db.delete(arr)
+        db.commit()
+        return {"status": "deleted"}
 
 
 # todo add a regular expression to extract bearing codes and if it is possible, create a database with all dimensions to avoid the AI model inference cost
