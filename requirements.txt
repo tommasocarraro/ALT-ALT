@@ -1,0 +1,8 @@
+anthropic
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+pymupdf
+requests
+python-dotenv
