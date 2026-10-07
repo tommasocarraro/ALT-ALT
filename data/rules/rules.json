@@ -1,0 +1,6186 @@
+{
+ "source": "https://www.altalt.ca/instructional-diagrams",
+ "pieces": {
+  "stud": "Stud",
+  "nut": "Standard Nut",
+  "stud_stop": "Stud Stop",
+  "handle": "Handle",
+  "o_ring": "O-ring",
+  "drift_re": "Drift RE",
+  "pilot_short": "Pilot Short",
+  "pilot_long": "Pilot Long",
+  "step": "Step",
+  "sleeve": "Sleeve",
+  "sleeve_6": "Sleeve 6",
+  "sleeve_long": "Sleeve Long",
+  "stop_ctr": "Stop CTR",
+  "stop_oal": "Stop OAL",
+  "spacer_tube": "Spacer Tube",
+  "alt_drift": "ALT Drift",
+  "alt_rod": "ALT Rod",
+  "alt_extractor": "ALT Extractor",
+  "oa_drift": "Over Axle Drift"
+ },
+ "size_rules": {
+  "od": "bearing OD",
+  ">id": "smallest size larger than the bearing ID",
+  "od_other": "OD of the bearing it rests against",
+  ">seat": "larger than the bearing seat, so it rests on the part",
+  "fits_bore": "largest OD that fits into the empty bore",
+  "id": "bearing ID",
+  "axle_id": "fits inside the axle",
+  ">axle_id": "larger than the axle ID, so it pushes on the axle end",
+  "axle_end": "rests on the end of the axle",
+  "axle_od x od": "axle OD x bearing OD"
+ },
+ "available_sizes": {
+  "drift_re": [
+   16,
+   19,
+   21,
+   22,
+   24,
+   26,
+   28,
+   30,
+   32,
+   35,
+   37,
+   41
+  ],
+  "sleeve": [
+   16,
+   19,
+   22,
+   24,
+   26,
+   28,
+   30,
+   32,
+   35,
+   37
+  ],
+  "pilot_short": [
+   10,
+   11,
+   12,
+   15,
+   17,
+   18,
+   20,
+   23,
+   25
+  ],
+  "pilot_long": [
+   10,
+   11,
+   12,
+   15,
+   17,
+   18,
+   20,
+   25
+  ],
+  "alt_drift": [
+   15,
+   17,
+   18,
+   20,
+   25
+  ],
+  "alt_extractor": [
+   10,
+   12,
+   15,
+   17,
+   18,
+   20,
+   25
+  ],
+  "oa_drift": [
+   "15x24",
+   "15x26",
+   "15x28",
+   "15x30",
+   "15x32",
+   "17x26",
+   "17x28",
+   "17x30",
+   "17x35",
+   "18x30",
+   "18x32",
+   "20x32",
+   "20x37",
+   "25x37"
+  ],
+  "stud": [
+   120,
+   180,
+   240
+  ]
+ },
+ "general_notes": [
+  "Every configuration is built on one Stud with a fastener at each end, except the ALT Extractor, which has its own built-in rod.",
+  "Stud length (120, 180 or 240 mm) depends on the component and the number of pieces stacked on it; it is chosen by a person with the part in hand, not by a rule.",
+  "Removal: the Drift RE pushes on the inner ring. Take the smallest Drift RE that is larger than the bearing ID.",
+  "Install: take the Drift RE that matches the bearing OD. Which face presses follows the manufacturer: the flat side by default; the relief side when the bearing has to be slightly loaded, so that the drift presses only the outer ring in while the axle holds the inner ring from the other side, which takes the play out of the bearing.",
+  "The Pilot sits inside the bearing, on the Stud, and keeps the drift centred on the bearing. Bearing ID 8 or 9 mm needs no Pilot: the Stud centres the tool.",
+  "Pilots 10, 11 and 12 are for centring only, never for pressing.",
+  "The Pilot Long exists to keep the inner spacer aligned with the bearings while the second bearing goes in.",
+  "A Sleeve (with its Step) is a leverage piece with room inside it: it is needed wherever something has to travel past the leverage surface (the bearing on removal; a pilot, an axle or an inner ring on install).",
+  "An Over Axle Drift is a press piece with room inside it: it is needed wherever an axle (or a pilot) sticks out of the bearing being pressed. It is always pushed by a Drift RE, never by a nut.",
+  "Over Axle Drifts are sold as one long and one short per size; the long one is for the driver side, where the axle sticks out further. Sizes with ID 18, 20 and 25 only come short.",
+  "Drift RE 41 is the leverage drift for 37 mm bearings. There is no Sleeve for 21 mm bearings.",
+  "Sleeve 6 rests on a 6-bolt disc mount. Sleeve Long centres and rests on a centre-lock disc mount (disc removed). Stop OAL rests on the drive side of a hub and clears a long axle end; it also fits the outboard end of XD/XDR freehubs.",
+  "Material: acetal against carbon or delicate surfaces; aluminium for thin leverage surfaces, corroded, wide or double-stacked bearings, and shop use.",
+  "A Stud Stop may only sit against a piece larger than 20 mm, and is never the fastener that is turned.",
+  "The Handle can replace a Standard Nut."
+ ],
+ "open_questions": [
+  "Open-bore hub, install of the 1st bearing: the diagram shows a Pilot Long. No reason is given; a Pilot Short may do.",
+  "O-ring quantities are counted from the drawings."
+ ],
+ "arrangements": [
+  {
+   "id": "simple_pivot",
+   "name": "Simple Pivot",
+   "image": "Simple_Pivot.jpg",
+   "status": "diagram",
+   "description": "One bearing in a pivot.",
+   "operations": [
+    {
+     "id": "remove",
+     "title": "Remove",
+     "operation": "remove",
+     "bearing": "single",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2SBP-R.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install",
+     "title": "Install",
+     "operation": "install",
+     "bearing": "single",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2SBP-I.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat",
+         "note": "relief side gives 3 mm of room"
+        }
+       ]
+      },
+      {
+       "when": "if the pilot or the inner ring would touch the leverage drift before the bearing is home",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "double_stacked_pivot",
+   "name": "Double Stacked Pivot",
+   "image": "Double_Stacked_Pivot.jpg",
+   "status": "confirmed",
+   "description": "Two bearings side by side in one seat, installed from the same side. Same as a Simple Pivot, except the 1st bearing always comes out with the ALT Extractor.",
+   "operations": [
+    {
+     "id": "remove_1st_extractor",
+     "title": "Remove 1st bearing with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Extractor",
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "2nd_remove",
+     "title": "Remove 2nd bearing",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2SBP-R.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "1st_install",
+     "title": "Install 1st bearing",
+     "operation": "install",
+     "bearing": "1st",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2SBP-I.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat",
+         "note": "relief side gives 3 mm of room"
+        }
+       ]
+      },
+      {
+       "when": "if the pilot or the inner ring would touch the leverage drift before the bearing is home",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "2nd_install",
+     "title": "Install 2nd bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2SBP-I.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat",
+         "note": "relief side gives 3 mm of room"
+        }
+       ]
+      },
+      {
+       "when": "if the pilot or the inner ring would touch the leverage drift before the bearing is home",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "bsb_pivot",
+   "name": "BSB Pivot",
+   "image": "BSB_Pivot.jpg",
+   "status": "confirmed",
+   "description": "Two bearings, one from each side, with a thin spacer ring between them. The ring is too thin for the ALT Drift, so the 1st bearing always comes out with the ALT Extractor.",
+   "operations": [
+    {
+     "id": "remove_1st_extractor",
+     "title": "Remove 1st bearing with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Extractor",
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd",
+     "title": "Remove 2nd bearing",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2BSB-R2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the part to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st",
+     "title": "Install 1st bearing",
+     "operation": "install",
+     "bearing": "1st",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2BSB-I1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "leverages and centres in the opposite, empty seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd",
+     "title": "Install 2nd bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2BSB-I2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": "if the thin spacer ring can ride on the Pilot Long",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      },
+      {
+       "when": "otherwise: the spacer is too thin for a Pilot Long, align it by hand",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 2
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "bsb_frame",
+   "name": "BSB Frame",
+   "image": "BSB_Frame.jpg",
+   "status": "diagram",
+   "description": "Two bearings, one from each side of a seat tube or linkage, with a tube spacer between them.",
+   "operations": [
+    {
+     "id": "remove_1st",
+     "title": "Remove 1st bearing with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Drift",
+     "when": "spacer moves at least 1 mm off-axis AND spacer is at least 10 mm long AND bearing ID is 15/17/18/20/25",
+     "status": "diagram",
+     "diagram": "2BSB-R1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor",
+     "title": "Remove 1st bearing with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Extractor",
+     "when": "spacer does not move, or is shorter than 10 mm, or bearing ID is 10/12",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd",
+     "title": "Remove 2nd bearing",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2BSB-R2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the part to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st",
+     "title": "Install 1st bearing",
+     "operation": "install",
+     "bearing": "1st",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2BSB-I1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "leverages and centres in the opposite, empty seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd",
+     "title": "Install 2nd bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2BSB-I2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 2
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "bsb_hub",
+   "name": "BSB Hub",
+   "image": "BSB_Hub.jpg",
+   "status": "diagram",
+   "description": "Open-bore hub: two bearings, one from each side, with a tube spacer between them.",
+   "operations": [
+    {
+     "id": "remove_1st_disc",
+     "title": "Remove 1st bearing, disc side with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": "ALT Drift",
+     "when": "spacer moves at least 1 mm off-axis AND spacer is at least 10 mm long AND bearing ID is 15/17/18/20/25",
+     "status": "diagram",
+     "diagram": "2HUB-OB-R1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor_disc",
+     "title": "Remove 1st bearing, disc side with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": "ALT Extractor",
+     "when": "spacer does not move, or is shorter than 10 mm, or bearing ID is 10/12",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_1st_drive",
+     "title": "Remove 1st bearing, drive side with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": "ALT Drift",
+     "when": "spacer moves at least 1 mm off-axis AND spacer is at least 10 mm long AND bearing ID is 15/17/18/20/25",
+     "status": "diagram",
+     "diagram": "2HUB-OB-R1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor_drive",
+     "title": "Remove 1st bearing, drive side with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": "ALT Extractor",
+     "when": "spacer does not move, or is shorter than 10 mm, or bearing ID is 10/12",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd_disc",
+     "title": "Remove 2nd bearing, disc side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-R2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "remove_2nd_drive",
+     "title": "Remove 2nd bearing, drive side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-R2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "alternative",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st_disc",
+     "title": "Install 1st bearing, disc side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-I1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the drive-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_1st_drive",
+     "title": "Install 1st bearing, drive side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-I1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the disc-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd_disc",
+     "title": "Install 2nd bearing, disc side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OB-I2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "on the drive side"
+        }
+       ]
+      },
+      {
+       "when": "if the manufacturer asks to leverage against the 1st bearing",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd_drive",
+     "title": "Install 2nd bearing, drive side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OB-I2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "if the manufacturer asks to leverage against the 1st bearing",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_both",
+     "title": "Install both bearings",
+     "operation": "install",
+     "bearing": "both",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OB-IB.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "disc side, pushes the outer ring"
+        },
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "od",
+         "note": "drive side, pushes the outer ring; hollow, so the pilots can stick out"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes on the Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id",
+         "note": "disc-side bearing"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "drive-side bearing and spacer"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "note": "an extra, smaller one that helps the long pilot catch bearing and spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "the two bearings are pressed against each other; no leverage piece",
+       "cond": "default",
+       "pieces": []
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "center:pilot_short",
+      "other_bearing",
+      "press:oa_drift",
+      "press:drift_re",
+      "nut"
+     ],
+     "action": "Tighten a nut. The two bearings are pushed into their seats against each other until both are home."
+    }
+   ]
+  },
+  {
+   "id": "bsb_hub_no_spacer",
+   "name": "BSB Hub Variant (No Spacer)",
+   "image": "BSB_Hub_Variant_No_Spacer.jpg",
+   "status": "confirmed",
+   "description": "Open-bore hub with one bearing each side and nothing between them, so no Pilot Long is needed.",
+   "operations": [
+    {
+     "id": "remove_1st_disc",
+     "title": "Remove 1st bearing, disc side with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": "ALT Drift",
+     "when": "bearing ID is 15/17/18/20/25",
+     "status": "confirmed",
+     "diagram": "2HUB-OB-R1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor_disc",
+     "title": "Remove 1st bearing, disc side with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": "ALT Extractor",
+     "when": "bearing ID is 10/12, or preferred",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_1st_drive",
+     "title": "Remove 1st bearing, drive side with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": "ALT Drift",
+     "when": "bearing ID is 15/17/18/20/25",
+     "status": "confirmed",
+     "diagram": "2HUB-OB-R1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor_drive",
+     "title": "Remove 1st bearing, drive side with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": "ALT Extractor",
+     "when": "bearing ID is 10/12, or preferred",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd_disc",
+     "title": "Remove 2nd bearing, disc side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-R2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "remove_2nd_drive",
+     "title": "Remove 2nd bearing, drive side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-R2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "alternative",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st_disc",
+     "title": "Install 1st bearing, disc side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-I1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the drive-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_1st_drive",
+     "title": "Install 1st bearing, drive side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-I1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the disc-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd_disc",
+     "title": "Install 2nd bearing, disc side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OB-I2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "on the drive side"
+        }
+       ]
+      },
+      {
+       "when": "if the manufacturer asks to leverage against the 1st bearing",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd_drive",
+     "title": "Install 2nd bearing, drive side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OB-I2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "if the manufacturer asks to leverage against the 1st bearing",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_both",
+     "title": "Install both bearings",
+     "operation": "install",
+     "bearing": "both",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 2,
+         "size": "od",
+         "note": "one per bearing, pushes the outer ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 2,
+         "size": "id",
+         "note": "one per bearing"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "the two bearings are pressed against each other; no leverage piece",
+       "cond": "default",
+       "pieces": []
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 2
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "other_bearing",
+      "center:pilot_short",
+      "press:drift_re",
+      "nut"
+     ],
+     "action": "Tighten a nut. The two bearings are pushed into their seats against each other until both are home."
+    }
+   ]
+  },
+  {
+   "id": "over_axle",
+   "name": "Over Axle (hub or frame main pivot)",
+   "image": "Over_Axle_Hub.jpg",
+   "status": "diagram",
+   "description": "The bearings sit over a shouldered axle that stays between them and sticks out of them. Found in hubs and in some frame main pivots; the procedure is the same.",
+   "operations": [
+    {
+     "id": "remove_1st_disc",
+     "title": "Remove 1st bearing and axle, towards the disc side",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-R1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "axle_end",
+         "note": "pushes the axle, which carries the disc-side bearing out"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "axle",
+      "center:pilot_long",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the leverage piece."
+    },
+    {
+     "id": "remove_1st_drive",
+     "title": "Remove 1st bearing and axle, towards the drive side",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-R1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "axle_end",
+         "note": "pushes the axle, which carries the drive-side bearing out"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "axle",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the leverage piece."
+    },
+    {
+     "id": "remove_2nd_disc",
+     "title": "Remove 2nd bearing, disc side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-R2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "remove_2nd_drive",
+     "title": "Remove 2nd bearing, drive side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-R2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "alternative",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st_disc",
+     "title": "Install 1st bearing, disc side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-I1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the drive-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_1st_drive",
+     "title": "Install 1st bearing, drive side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OAOB-I1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the disc-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_1st_drive_bore",
+     "title": "Install 1st bearing over the axle, drive side, leveraging in the empty seat",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-I1-Drive-Bore.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "axle_od x od"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes on the open end of the Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "fits_bore",
+         "note": "the short one, seated in the empty disc-side bearing seat, ID = axle OD; relief side towards the axle shoulder"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "note": "behind the leverage Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 4
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.",
+      "Flat side of the Over Axle Drift presses both rings, relief side presses the outer ring only: follow the hub manufacturer."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "press:oa_drift",
+      "bearing",
+      "center:pilot_short",
+      "axle",
+      "center:pilot_long",
+      "bore",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut."
+    },
+    {
+     "id": "install_2nd_disc",
+     "title": "Install 2nd bearing, disc side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-I2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "axle_od x od"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes on the open end of the Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1,
+         "note": "on the drive side, clears the axle end"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 4
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "press:oa_drift",
+      "bearing",
+      "center:pilot_long",
+      "axle",
+      "center:pilot_short",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut."
+    },
+    {
+     "id": "install_2nd_disc_bearing",
+     "title": "Install 2nd bearing, disc side, leveraging against the 1st bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-I2-Disc-Bearing.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "axle_od x od"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes on the open end of the Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "axle_od x od",
+         "note": "the long one, against the installed drive-side bearing"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "behind the leverage Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 4
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.",
+      "Flat side of the Over Axle Drift presses both rings, relief side presses the outer ring only: follow the hub manufacturer."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "press:oa_drift",
+      "bearing",
+      "center:pilot_long",
+      "axle",
+      "center:pilot_short",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut."
+    },
+    {
+     "id": "install_2nd_drive",
+     "title": "Install 2nd bearing, drive side",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-I2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 1,
+         "size": "axle_od x od"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes on the open end of the Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "frame main pivot",
+       "cond": "frame",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 4
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.",
+      "The bearing ID can be larger than the axle OD where the drift slides: size the drift to the axle.",
+      "The sleeve is there because the axle end sticks out of the 1st bearing."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "press:oa_drift",
+      "bearing",
+      "center:pilot_short",
+      "axle",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut."
+    },
+    {
+     "id": "install_both",
+     "title": "Install both bearings",
+     "operation": "install",
+     "bearing": "both",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2HUB-OA-IB.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "oa_drift",
+         "qty": 2,
+         "size": "axle_od x od",
+         "note": "one per bearing"
+        },
+        {
+         "piece": "drift_re",
+         "qty": 2,
+         "size": "od",
+         "note": "one behind each Over Axle Drift"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in one end of the axle"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "in the other end of the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "the two bearings are pressed against each other; no leverage piece",
+       "cond": "default",
+       "pieces": []
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 4
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.",
+      "The bearing ID can be larger than the axle OD where the drift slides: size the drift to the axle."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "press:oa_drift",
+      "bearing",
+      "center:pilot_long",
+      "axle",
+      "center:pilot_short",
+      "other_bearing",
+      "press:oa_drift",
+      "press:drift_re",
+      "nut"
+     ],
+     "action": "Tighten a nut. The two bearings are pushed into their seats against each other until both are home."
+    }
+   ]
+  },
+  {
+   "id": "over_axle_short",
+   "name": "Over Axle Short",
+   "image": "Over_Axle_Hub_Short.jpg",
+   "status": "confirmed",
+   "description": "Over-axle design whose axle enters the bearings but does not stick out of them, so no Over Axle Drift is needed.",
+   "operations": [
+    {
+     "id": "remove_1st_disc",
+     "title": "Remove 1st bearing and axle, towards the disc side",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": ">axle_id",
+         "note": "pushes the axle, which carries the far bearing out"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:pilot_short",
+      "axle",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the leverage piece."
+    },
+    {
+     "id": "remove_1st_drive",
+     "title": "Remove 1st bearing and axle, towards the drive side",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": ">axle_id",
+         "note": "pushes the axle, which carries the far bearing out"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:pilot_short",
+      "axle",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the leverage piece."
+    },
+    {
+     "id": "remove_2nd_disc",
+     "title": "Remove 2nd bearing, disc side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-R2-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "6-bolt disc mount",
+       "cond": "six_bolt",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "centre-lock disc mount (disc removed)",
+       "cond": "center_lock",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_long",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "remove_2nd_drive",
+     "title": "Remove 2nd bearing, drive side",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-R2-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve_6",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "alternative",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the hub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st_disc",
+     "title": "Install 1st bearing, disc side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "disc",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-I1-Disc.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the drive-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_1st_drive",
+     "title": "Install 1st bearing, drive side",
+     "operation": "install",
+     "bearing": "1st",
+     "side": "drive",
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": "2HUB-OAOB-I1-Drive.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "in the disc-side seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_long",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd",
+     "title": "Install 2nd bearing onto the axle",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "pushes the outer ring; relief side towards the bearing so the pilot has room to back out"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id",
+         "note": "centres the bearing; the axle pushes it out as the bearing goes on"
+        },
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "axle_id",
+         "note": "centres the axle"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 2
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "Two pilots of different diameters: one for the bearing ID, one for the axle ID."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "center:pilot_short",
+      "axle",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "bsb_freehub",
+   "name": "BSB Freehub",
+   "image": "BSB_Freehub.jpg",
+   "status": "diagram",
+   "description": "Freehub with one bearing installed from each end and a spacer between them.",
+   "operations": [
+    {
+     "id": "remove_1st",
+     "title": "Remove 1st bearing with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Drift",
+     "when": "spacer moves at least 1 mm off-axis AND spacer is at least 10 mm long AND bearing ID is 15/17/18/20/25",
+     "status": "diagram",
+     "diagram": "2Free-Each-R1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor",
+     "title": "Remove 1st bearing with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Extractor",
+     "when": "spacer does not move, or is shorter than 10 mm, or bearing ID is 10/12",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd",
+     "title": "Remove 2nd bearing",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-Each-R2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "HG or Microspline freehub",
+       "cond": "hg",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      },
+      {
+       "when": "XD or XDR freehub",
+       "cond": "xd",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      },
+      {
+       "when": "optional, if the bearing has room to come out",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches through the freehub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "install_1st",
+     "title": "Install 1st bearing",
+     "operation": "install",
+     "bearing": "1st",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-Each-I1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "leverages and centres on the opposite end"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd",
+     "title": "Install 2nd bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-Each-I2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od_other",
+         "note": "rests against the 1st bearing"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  },
+  {
+   "id": "bsb_freehub_one_side",
+   "name": "BSB Freehub Variant (One Side)",
+   "image": "BSB_Freehub_Variant_One_Side.jpg",
+   "status": "diagram",
+   "description": "Freehub with both bearings installed from the outboard end: bearing, circlip, spacer, bearing.",
+   "operations": [
+    {
+     "id": "remove_1st",
+     "title": "Remove 1st bearing with the ALT Drift",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Drift",
+     "when": "spacer moves at least 1 mm off-axis AND spacer is at least 10 mm long AND bearing ID is 15/17/18/20/25",
+     "status": "diagram",
+     "diagram": "2Free-All-R1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_drift",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "alt_rod",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "HG or Microspline freehub",
+       "cond": "hg",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      },
+      {
+       "when": "XD or XDR freehub",
+       "cond": "xd",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn."
+     },
+     "notes": [
+      "ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop."
+     ],
+     "stack": [
+      "press:alt_rod",
+      "other_bearing",
+      "spacer",
+      "press:alt_drift",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut:hold"
+     ],
+     "action": "Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the leverage piece."
+    },
+    {
+     "id": "remove_1st_extractor",
+     "title": "Remove 1st bearing with the ALT Extractor",
+     "operation": "remove",
+     "bearing": "1st",
+     "side": null,
+     "variant": "ALT Extractor",
+     "when": "spacer does not move, or is shorter than 10 mm, or bearing ID is 10/12",
+     "status": "confirmed",
+     "diagram": null,
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "alt_extractor",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "center": [],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      }
+     ],
+     "extras": [],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "nut",
+        "qty": 1
+       }
+      ],
+      "note": "ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop."
+     },
+     "notes": [
+      "ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner."
+     ],
+     "stack": [
+      "bearing_in_part",
+      "press:alt_extractor",
+      "leverage",
+      "nut:pull"
+     ],
+     "action": "First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve."
+    },
+    {
+     "id": "remove_2nd",
+     "title": "Remove 2nd bearing",
+     "operation": "remove",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-All-R2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "default",
+       "cond": "default",
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat"
+        }
+       ]
+      },
+      {
+       "when": "if clearance runs out near the end: HG or Microspline freehub",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      },
+      {
+       "when": "if clearance runs out near the end: XD or XDR freehub",
+       "cond": "manual",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "or a second Drift RE, if the press drift needs to reach further"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [
+      "The arrangement picture shows a circlip between the bearings, but no diagram shows it: check for circlips before pressing."
+     ],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the leverage piece. If the tool starts to sit crooked, stop and check."
+    },
+    {
+     "id": "remove_both",
+     "title": "Remove both bearings",
+     "operation": "remove",
+     "bearing": "both",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-All-RB.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">id",
+         "note": "pushes the inner ring"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "centres the far bearing and the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": "HG or Microspline freehub",
+       "cond": "hg",
+       "pieces": [
+        {
+         "piece": "step",
+         "qty": 1
+        },
+        {
+         "piece": "sleeve",
+         "qty": 1,
+         "size": "od"
+        }
+       ]
+      },
+      {
+       "when": "XD or XDR freehub",
+       "cond": "xd",
+       "pieces": [
+        {
+         "piece": "stop_oal",
+         "qty": 1
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "or a second Drift RE, if the press drift needs to reach further"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [
+      "Pushes both bearings and the spacer out in one pass.",
+      "The arrangement picture shows a circlip between the bearings, but no diagram shows it: check for circlips before pressing."
+     ],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing_in_part",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Tighten a nut. The drift pushes the first bearing, which pushes the spacer and the second bearing ahead of it, and all three come out into the leverage piece."
+    },
+    {
+     "id": "install_1st",
+     "title": "Install 1st bearing",
+     "operation": "install",
+     "bearing": "1st",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-All-I1.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "stop_ctr",
+         "qty": 1,
+         "note": "on the inboard end"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 1
+      },
+      {
+       "piece": "spacer_tube",
+       "qty": 1,
+       "note": "reaches down the freehub to the drift"
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side."
+     },
+     "notes": [],
+     "stack": [
+      "nut:plain",
+      "extra:spacer_tube",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "part",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    },
+    {
+     "id": "install_2nd",
+     "title": "Install 2nd bearing",
+     "operation": "install",
+     "bearing": "2nd",
+     "side": null,
+     "variant": null,
+     "when": null,
+     "status": "diagram",
+     "diagram": "2Free-All-I2.pdf",
+     "press": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": "od",
+         "note": "flat side on the bearing, unless the manufacturer asks for the relief side"
+        }
+       ]
+      }
+     ],
+     "center": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "pilot_short",
+         "qty": 1,
+         "size": "id"
+        },
+        {
+         "piece": "pilot_long",
+         "qty": 1,
+         "size": "id",
+         "note": "sits in the 1st bearing and aligns the spacer"
+        }
+       ]
+      }
+     ],
+     "leverage": [
+      {
+       "when": null,
+       "cond": null,
+       "pieces": [
+        {
+         "piece": "drift_re",
+         "qty": 1,
+         "size": ">seat",
+         "note": "on the inboard end of the freehub"
+        }
+       ]
+      }
+     ],
+     "extras": [
+      {
+       "piece": "o_ring",
+       "qty": 3
+      }
+     ],
+     "hardware": {
+      "pieces": [
+       {
+        "piece": "stud",
+        "qty": 1
+       },
+       {
+        "piece": "nut",
+        "qty": 2
+       }
+      ],
+      "note": "A Stud Stop may replace either nut if it sits against a piece larger than 20 mm."
+     },
+     "notes": [
+      "The arrangement picture shows a circlip between the bearings, but no diagram shows it: check for circlips before pressing."
+     ],
+     "stack": [
+      "nut",
+      "press:drift_re",
+      "center:pilot_short",
+      "bearing",
+      "spacer",
+      "center:pilot_long",
+      "other_bearing",
+      "leverage",
+      "nut"
+     ],
+     "action": "Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight."
+    }
+   ]
+  }
+ ]
+}
