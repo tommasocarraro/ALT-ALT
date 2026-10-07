@@ -1,0 +1,229 @@
+URL: https://www.altalt.ca/pieces
+TITLE: Pieces — Alt Alt Bike Products
+ Pieces of the System
+This page explains of all the pieces of the system and includes links to buy INDIVIDUAL PIECES. 
+The system is also sold in Packs >>> and Kits >>>.
+View fullsize
+Support Pieces
+The following pieces are required in the removal or install of almost every bearing. 
+Stud
+Description: a.k.a. threaded rod. Made of high strength stainless steel.
+Purpose: Together with the threaded fasteners, it does the squeezing of the tool. Needed for almost all uses. 
+Size: M8x1.25
+Variations: It comes in three sizes. 120, 180 & 240mm lengths.
+Other Required Pieces:  Threaded fasteners, nuts, Stud Stop or Handle. 
+Tip: If you’re using the basic nuts as tightening, it might be handy to have different length versions of the Stud.
+BUY >>>
+View fullsize
+Standard Nuts
+Description: two zinc plated steel flange nuts that can be operated by a 12 & 13mm wrench.
+Purpose: Fit onto the Stud to do the squeezing.
+Size: M8x1.25
+Other Required Pieces:  Stud
+Tip: A little drop of lube on the surface that touches the adjacent piece will help the pieces slide against each other. 
+BUY >>>
+View fullsize
+O-rings
+Description: O-rings
+Purpose: Use O-rings to keep tool pieces in place during removal and install.
+Size: Fits M8 threaded Stud
+Other Required Pieces: Stud
+Tip: Use a piece with an 8mm hole (any Pilot or Drift RE) to help slide the O-ring onto or off of the Stud.
+BUY >>>
+View fullsize
+Handle
+Description: Aluminum threaded handle.
+Purpose: The handle replaces the standard nuts is a convenient way to apply force to the bearing PRESS. Not necessary, but pretty sweet.
+Size: M8x1.25 thread
+Variations: Comes in 3 colors, Sand du jour, Organic Cardboard & Dry Hero Dirt
+BUY >>>
+View fullsize
+Stud Stop
+Description: This simple threaded nut that slides over the threads when it is tilted, but then engages the Stud when held square to the Stud.
+Purpose: Replacement for Standard Nut which is real convenient for quickly setting a stop for the tool to PRESS against.
+Size: M8x1.25 thread. 
+Other Required Pieces:  Stud or ALT Extractor. 
+IMPORTANT: Go to the Stud Stop page to learn how to use it. Stud Stop >>>
+BUY >>>
+View fullsize
+General PLCC Pieces
+The following pieces in the system are designed to perform th functions of PLCC (PRESS, LEVERAGE, CENTER & CLEARANCE). 
+Some pieces perform more than one function. 
+In General:
+PRESS – Drift RE, ALT Drift or ALT Extractor
+LEVERAGE – Drift RE & Sleeve
+CENTER – Pilot
+CLEARANCE – Sleeve & Drift RE
+View fullsize
+ Drift RE
+Description: These pieces serve many functions. Mostly PRESS and LEVERAGE. Designed with a flat side and a relief side to accommodate extended inner ring bearings. 
+Purpose:
+The recess side can be used to PRESS on a bearing outer ring for install. 
+The recess side can be used to PRESS on a bearing outer ring of an extended inner ring bearing. The recess provides CLEARANCE for the inner ring. 
+The flat side can be used to PRESS both bearing rings at the same time for install. 
+Either side can be used to LEVERAGE an install in cramped places. 
+The recess side can be used to LEVERAGE the install of an extended inner ring bearing where, in the bearing final position, the bearing inner ring protrudes past the frame.
+Either side can be used to LEVERAGE inside an open bearing seat when installing the first bearing in a hub. The seat needs a shoulder suitable to do this. The manufacturer will recommend it if necessary. 
+In the case of installing the second bearing in a preloaded BSB hub, the recess side can be used to LEVERAGE against a bearing outer ring. As per the manufacturer’s instructions.
+Provide miscellaneous spacing and PRESSING. 
+Size: 
+16, 19, 21, 22, 24, 26, 28, 30, 32, 35, 37 & 41
+Drifts are Sized by their outer diameter. Designed to be slightly smaller than the bearing outer diameter.
+The relief side provides 3mm deep of relief.
+Size 41 is used for LEVERAGING the install of 37mm bearings. 
+Variations: Available in aluminum and acetal materials. 
+IMPORTANT: When PRESSING or LEVERAGING using the flat side, the opposite side (recess side) will often have a threaded part against it (nut, Stud Stop or handle). Make sure to fully support the recessed side.
+BUY >>>
+View fullsize
+Pilot
+Description: These pieces are primarily used for CENTERING the tool, but can also be used for some PRESSING and spacing.
+Purpose: 
+Pilots fit inside the bearing inner diameters and CENTER the tool. 
+Pilots fit inside the axle of over axle hub designs to CENTER the tool on the axle.
+Short Pilots are great when you want to CENTER on a bearing, but the bearing final position dictates that there isn’t sufficient CLEARANCE for a long Pilot. 
+When installing the second bearing (like in many BSB configurations), Long Pilots are great for keeping the bearing spacer aligned with the second bearing inner ring.
+Pilots larger than 12mm can be used for PRESSING or spacing functionality. 
+View fullsize
+Size: 
+10, 11, 12, 15, 17, 18, 20, 23 & 25
+Pilots are Sized by their outer diameter. Designed to be slightly smaller than a bearing inner diameter.
+Size 23 is only available in Aluminum because it’s intended for PRESSING. 
+Variations: 
+Aluminum and acetal materials. 
+Long and short versions
+IMPORTANT: 
+ONLY use the 10, 11 & 12mm pilots for CENTERING NOT for PRESSING.
+When needing to CENTER the tool for work on bearings with inner diameter of 8 or 9mm, no Pilot is necessary. The Stud will CENTER the tool. 
+BUY SHORT >>>
+BUY LONG >>>
+Step
+Description: Companion piece to every Sleeve in the system. 
+Purpose: To work with the Sleeves to provide LEVERAGING and CLEARANCE for bearings, bike parts and other tool pieces.  
+Size: One Size for all Sleeves. 
+Variations: Aluminum and acetal materials. All Steps fit to all Sleeves. Aluminum Step to Acetal Sleeves etc.
+Other Required Pieces:  Sleeves, Sleeve 6, Sleeve Long
+BUY >>>
+View fullsize
+Sleeve
+Description: LEVERAGING piece.
+Purpose: These pieces are LEVERAGING pieces that work with the Step to provide CLEARANCE for bearings, bike parts and other tool pieces.  
+Size: 
+16, 19, 22, 24, 26, 28, 30, 32, 35 & 37
+Sleeves are Sized by their inner diameter. Designed to be 1mm larger than the bearing outer diameter. 
+Variations: 
+Aluminum is stronger than acetal and good for less stable LEVERAGE surfaces.
+Acetal is softer than aluminum, and better for LEVERAGING against carbon or delicate surfaces.
+Other Required Pieces:  Step
+View fullsize
+IMPORTANT:
+All LEVERAGE surfaces must always be:
+Flat 
+Perpendicular to the bearing seat
+Stable – covers whole sleeve or positioned in middle of sleeve
+Aluminum Sleeves can handle partial support better than acetal Sleeves, but the LEVERAGE surface must be intended for this Purpose. Don’t try to use a bearing press on a LEVERAGE surface if your manufacturer doesn’t recommend it. Read more about LEVERAGING surfaces on the How-To page >>>
+BUY >>>
+Sleeve 6
+Description: It’s a Sleeve, but special. 
+Purpose: This part can LEVERAGE against the 6 Bolt disc side of a hub and provides CLEARANCE for bearings and/or the axle of an over axle hub design. If you don’t remove the disc, it can even be used against the bolt heads.
+Size: One Size. Inner Diameter fits 37mm bearing outer diameter.
+Variations: Only made of acetal.
+Other Required Pieces:  Step
+BUY >>>
+View fullsize
+Sleeve Long
+Description: It’s a Sleeve, but special.
+Purpose:
+It can CENTER AND LEVERAGE the tool on a CENTER lock disc brake mount. The brake disc must be removed first. 
+Inner Diameter also fits 35mm bearing outer diameter.
+Size: One Size.
+Variations: Aluminum and acetal materials. 
+Other Required Pieces:  Step
+BUY >>>
+View fullsize
+Stop OAL
+Description: OAL (Over Axle Long) Stop. Special LEVERAGING and CLEARANCE …and CENTERING piece.
+Purpose:
+This part LEVERAGES against the drive side of an over axle hub providing CLEARANCE for the long freehub side of the axle. 
+It is also designed to LEVERAGE against the outboard side of XD/XDR freehubs for bearing removal. This provides CENTERING and CLEARANCE as well.
+Size: Once Size.
+Variations: Only made of acetal.
+BUY >>>
+View fullsize
+Stop CTR
+Description: CTR (CENTERING) stop.
+Purpose: This piece CENTERs the tool when LEVERAGING on an open bore. Good for install and some cases removal.
+Size: One Size. It will CENTER on “holes” 14-50mm diameter.
+Variations: Only made of acetal.
+BUY >>>
+View fullsize
+Tube Spacer
+Description: It’s a tube.
+Purpose: Just an extender kind of part to help reach inside spaces like to the far side of a hub.
+Size: One Size.
+Variations: Aluminum and acetal materials. 
+BUY >>>
+View fullsize
+Specialty Pieces
+The following pieces have pretty limited functionality, but are ESSENTIAL to some very common bearing configurations like removing the first bearing in a BSB configuration or installing an over axle hub bearing. 
+ALT Extractor
+Description: A bearing removal specialist.
+Purpose: 
+To remove the first bearing in a BSB configuration where the bearing spacer isn’t 10mm long or doesn’t move off it’s access. 
+Can also remove the bearing if the spacer does move. 
+Can also remove the bearing if there is no spacer.
+Size: 
+10, 12, 15, 17, 18, 20 & 25mm
+Sized to fit bearing inner diameters.
+View fullsize
+Variations: 
+Regular version and OG versions available. My kits that were sold before June 2024 have shorter Sleeves than my new Sleeves, so they require OG version ALT Extractors. 
+Also available in Valu Packs that save you money.
+See ALT Extractor >>>
+Other Required Pieces:  Step & Sleeves
+BUY: The ALT Extractor comes in individual Sizes and packs, so go to the ALT Extractor page to help you find the right solution. See ALT Extractor >>>
+ALT Drift 
+Description: A bearing removal specialist. 
+Purpose: Used to remove the first bearing in a BSB configuration. Also works in configurations that don’t have the spacer.
+Requirements: 
+The bearing spacer must be able to move off its axis by at least 1mm. 
+The bearing spacer must be at least 10mm long.
+Size: 
+15, 17, 18, 20 & 25mm
+Sized to fit bearing inner diameters
+View fullsize
+Variations: Aluminum only.
+Other Required Pieces:  ALT Rod, Pilot, Sleeve, Step, Stud, O-ring, Nut or Stud Stop
+Tip: Good solution if your BSB moves off the axis and is minimum 10mm long. If you will run into a situation that doesn’t meet the requirements, you will need the ALT Extractor. 
+BUY: The ALT Drift comes in individual Sizes and kits, so go to the ALT Drift page to help you find the right solution. 
+See ALT Drift >>>
+ALT Rod
+Description: Companion piece to ALT Drift. 
+Purpose: To hold and turn the ALT Drift. 
+Size: One Size.
+Variations: Aluminum only.
+Other Required Pieces:  ALT Drift …and other pieces.
+BUY: The ALT Drift comes in individual Sizes and kits, so go to the ALT Drift page to help you find the right solution. 
+See ALT Drift >>>
+View fullsize
+Over Axle Drifts
+Description: OA Drift (Over Axle Drift)
+Purpose: 
+Used to PRESS bearings for installation in over axle hub configurations.
+The recess side can be used to PRESS on a bearing outer ring only. 
+The flat side can be used to PRESS both bearing rings at the same time. 
+Size (IDxOD): 
+15x24, 15x26, 15x28, 15x30, 15x32, 17x26, 17x28, 17x30, 17x35, 18x30, 18x32, 20x32, 20x37, 25x37
+OD of OA Drift = OD of bearing
+ID of OA Drift = OD of AXLE! 
+NOTE: Bearing ID could be 17, but OD of axle you are installing over could be 15, so you want the OA Drift to fit nicely to the AXLE.
+See “Explained” video at 5:27
+View fullsize
+Variations: 
+Acetal only
+Note: Over Axle Drifts with ID 18, 20 & 25 only come in short versions.
+Other Required Pieces:  Drift RE to press on each end of the OA Drift.
+IMPORTANT: 
+You need to PRESS on the Over Axle Drifts using a Drift RE. Do not PRESS on the Over Axle Drifts with the handle or Stud Stop. You will deform it.
+If you want to learn more about the Over Axle Drifts, see the Over Axle Drift page >>>
+BUY INDIVIDUAL SIZES >>>
+BUY OVER AXLE DRIFT KIT >>>

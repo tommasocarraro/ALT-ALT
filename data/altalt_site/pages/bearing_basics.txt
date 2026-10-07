@@ -1,0 +1,91 @@
+URL: https://www.altalt.ca/bearing-basics
+TITLE: Bearing Basics — Alt Alt Bike Products
+Enduro MAX Bearing Basics
+Enduro MAX Bearing Basics 
+Important
+This information is intended to help you better understand Enduro MAX bearing naming, types, seals and ring features. All info is specific to the MAX lineup. 
+ALWAYS follow your bike manufacturer's recommendations. 
+When disassembling the bike, make sure to take note of types of seals on bearings, their color and orientation. Also take note of extra flanges on bearings and their orientation. 
+Bearing types are NOT interchangeable. Example: DO NOT replace an angular contact bearing with a deep groove single row radial bearing. Your bike was designed with bearings types to handle the force loads of the suspension design.
+PS if you run into a suspension bearing type that isn’t in this guide, contact me via email. I’d love to look into it.
+Bearing Designation
+The bearing designation system is designed to define a lot about a bearing.
+Example: 7902 1ZS MAX
+This is a:
+7902 – Single row, angular contact ball bearing with a size of 15mm inner diameter, 28mm outer diameter and 7mm width. 
+1ZS – There is one 1ZS seal and the other side has no seal. 
+MAX – This is an Enduro MAX bearing
+…and because there is nothing else listed, we know there are no extended rings or flanges.
+The problem is that there are a lot of exceptions to this system that make it confusing. Instead, based on suspension bearings, here are some guidelines…
+Sizing
+Technically "6902" defines the size of a bearing along with some other bearing attributes, but it is common to also see the size written out more obviously like this: 
+(15 x 28 x 7) 
+This is in the following format. (ID x OD x W) with dimensions in mm. Incidentally, the dimensions listed are literal. When it says 15mm it is not a nominal dimension. It's 15mm (well, at least to the accuracy that common measurement tools can measure).
+If you see a size like this (28 x 15 x 7) then you've found someone using (OD x ID x W). Easy enough to spot though. 
+3 Common Types Used for Suspension Pivots 
+To help group the bearings by type, I'll use "X" as a variable to distinguish different sizes of the same type of bearing. "X" can be any number. EG. 6XXX could be 6902 or 6800 etc. Both are single row deep groove bearings, just of different sizes.
+View fullsize
+1) Single Row Deep Groove
+MAX bearings named: 6XX, 6XXX, 6XXXX, MRXXX and MRXXXXX
+This bearing is symmetric and can be installed in either direction.
+2) Single Row Angular Contact
+MAX bearings named: 790X 
+Angular contact MAX bearings come in two forms:
+View fullsize
+One black LLU seal and one blue LLU seal.
+View fullsize
+One 1ZS seal and the opposite side has no seal. This is for greaseable designs. See Seals section. 
+CAUTION: Single row angular contact bearing are NOT symmetric and need to be installed in a particular orientation. Double check with your bike manufacturer's technical manual. 
+In general, if the bearings are mounted inside either end of a frame or linkage part, then the bearings are oriented like this:
+If the bearing has a black and a blue seal, then the black seal points outwards and blue seal points inward. Once installed, you'll only see the black seal.
+If the bearing has one 1ZS seal and no seal on the other side, then the 1ZS seal points outwards. This is so that the bearing can be greased from inside.
+View fullsize
+Forces on angular contact bearing.
+View fullsize
+Application for angular contact bearing.
+View fullsize
+Installation forces on angular contact bearing.
+View fullsize
+3) Double Row Angular Contact
+MAX bearings named: 3XX, 3XXX 
+MAX bearings named like this are double row but are also opposing angular contact. 
+This is specific to Enduro MAX bearings.
+This bearing is symmetric and can be installed in either direction.
+MAX Bearing Seals
+These are the seals that come on Enduro MAX bearings. 
+View fullsize
+LLU Seals
+LLU is a full contact, dual lip seal riding in a groove on the inner race. With more sealing pressure, these are ideal for pivots or headsets that continually come in contact with dirt, sweat, and dust. The increased seal pressure and 2 lips help retain the 90% grease fill we use on these bearings to better displace any moisture and continually lubricate the balls and races.
+LLU seals are a performance seal upgrade from 2RS seals.
+View fullsize
+1ZS Seals
+Developed for Greaseable Bearing systems mostly found on suspension bikes, these bearings are completely open on one side where the grease is delivered during service by a pump through a grease fitting. As the old grease is displaced, it is purged past the inside seal lip of our specially designed “Seal-Shield”. This Seal-Shield will not pop off from the grease pressure, but remains in place as the old grease passes past the sealing lip and is refilled with fresh grease.
+1ZS seals are essential to the suspension to design. They are required for the greaseable bearing function to work properly. Do not replace a 1ZS bearing with a LLU or 2RS bearing if you want to use the greaseable function.
+View fullsize
+RS  Seals (On an Enduro MAX bearing)
+Some Enduro MAX bearings come with a seal designated as RS. This is in the case where there isn't sufficient room in the bearing ring for a groove to receive the seal. These bearings use the physical LLU seal but cannot be called LLU because of the absence of the receiving groove, thus they call it "RS".
+BTW, "2RS" is a generic term which means 2 rubber seals. 
+Ring Features
+Although the following diagrams show single row deep groove type bearings, these ring features could be on single row or double row angular contact as well. 
+View fullsize
+Standard Rings
+Example: 6902. If no extra terms are included in the designation, then there are no ring features.
+Example sizing: (15 x 28 x 7)
+View fullsize
+Extended Ring
+Example: 6902-E. The "E" denotes that there is an extended inner ring. In some descriptions the "-E" comes after the number as above, but sometimes it will be "MAX-E"
+Example sizing: (15 x 28 x 7/10) Note the width.
+CAUTION: Never apply installation force to inner ring only.
+Flanged Ring with Extended Ring
+Example: F6902 EA. The "F" before the number denotes a flanged outer ring.
+EA denotes an inner ring which is extended, but in a particular direction relative to the flanged outer ring. 
+Example: F6902 EB. The "EB" denotes the extended inner ring in the opposite direction to the EA bearing.  
+These might also be shown as "MAX-EA" or "MAX-EB"
+Example sizing: (15 x 28/30.5 x 7/9.5) or sometimes (15 x 28/30.5 x 7/9.5/) Note the OD and the width.
+CAUTION: Never apply installation force to inner ring only.
+View fullsize
+View fullsize
+View fullsize
+Flanged and Offset Ring
+Example: 6900 FO. The "FO" denotes a flanged and offset outer ring. 
+Example sizing: (10 x 22/24 x 6/8) Note the OD and the width.

@@ -1,0 +1,84 @@
+URL: https://www.altalt.ca/how-to
+TITLE: How-To — Alt Alt Bike Products
+How-To use the Bearing Press
+Warning:
+Consult your specific bike manufacturer’s tech manual for bearing removal and install instructions. Always follow your bike manufacturer’s instructions.
+Misuse of this tool can result in a damaged tool. Total disregard can lead to a damaged bearing or bike parts.
+Bearing Terms
+A. Bearing inner ring
+B. Bearing outer ring
+C. Bearing Inner Diameter (ID)
+D. Bearing Outer Diameter (OD)
+E. Bearing seals
+F. Bearing seat
+Straight Removal & Install
+View fullsize
+The bearing must be removed and installed straight in it's seat. A tool that is sitting crooked due to an angled or sloping frame shape will jam the bearing in the frame making it very hard to move the bearing.
+If the tool starts or gets crooked, STOP and review. Something is wrong. 
+Torquing a crooked tool or bearing will damage the tool and possibly the bearing or frame.
+Removal and Install Force
+It doesn’t take a lot of force… 
+…to remove or install bearings. 6 inch wrenches are adequate for removal or install. If you are applying all your strength to the wrenches, STOP and review. Something is wrong.
+Press, Leverage, Center & Clearance
+Think about these concepts for every removal and install. 
+View fullsize
+PRESS
+Apply force to the correct bearing ring to PRESS it in or out of its seat. A.K.A. removal or install.
+Removal Press
+Since you will not be able to access the bearing outer ring, you have to PRESS against the back side of the bearing inner ring. This will transmit the pressing force through the balls and push the outer bearing ring out of the bearing seat. 
+Note: This often damages the bearing rings and balls but this is OK because your bearing has already spent its life doing what it loves.
+View fullsize
+Install Press
+All hub, freehub and suspension bearings press fit to the bearing outer ring. During install, pressing the outer ring directly forces the ring into the bearing seat.  
+View fullsize
+Default Press
+The default method to press in a bearing is to use a tool that Presses BOTH inner and outer rings. Use a Drift or the flat side of a OA Drift. 
+View fullsize
+Special Press
+IF YOUR MANUFACTURER says to use a tool that ONLY PRESSES the bearing outer ring, it is most likely because something is going to interact with the bearing inner ring during the installation. In this case IT IS IMPORTANT to CONTACT and PRESS only the bearing outer ring. Use a the stepped side of the OA Drift and center it with a pilot if necessary.
+If the manufacturer doesn’t say which ring, then use the default method. 
+View fullsize
+Never Press Like This for Install!
+Never INSTALL a bearing by pressing ONLY the inner bearing ring. This transmits the force through the balls and deforms the rings. Although it is possible to install a bearing like this, the life of the bearing will be shortened.
+View fullsize
+LEVERAGE
+The bearing press counteracts the PRESS force by LEVERAGING against something on the opposite end of the tool. Sometimes a manufacturer will specify WHAT they recommend leveraging against. 
+Default - Leverage against frame, linkage, hub body or freehub body.
+NOTE: Some parts Leverage AND Center at the same time. Eg. Stop CTR, Step with Sleeve Long on center lock hub disc side.
+Leverage Requirement
+Leverage in a way and with a tool that satisfies these 3 requirements. If not, the tool may deform and slip out of position. To keep removal/install straight, the leverage surface must be all of these: 
+Flat 
+Perpendicular to the bearing seat
+Stable – covers whole sleeve or positioned in middle of sleeve.
+View fullsize
+Leverage on another bearing. 
+A manufacturer may specify to leverage the install of one bearing against a previously or simultaneously installed bearing. 
+LEVERAGE against a bearing in the same way you would PRESS against a bearing. The manufacturer may define to PRESS both rings or just the outer ring. 
+View fullsize
+Leverage using a Sleeve
+Position and size the Sleeve so that it doesn’t slip or deform. 
+View fullsize
+View fullsize
+View fullsize
+CENTER 
+Keeping the tool straight during removal and install keeps the bearing straight and avoids damaging the bearing seat. Keeping the tool straight can be accomplished by centering the PRESSING and LEVERAGING ends of the tool. 
+Use Pilots, Stop CTR, Step & Long Sleeve and Stop OAL to center the tool.
+See Instructional Diagrams to plan for clearance.  >>>
+NOTE: Some parts Leverage AND Center at the same time. Eg. Stop CTR, Step with Sleeve Long on center lock hub disc side.
+CLEARANCE 
+Think about where the bearing is starting and where it’s going to end up and make sure that the bearing, bike part and tool are not going to interfere with each other while pressing to the final position. 
+See Instructional Diagrams to plan for clearance.  >>>
+Removal & Install Tips
+Follow your bike manufacturer’s instructions.
+Before removing the bearings:
+Note the color of the seals and the orientation of the seals.
+Look for obstacles like circlips, retaining rings, threaded parts or internal ribs between two bearings that will prohibit the bearing from moving!
+Note the orientation of any bearing extended ring flanges.
+Follow the concepts of Press, Leverage, Center and Clearance.
+Use the new bearing to choose the tool parts.
+Make sure the PILOT doesn’t shift during removal or install. Use an O-ring if possible.
+Make sure that spacers or other parts of the bike do not interfere with the bearing install.
+When tightening the tool, turn slow and watch that the tool stays square to the frame.
+Greasing the STUD and the face of the Nuts just makes the tool work smoother.
+INSTRUCTIONAL DIAGRAMS >>>
+BUY >>>
