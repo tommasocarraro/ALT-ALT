@@ -1,6 +1,7 @@
 """
-Draws one job of the rule engine as a section view: the pieces in a row on the Stud, cut through the middle,
-in the order the engine's `stack` gives them.
+Draws one job of the rule engine as a section view: the whole part as it is when the job starts (every bearing,
+spacer and axle still in it), cut through the middle, with the tool pieces in the order of the engine's `stack`.
+The bearing being worked on always travels to the right: out of the part on a removal, into it on an install.
 
 Diameters are to scale (they come from the bearing and from the piece sizes); lengths are only indicative,
 because the real lengths of the pieces are not in the catalogue.
@@ -16,7 +17,7 @@ DEFAULT = {"inner": 15.0, "outer": 28.0, "width": 7.0}     # drawn when a bearin
 
 # indicative lengths, in millimetres
 LEN = {"drift_re": 16, "sleeve": 30, "sleeve_6": 30, "sleeve_long": 36, "oa_drift": 44, "spacer_tube": 45,
-       "pilot_short": 6, "pilot_long": 18, "handle": 24, "stud_stop": 5, "stop_ctr": 16, "alt_drift": 8,
+       "pilot_short": 6, "pilot_long": 18, "handle": 14, "stud_stop": 12, "stop_ctr": 16, "alt_drift": 8,
        "spacer": 24, "axle": 34, "body": 10}
 RELIEF = 3.0        # depth of the recess on one face of a Drift RE
 
@@ -64,10 +65,36 @@ class _Canvas:
             gx = (x + length * k / (count + 1)) * PX
             self.shapes.append(f'<line x1="{gx:.1f}" y1="{-r * PX:.1f}" x2="{gx:.1f}" y2="{r * PX:.1f}" stroke="{colour}" stroke-width="0.8"/>')
 
-    def dots(self, x: float, r: float) -> None:
-        """An O-ring on the Stud, cut through: a black dot above and below."""
-        for s in (-1, 1):
-            self.shapes.append(f'<circle cx="{x * PX:.1f}" cy="{s * r * PX:.1f}" r="{1.0 * PX:.1f}" fill="#111827"/>')
+    def handle(self, x: float, colour: str) -> float:
+        """The Handle, seen from the side: a bar across the Stud with a hexagonal hub in its middle."""
+        length, hub_r, bar_r, reach = LEN["handle"], 7.5, 4.2, 30.0
+        mid = x + length / 2
+        self.shapes.append(
+            f'<rect x="{(mid - bar_r) * PX:.1f}" y="{-reach * PX:.1f}" width="{2 * bar_r * PX:.1f}" height="{2 * reach * PX:.1f}" '
+            f'rx="{bar_r * PX:.1f}" fill="{colour}" stroke="{LINE}" stroke-width="0.8"/>')
+        # the hub, wider than the bar and chamfered towards it, with the threaded hole the Stud goes through
+        pts = [(x, 0), (x, hub_r - 2.5), (x + 3, hub_r), (x + length - 3, hub_r), (x + length, hub_r - 2.5), (x + length, 0)]
+        self.profile(pts, colour)
+        self.max_r = max(self.max_r, reach)
+        return reach
+
+    def stud_stop(self, x: float, colour: str) -> float:
+        """The Stud Stop: its narrow boss towards the tool, the wide knurled wheel on the outside."""
+        wheel, boss, r = 8.0, LEN["stud_stop"] - 8.0, 13.0
+        self.ring(x, boss, STUD_R, 8.0, colour)
+        self.ring(x + boss, wheel, STUD_R, r, colour)
+        for s in (-1, 1):                      # the knurling runs along the axis
+            for k in range(1, 6):
+                y = s * (STUD_R + (r - STUD_R) * k / 6) * PX
+                self.shapes.append(f'<line x1="{(x + boss) * PX:.1f}" y1="{y:.1f}" x2="{(x + boss + wheel) * PX:.1f}" y2="{y:.1f}" '
+                                   f'stroke="{LINE_ON_BLACK}" stroke-width="0.6"/>')
+        return r
+
+    def o_ring(self, x: float) -> None:
+        """An O-ring on the Stud, seen from the side: a thin black band around it (a dot would read as a ball)."""
+        half, reach = 0.7, STUD_R + 0.8
+        self.shapes.append(f'<rect x="{(x - half) * PX:.1f}" y="{-reach * PX:.1f}" width="{2 * half * PX:.1f}" '
+                           f'height="{2 * reach * PX:.1f}" rx="{half * PX:.1f}" fill="#111827"/>')
 
     def allen_key(self, x: float, outward: int) -> None:
         """An L-shaped key in the end of a piece; `outward` is -1 when the end faces left, +1 when it faces right."""
@@ -76,6 +103,13 @@ class _Canvas:
                            f'stroke="{DARK_STEEL}" stroke-width="{1.6 * PX:.1f}" stroke-linejoin="round" stroke-linecap="round"/>')
         self.max_r = max(self.max_r, 25)
         self.turn(x + outward * 7, 25)
+
+    def long_key(self, tip: float, out: float) -> None:
+        """The Allen key the other way round: its long arm reaches through the part to a bolt deep inside."""
+        self.shapes.append(f'<path d="M{tip * PX:.1f},0 L{out * PX:.1f},0 L{out * PX:.1f},{-14 * PX:.1f}" fill="none" '
+                           f'stroke="{DARK_STEEL}" stroke-width="{1.6 * PX:.1f}" stroke-linejoin="round" stroke-linecap="round"/>')
+        self.max_r = max(self.max_r, 15)
+        self.turn(out, 15)
 
     def turn(self, x: float, r: float) -> None:
         """Marks the piece that is turned."""
@@ -151,7 +185,7 @@ def _colour(item: dict, job_material: str) -> str:
     if piece == "nut":
         return STEEL
     if piece == "stud_stop":
-        return DARK_STEEL
+        return ACETAL                   # black oxide steel
     if piece in ONLY_ACETAL:
         return ACETAL
     if piece in ONLY_ALUMINIUM:
@@ -169,93 +203,88 @@ def _spread(wanted: List[float], lo: float, hi: float) -> List[float]:
     return pos
 
 
+def _length(item: dict) -> float:
+    """Room a piece takes along the Stud."""
+    piece = item["piece"]
+    if piece in ("pilot_short", "pilot_long") and item["role"] == "center":
+        return 0.0
+    return {"nut": 6, "pilot_short": 8, "step": 9, "stop_oal": 36, "alt_rod": 14}.get(piece, LEN.get(piece, 8))
+
+
+def _axis(scene: dict, removing: bool, fallback: dict) -> List[dict]:
+    """
+    The seats and what lies between them, left to right, turned so that the bearing being worked on travels to
+    the right: on a removal its seat is on the right of the part, on an install on the left.
+    """
+    slots, worked = scene["slots"], list(scene["worked"])
+
+    def seats(index: int, outer_first: bool) -> List[dict]:
+        items = [{"kind": "seat", "dims": b["dimensions"] or fallback, "present": b["present"],
+                  "worked": [index, k] == worked} for k, b in enumerate(slots[index])]      # deepest first
+        return items[::-1] if outer_first else items
+
+    if len(slots) == 1:
+        elems = seats(0, outer_first=not removing)
+    else:
+        mine, theirs = worked[0], 1 - worked[0]
+        left, right = (theirs, mine) if removing else (mine, theirs)
+        elems = seats(left, True) + [{"kind": "middle", "what": scene["middle"], "is": scene["middle_kind"]}] + seats(right, False)
+    if not any(e.get("worked") for e in elems):     # no bearing was selected for this seat
+        seat = {"kind": "seat", "dims": fallback, "present": removing, "worked": True}
+        elems = elems + [seat] if removing else [seat] + elems
+    return elems
+
+
 def svg_for(job: dict) -> str:
     """The job as a standalone SVG image."""
     d = job.get("bearing_dimensions") or DEFAULT
-    other = job.get("other_dimensions") or d
     material = job.get("material") or "Aluminum"
     stack = job["stack"]
+    removing = job.get("operation") != "install"
+    scene = job.get("scene") or {"slots": [[{"dimensions": d, "present": removing}]], "middle": None,
+                                 "middle_kind": None, "worked": [0, 0], "protrudes": False}
     pieces = {item["piece"] for item in stack}
-    alt_drift_job = "alt_drift" in pieces
+    alt_drift_job, extractor_job = "alt_drift" in pieces, "alt_extractor" in pieces
+    axle_in = scene["middle"] == "axle"
     c = _Canvas()
-    # room on the left for the Allen key in the ALT Rod, or for the ALT Extractor's head behind the bearing
-    x = 18.0 if alt_drift_job else 28.0 if "alt_extractor" in pieces else 6.0
-    sleeve_inner, sleeve_outer = d["outer"] / 2 + 0.5, d["outer"] / 2 + 3.5
-    part_r = max(d["outer"], other["outer"]) / 2 + 7
-    part: List[Tuple[float, float, float]] = []      # the bore of the bike part: (from, to, radius)
-    spans = {}            # stack index -> (x start, x end, bearing dims) of the things pilots can sit in
-    pilots = []           # (stack index of the pilot, stack index of its host, extends to the left?)
-    stud_from: Optional[float] = 2.0      # where the threaded rod starts; None when the job has none
-    rod_from: Optional[float] = None      # start of the ALT Rod, drawn once the ALT Drift's place is known
-    moving = None         # (x, radius) of the bearing that the job moves
-    seen_workpiece = False
 
-    # where does each centring pilot sit? inside the next bearing or axle, or else inside the previous one
-    for i, item in enumerate(stack):
-        if item["piece"] in ("pilot_short", "pilot_long") and item["role"] == "center":
-            nxt = stack[i + 1]["piece"] if i + 1 < len(stack) else None
-            host = i + 1 if nxt in HOSTS else next((j for j in range(i - 1, -1, -1) if stack[j]["piece"] in HOSTS), None)
-            if host is not None:
-                inward_left = host > 0 and stack[host - 1]["kind"] == "workpiece" and host > i
-                pilots.append((i, host, inward_left if host > i else True))
+    # ---- the part, left to right
+    elems = _axis(scene, removing, d)
+    for e in elems:
+        e["len"] = e["dims"]["width"] if e["kind"] == "seat" else LEN["axle" if e["is"] == "axle" else "spacer"]
+    wi = next(i for i, e in enumerate(elems) if e.get("worked"))
+    left_len = sum(e["len"] for e in elems[:wi])
+    part_r = max(e["dims"]["outer"] for e in elems if e["kind"] == "seat") / 2 + 7
 
-    for i, item in enumerate(stack):
-        piece = item["piece"]
-        colour = _colour(item, material)
-        start = x
+    # ---- which tool pieces come before the part, which after, and which sit inside it
+    work = [i for i, item in enumerate(stack) if item["kind"] == "workpiece"]
+    first, last = (work[0], work[-1]) if work else (len(stack), len(stack))
+    sequential = lambda i: not (stack[i]["piece"] in ("pilot_short", "pilot_long") and stack[i]["role"] == "center") \
+        and stack[i]["piece"] not in ("alt_drift", "alt_extractor") and stack[i]["kind"] == "piece"
+    before = [i for i in range(first) if sequential(i)]
+    after = [i for i in range(last + 1, len(stack)) if sequential(i)]
+    # on a push-out the drift works from inside the part, through the seat that is already empty
+    inside = removing and not alt_drift_job and not extractor_job and not axle_in
 
-        if item["kind"] == "workpiece":
-            seen_workpiece = True
-            dims = other if piece == "other_bearing" else d
-            r_out = dims["outer"] / 2
-            target_r = r_out
-            if piece in ("bearing", "bearing_in_part", "other_bearing"):
-                x += _bearing(c, x, dims)
-                if piece != "bearing":
-                    part.append((start, x, r_out))
-                if piece != "other_bearing":
-                    moving = ((start + x) / 2, part_r if piece == "bearing_in_part" else r_out)
-                if piece == "bearing":
-                    x += 3            # a new bearing is drawn just outside its seat
-                label_x = start + dims["width"] / 2
-            elif piece == "spacer":
-                # with the ALT Drift, the spacer is pushed off its axis so that the drift can get past it
-                c.ring(x, LEN["spacer"], dims["inner"] / 2, dims["inner"] / 2 + 2, SPACER, shift=1.5 if alt_drift_job else 0)
-                x += LEN["spacer"]
-                part.append((start, x, r_out - 3))
-                target_r, label_x = dims["inner"] / 2 + 2 + (1.5 if alt_drift_job else 0), (start + x) / 2
-            elif piece == "axle":
-                c.ring(x - 6, LEN["axle"] + 12, max(dims["inner"] / 2 - 3, STUD_R + 0.5), dims["inner"] / 2, AXLE)
-                x += LEN["axle"]
-                part.append((start, x, r_out - 3))
-                target_r, label_x = dims["inner"] / 2, (start + x) / 2
-            else:                     # "part" or "bore": an empty seat, then the body of the part
-                x += dims["width"] + LEN["body"]
-                part += [(start, start + dims["width"], r_out), (start + dims["width"], x, r_out - 3)]
-                target_r, label_x = part_r, start + dims["width"] + LEN["body"] / 2
-            spans[i] = (start, x, dims)
-            c.label(label_x, target_r, i, above=False)
-            continue
+    sleeve = {"inner": d["outer"] / 2 + 0.5, "outer": d["outer"] / 2 + 3.5}
+    state = {"rod_from": None}
 
-        if piece in ("pilot_short", "pilot_long") and item["role"] == "center":
-            continue                  # drawn afterwards, inside its bearing or axle
-        top = 6.5
+    def draw(i: int, x: float, side: str) -> float:
+        item = stack[i]
+        piece, colour, start, top = item["piece"], _colour(item, material), x, 6.5
         if piece == "nut":
             c.ring(x, 6, STUD_R, 6.5, colour); x += 6
         elif piece == "handle":
-            top = 10
-            c.ring(x, LEN["handle"], 0, top, colour)
-            c.lines(x + 6, LEN["handle"] - 8, top, 7)
+            top = c.handle(x, colour)
             x += LEN["handle"]
-            c.turn(start + 5, top)          # beside the label's leader, not on it
+            c.turn(start + LEN["handle"] / 2 + 11, top - 9)      # beside the bar, not on the label's leader
         elif piece == "stud_stop":
-            top = 9
-            c.ring(x, LEN["stud_stop"], STUD_R, top, colour); x += LEN["stud_stop"]
+            top = c.stud_stop(x, colour); x += LEN["stud_stop"]
         elif piece == "drift_re":
             top = _size(item, d["outer"]) / 2
             # pressing: flat face on the bearing, recess away from it; leveraging: recess towards the part,
             # which is where the bearing and the pilot need the room
-            relief = "left" if item["role"] == "leverage" or not seen_workpiece else "right"
+            relief = "left" if side == "before" or item["role"] == "leverage" else "right"
             if "relief side towards the bearing" in (item.get("text") or ""):
                 relief = "right"
             _drift(c, x, top, colour, relief); x += LEN["drift_re"]
@@ -263,12 +292,12 @@ def svg_for(job: dict) -> str:
             top = _size(item, d["inner"]) / 2
             c.ring(x, 8, STUD_R, top, colour); x += 8
         elif piece in ("sleeve", "sleeve_6", "sleeve_long"):
-            sleeve_inner = {"sleeve": _size(item, d["outer"]) / 2 + 0.5, "sleeve_6": 19.0, "sleeve_long": 18.0}[piece]
-            top = sleeve_outer = sleeve_inner + (3 if piece == "sleeve" else 5)
-            c.ring(x, LEN[piece], sleeve_inner, sleeve_outer, colour); x += LEN[piece]
+            sleeve["inner"] = {"sleeve": _size(item, d["outer"]) / 2 + 0.5, "sleeve_6": 19.0, "sleeve_long": 18.0}[piece]
+            top = sleeve["outer"] = sleeve["inner"] + (3 if piece == "sleeve" else 5)
+            c.ring(x, LEN[piece], sleeve["inner"], top, colour); x += LEN[piece]
         elif piece == "step":
-            top = sleeve_outer + 6
-            x += _step(c, x, sleeve_inner, sleeve_outer, colour)
+            top = sleeve["outer"] + 6
+            x += _step(c, x, sleeve["inner"], sleeve["outer"], colour)
         elif piece == "stop_ctr":
             top = 25
             c.profile([(x, STUD_R), (x, 7), (x + LEN["stop_ctr"] * 0.45, top), (x + LEN["stop_ctr"], top),
@@ -282,33 +311,10 @@ def svg_for(job: dict) -> str:
             top = 6
             c.ring(x, LEN["spacer_tube"], STUD_R, top, colour); x += LEN["spacer_tube"]
         elif piece == "alt_rod":
-            # the rod runs through the far bearing and the spacer; only its outer end is drawn here
-            top, rod_from = 5.5, x
+            # the rod runs on through the far bearing and the spacer; only its outer end is drawn here
+            top, state["rod_from"] = 5.5, x
             c.allen_key(x, outward=-1)
             x += 14
-        elif piece == "alt_drift":
-            top = _size(item, d["inner"]) / 2 + 1.2
-            if rod_from is not None:
-                c.ring(rod_from, x - rod_from, 0, 5.5, _colour({"piece": "alt_rod"}, material))
-            c.ring(x, LEN["alt_drift"], 0, top, colour)
-            part.append((x, x + LEN["alt_drift"], d["outer"] / 2 - 3))
-            stud_from = x + 2          # the Stud threads into the drift from the other side
-            x += LEN["alt_drift"]
-        elif piece == "alt_extractor":
-            # as in the tool: a wedge behind the bearing, the collet inside it with its retaining ring, the grooved
-            # body in front, and a threaded rod pointing out through the sleeve. It adds no length to the row.
-            r = _size(item, d["inner"]) / 2
-            b_start = x - d["width"]
-            top = min(r + 3.5, d["outer"] / 2 - 1.5)
-            c.ring(b_start - 9, 9, 0, r - 0.4, colour)
-            c.allen_key(b_start - 9, outward=-1)        # the bolt that expands the collet is in the head
-            c.ring(b_start, d["width"], 0, r, colour)
-            c.ring(b_start + d["width"] / 2 - 0.5, 1, r - 1.4, r, ACETAL)
-            c.ring(x, 14, 0, top, colour)
-            c.lines(x, 14, top, 4)
-            stud_from = x + 14
-            c.label(x + 7, top, i, above=True, resolved=item["resolved"])
-            continue
         elif piece == "oa_drift":
             try:
                 inner, top = (float(v) / 2 for v in str(item["size"]).split("x"))
@@ -318,35 +324,156 @@ def svg_for(job: dict) -> str:
         else:
             top = 8
             c.ring(x, 8, STUD_R, top, STEEL); x += 8
-        label_x = start + 7 if piece == "alt_rod" else (start + x) / 2
-        c.label(label_x, top, i, above=True, resolved=item["resolved"])
+        c.label(start + 7 if piece == "alt_rod" else (start + x) / 2, top, i, above=True, resolved=item["resolved"])
+        return x
 
-    _part(c, part, part_r)
+    # ---- pieces before the part
+    lead = sum(_length(stack[i]) for i in before)
+    x = 18.0 if alt_drift_job else (16.0 if left_len else 30.0) if extractor_job else 6.0 + (max(0.0, left_len - lead + 4) if inside else 0.0)
+    for i in before:
+        x = draw(i, x, "before")
 
-    # pilots, inside what they centre, each with the O-ring that keeps it from sliding
-    for i, host, to_left in pilots:
-        if host not in spans:
+    # ---- where the part starts, and the new bearing waiting in front of it on an install
+    protrusion = 10.0 if scene.get("protrudes") else 0.0
+    mi = next((k for k, e in enumerate(elems) if e["kind"] == "middle"), None)
+    seats_left = sum(e["len"] for e in elems[:mi]) if mi is not None else 0.0
+    seats_right = sum(e["len"] for e in elems[mi + 1:]) if mi is not None else 0.0
+    # the axle's journals: right through the bearings and beyond on a long axle, half-way into them on a short one
+    journal = lambda seats: seats + protrusion if protrusion else seats / 2
+    free = None
+    if removing:
+        part_left = x - left_len if inside else x + (journal(seats_left) - seats_left if axle_in else 0.0)
+    else:
+        free = (x, x + d["width"])
+        _bearing(c, x, d)
+        part_left = free[1] + 3
+
+    # ---- the part itself: one body, its bore stepping from seat to seat, with what is still in it
+    segments, px = [], part_left
+    for k, e in enumerate(elems):
+        e["x0"], e["x1"] = px, px + e["len"]
+        if e["kind"] == "seat":
+            segments.append((e["x0"], e["x1"], e["dims"]["outer"] / 2))
+            if e["present"] and not (e.get("worked") and not removing):
+                _bearing(c, e["x0"], e["dims"])
+        else:
+            around = [n["dims"]["outer"] for n in elems[max(k - 1, 0):k + 2] if n["kind"] == "seat"] or [d["outer"]]
+            segments.append((e["x0"], e["x1"], min(around) / 2 - 3))
+            if e["what"] == "spacer":
+                # with the ALT Drift, the spacer is pushed off its axis so that the drift can get past it
+                c.ring(e["x0"], e["len"], d["inner"] / 2, d["inner"] / 2 + 2, SPACER, shift=1.5 if alt_drift_job else 0)
+        px = e["x1"]
+    part_right = px
+    _part(c, segments, part_r)
+    worked = elems[wi]
+    middle = next((e for e in elems if e["kind"] == "middle"), None)
+
+    axle = None
+    if axle_in and middle:
+        # a stepped cylinder: a body between the bearings whose shoulders touch their inner rings, and a thinner
+        # journal on each side that the bearings sit on; hollow, so the pilots can centre in its ends
+        bore = max(d["inner"] / 2 - 3, STUD_R + 0.5)
+        journal_r = d["inner"] / 2
+        body_r = min(journal_r + 2.5, segments[mi][2] - 0.8)
+        a0 = free[0] - 18 if (free and protrusion) else middle["x0"] - journal(seats_left)
+        a1 = middle["x1"] + journal(seats_right)
+        axle = (a0, a1)
+        c.profile([(a0, bore), (a0, journal_r), (middle["x0"], journal_r), (middle["x0"], body_r),
+                   (middle["x1"], body_r), (middle["x1"], journal_r), (a1, journal_r), (a1, bore)], AXLE)
+
+    # ---- spans of the things the stack names, for the labels and for the pilots that sit inside them
+    others = [e for e in elems if e["kind"] == "seat" and not e.get("worked")]
+    nearest = min((e for e in others if e["present"]), key=lambda e: abs(e["x0"] - worked["x0"]), default=None) \
+        or (others[0] if others else worked)
+    spans = {}
+    for i in work:
+        token = stack[i]["piece"]
+        if token in ("bearing", "bearing_in_part"):
+            x0, x1 = free if free else (worked["x0"], worked["x1"])
+            spans[i] = (x0, x1, d)
+            c.label((x0 + x1) / 2, d["outer"] / 2, i, above=False)
+        elif token == "other_bearing":
+            spans[i] = (nearest["x0"], nearest["x1"], nearest["dims"])
+            c.label((nearest["x0"] + nearest["x1"]) / 2, nearest["dims"]["outer"] / 2, i, above=False)
+        elif token == "axle" and axle:
+            spans[i] = (axle[0], axle[1], d)
+            mid = middle or worked
+            c.label((mid["x0"] + mid["x1"]) / 2, min(d["inner"] / 2 + 2.5, segments[mi][2] - 0.8), i, above=False)
+        elif token in ("spacer", "axle") and middle:
+            spans[i] = (middle["x0"], middle["x1"], d)
+            c.label((middle["x0"] + middle["x1"]) / 2, d["inner"] / 2 + 2 + (1.5 if alt_drift_job else 0), i, above=False)
+        else:                          # "part" or "bore": point at the body of the part
+            mid = middle or worked
+            c.label((mid["x0"] + mid["x1"]) / 2, part_r, i, above=False)
+
+    # ---- pieces that work from inside the part
+    stud_from: Optional[float] = 2.0
+    for i, item in enumerate(stack):
+        if item["piece"] == "alt_drift":
+            head = worked["x0"] - LEN["alt_drift"]
+            top = _size(item, d["inner"]) / 2 + 1.2
+            if state["rod_from"] is not None:
+                c.ring(state["rod_from"], head - state["rod_from"], 0, 5.5, ALUMINIUM)
+            c.ring(head, LEN["alt_drift"], 0, top, ALUMINIUM)
+            stud_from = head + 2           # the Stud threads into the drift from the other side
+            c.label(head + LEN["alt_drift"] / 2, top, i, above=True, resolved=item["resolved"])
+        elif item["piece"] == "alt_extractor":
+            # as in the tool: a wedge behind the bearing, the collet inside it with its retaining ring, the grooved
+            # body in front, and a threaded rod pointing out through the sleeve
+            r = _size(item, d["inner"]) / 2
+            top = min(r + 3.5, d["outer"] / 2 - 1.5)
+            c.ring(worked["x0"] - 9, 9, 0, r - 0.4, ALUMINIUM)
+            c.ring(worked["x0"], d["width"], 0, r, ALUMINIUM)
+            c.ring(worked["x0"] + d["width"] / 2 - 0.5, 1, r - 1.4, r, ACETAL)
+            c.ring(worked["x1"], 14, 0, top, ALUMINIUM)
+            c.lines(worked["x1"], 14, top, 4)
+            stud_from = worked["x1"] + 14
+            # the bolt that expands the collet is in the head: with other bearings behind it, the key goes in
+            # the other way round, long arm first, through the part
+            if left_len:
+                c.long_key(worked["x0"] - 7, part_left - 8)
+            else:
+                c.allen_key(worked["x0"] - 9, outward=-1)
+            c.label(worked["x1"] + 7, top, i, above=True, resolved=item["resolved"])
+
+    # ---- pieces after the part
+    x = part_right
+    for i in after:
+        x = draw(i, x, "after")
+
+    # ---- pilots, inside what they centre, each with the O-ring that keeps it from sliding
+    for i, item in enumerate(stack):
+        if not (item["piece"] in ("pilot_short", "pilot_long") and item["role"] == "center"):
             continue
-        item = stack[i]
+        nxt = stack[i + 1]["piece"] if i + 1 < len(stack) else None
+        prev = stack[i - 1]["piece"] if i > 0 else None
+        # a pilot listed next to the axle goes inside the axle's end, even when a bearing is its other neighbour
+        if "axle" in (nxt, prev) and axle:
+            host = i + 1 if nxt == "axle" else i - 1
+        else:
+            host = i + 1 if nxt in HOSTS else next((j for j in range(i - 1, -1, -1) if stack[j]["piece"] in HOSTS), None)
+        if host is None or host not in spans:
+            continue
         h_start, h_end, dims = spans[host]
-        is_axle = stack[host]["piece"] == "axle"
-        host_len = dims["width"] if not is_axle else h_end - h_start
-        length = LEN["pilot_long"] if item["piece"] == "pilot_long" else min(LEN["pilot_short"], host_len)
+        # a pilot longer than its bearing reaches inwards, through the bearing and into the spacer behind it
+        to_left = bool(middle) and (h_start + h_end) / 2 > (middle["x0"] + middle["x1"]) / 2
+        length = LEN["pilot_long"] if item["piece"] == "pilot_long" else min(LEN["pilot_short"], h_end - h_start)
         r = _size(item, dims["inner"]) / 2
-        if is_axle:                    # a pilot sits in the end of the axle it is listed next to
-            r = max(dims["inner"] / 2 - 3, STUD_R + 0.5)
-            px = h_start - 4 if i < host else h_end + 4 - length
+        if stack[host]["piece"] == "axle" and axle:      # a pilot sits in the end of the axle it is listed next to
+            r = max(d["inner"] / 2 - 3, STUD_R + 0.5)
+            px = h_start if i < host else h_end - length
             free_end = px + length if i < host else px
         else:
-            px = h_start + host_len - length if to_left else h_start
+            px = h_end - length if to_left else h_start
             free_end = px if to_left else px + length
         c.ring(px, length, STUD_R, r, _colour(item, material))
-        c.dots(free_end + (-1.1 if free_end == px else 1.1), STUD_R + 1.0)
+        c.o_ring(free_end + (-0.9 if free_end == px else 0.9))
         c.label(px + length / 2, r, i, above=False, resolved=item["resolved"])
 
     total = x + 6
-    has_rod = stud_from is not None and ("handle" in pieces or "stud_stop" in pieces or "nut" in pieces)
+    has_rod = stud_from is not None and bool(pieces & {"handle", "stud_stop", "nut"})
     rod = _thread(stud_from, total - 2) if has_rod else ""
+    moving = ((free[0] + free[1]) / 2, d["outer"] / 2) if free else ((worked["x0"] + worked["x1"]) / 2, part_r)
 
     # letter badges in one row above (pieces) and one below (the workpiece and the pilots inside it), spread out
     # so that no two touch; each has a straight leader ending in a dot on the thing it names
@@ -366,10 +493,10 @@ def svg_for(job: dict) -> str:
            f'<rect x="0" y="{-top_edge:.0f}" width="{width:.0f}" height="{top_edge + bottom_edge:.0f}" fill="#ffffff"/>',
            rod] + c.shapes
 
-    if moving:                         # which way the bearing travels: always towards the leverage end
-        mx, mr = moving[0] * PX, -(moving[1] + 3) * PX
-        out.append(f'<line x1="{mx - 16:.1f}" y1="{mr:.1f}" x2="{mx + 22:.1f}" y2="{mr:.1f}" stroke="{MOVE}" '
-                   f'stroke-width="3" marker-end="url(#head)"/>')
+    # which way the bearing travels: always to the right
+    mx, mr = moving[0] * PX, -(moving[1] + 3) * PX
+    out.append(f'<line x1="{mx - 16:.1f}" y1="{mr:.1f}" x2="{mx + 22:.1f}" y2="{mr:.1f}" stroke="{MOVE}" '
+               f'stroke-width="3" marker-end="url(#head)"/>')
 
     for group, side in ((above, -1), (below, 1)):
         xs = _spread([l[0] for l in group], BADGE_R + 4, width - BADGE_R - 4)
