@@ -1,0 +1,2163 @@
+{
+ "source": "https://www.altalt.ca",
+ "scraped": "2026-10-07",
+ "currency": "CAD",
+ "note": "stock 0 with unlimited=false means sold out at scrape time",
+ "products": [
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-single",
+   "title": "ALT Extractor Single Size",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. These are single size versions of the ALT Extractor. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1035",
+     "attributes": {
+      "Size": "ALT EXT Single 10"
+     },
+     "price_cad": 89.3,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1036",
+     "attributes": {
+      "Size": "ALT EXT Single 12"
+     },
+     "price_cad": 91.87,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1037",
+     "attributes": {
+      "Size": "ALT EXT Single 15"
+     },
+     "price_cad": 98.47,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1038",
+     "attributes": {
+      "Size": "ALT EXT Single 17"
+     },
+     "price_cad": 102.02,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1039",
+     "attributes": {
+      "Size": "ALT EXT Single 18"
+     },
+     "price_cad": 103.06,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1040",
+     "attributes": {
+      "Size": "ALT EXT Single 20"
+     },
+     "price_cad": 104.71,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1041",
+     "attributes": {
+      "Size": "ALT EXT Single 25"
+     },
+     "price_cad": 112.34,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-single-og",
+   "title": "ALT Extractor Single Size OG",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. These are single size, OG VERSIONS of the ALT Extractor. “OG” versions come in sizes 15, 17, 18, 20 &amp; 25 only. There are no 10 &amp; 12mm sizes. These “OG” ALT Extractors only work on bearings up to 12mm wide. They can be used with any of my kits that have leveraging pieces (like Sleeves). See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1042",
+     "attributes": {
+      "Size": "ALT EXT Single 15 OG"
+     },
+     "price_cad": 98.47,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1043",
+     "attributes": {
+      "Size": "ALT EXT Single 17 OG"
+     },
+     "price_cad": 102.02,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1044",
+     "attributes": {
+      "Size": "ALT EXT Single 18 OG"
+     },
+     "price_cad": 103.06,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1045",
+     "attributes": {
+      "Size": "ALT EXT Single 20 OG"
+     },
+     "price_cad": 104.71,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "KT1046",
+     "attributes": {
+      "Size": "ALT EXT Single 25 OG"
+     },
+     "price_cad": 112.34,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-ext-all-size",
+   "title": "ALT EXT All Size Pack",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Pack includes ALT Extractors sizes 10, 12, 15, 17, 18, 20 &amp; 25. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1047",
+     "attributes": {},
+     "price_cad": 595.11,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-ext-all-size-og",
+   "title": "ALT EXT All Size Pack OG",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Pack includes OG VERSIONS of ALT Extractors sizes 10, 12, 15, 17, 18, 20 &amp; 25. These are “OG” versions of ALT Extractors and only work on bearings up to 12mm wide. They can be used with any of my kits that have leveraging pieces (like Sleeves). See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1048",
+     "attributes": {},
+     "price_cad": 595.11,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-ext-all-size-valu",
+   "title": "ALT Extractor All Size Value Pack",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This pack contains all of the PIECES of the ALT Extractor sizes 10, 12, 15, 17, 18, 20 &amp; 25, which you have to assemble yourself. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1049",
+     "attributes": {},
+     "price_cad": 462.24,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-ext-all-size-valu-og",
+   "title": "ALT Extractor All Size Value Pack OG",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This pack contains all of the PIECES of the ALT Extractor sizes 10, 12, 15, 17, 18, 20 &amp; 25, which you have to assemble yourself. These are “OG” ALT Extractors and only work on bearings up to 12mm wide. They can be used with any of my kits that have leveraging pieces (like Sleeves). See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1050",
+     "attributes": {},
+     "price_cad": 462.24,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-popular",
+   "title": "ALT Extractor Popular Pack",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. A handy ALT Extractor pack of a few popular sizes 12, 15, 17 &amp; 20 for hubs, freehubs and suspension. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1051",
+     "attributes": {},
+     "price_cad": 318.5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-popular-og",
+   "title": "ALT Extractor Popular Pack OG",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. A handy ALT Extractor OG VERSION pack of a few popular sizes 12, 15, 17 &amp; 20 for hubs, freehubs and suspension. These are “OG” ALT Extractors and only work on bearings up to 12mm wide. They can be used with any of my kits that have leveraging pieces (like Sleeves). See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1052",
+     "attributes": {},
+     "price_cad": 318.5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-popular-valu",
+   "title": "ALT Extractor Popular Pack Value",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This pack contains all of the PIECES of the ALT Extractor which you have to assemble yourself in a few popular sizes 12, 15, 17 &amp; 20 for hubs, freehubs and suspension. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1053",
+     "attributes": {},
+     "price_cad": 292.07,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-extractor-popular-valu-og",
+   "title": "ALT Extractor Popular Pack Value OG",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This pack contains all of the PIECES of the ALT Extractor OG VERSION which you have to assemble yourself in a few popular sizes 12, 15, 17 &amp; 20 for hubs, freehubs and suspension. These ALT Extractors NEED to be used with my kits purchased AFTER May 2024. See ALT Extractor page for details",
+   "variants": [
+    {
+     "sku": "KT1054",
+     "attributes": {},
+     "price_cad": 292.07,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/shop-press-kit-01",
+   "title": "Shop Press Kit",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: SPK-1 This kit contains a STUD STOP. See product page for details. Comes with box and removable lid.",
+   "variants": [
+    {
+     "sku": "KT1143",
+     "attributes": {},
+     "price_cad": 639.95,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1-p5t98",
+   "title": "Hub & Suspension Bearing Press - Aluminum",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: HSBP-2 This kit contains a STUD STOP. See product page for details. Comes with box and removable lid.",
+   "variants": [
+    {
+     "sku": "KT1136",
+     "attributes": {},
+     "price_cad": 380.83,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1",
+   "title": "Hub & Suspension Bearing Press - Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: HSBP-1 This kit contains a STUD STOP. See product page for details. Comes with box and removable lid.",
+   "variants": [
+    {
+     "sku": "KT1135",
+     "attributes": {},
+     "price_cad": 245.91,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/suspension-bearing-press-kit-dclsj",
+   "title": "Basic Bearing Press Kit - Aluminum",
+   "categories": [
+    "Tools",
+    "Bearing Replacement"
+   ],
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Formerly called Suspension Bearing Press. See product page for details",
+   "variants": [
+    {
+     "sku": "KT1134",
+     "attributes": {},
+     "price_cad": 232.86,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/suspension-bearing-press-kit",
+   "title": "Basic Bearing Press Kit - Acetal",
+   "categories": [
+    "Tools",
+    "Bearing Replacement"
+   ],
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Formerly called Suspension Bearing Press. See product page for details",
+   "variants": [
+    {
+     "sku": "KT1133",
+     "attributes": {},
+     "price_cad": 139.39,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/altd-1",
+   "title": "ALT Drift Kit - ALTD-1",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: ALTD-1 The ALT Drift must be used with the HSBP-1 or Basic Bearing Press kits to work. Also, the inner bearing spacer must be able to move off to the side 1mm. Fits bearings with ID 15, 17, 18, 20 &amp; 25",
+   "variants": [
+    {
+     "sku": "KT1032",
+     "attributes": {},
+     "price_cad": 88.97,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/altd-2",
+   "title": "ALT Drift Kit - ALTD-2",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: ALTD-2 This is a stand alone kit. You do not need the Hub &amp; Suspension kit to use this product. It contains all you need for removing the first bearing in a BSB configuration as long as the inner bearing spacer can move off to the side 1mm. Fits bearings with ID 15, 17, 18, 20 &amp; 25",
+   "variants": [
+    {
+     "sku": "KT1034",
+     "attributes": {},
+     "price_cad": 179.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/oad-1",
+   "title": "Over Axle Drifts Pack Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: OAD-1 Kit containing 13 sizes and works with Hub &amp; Suspension Bearing Press.",
+   "variants": [
+    {
+     "sku": "KT1003",
+     "attributes": {},
+     "price_cad": 149.07,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/over-axle-drifts",
+   "title": "Over Axle Drifts - Single",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Each “size” comes with two Over Axle Drifts. Sizes with inner diameter 15 &amp; 17 come with one short and one long Over Axle Drift. Sizes with inner diameter 18, 20 &amp; 25 come with two short Over Axle Drifts. Works with Hub &amp; Suspension Bearing Press.",
+   "variants": [
+    {
+     "sku": "PA1004",
+     "attributes": {
+      "Size": "OA Drift 15x24 Acetal"
+     },
+     "price_cad": 12.39,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1005",
+     "attributes": {
+      "Size": "OA Drift 15x26 Acetal"
+     },
+     "price_cad": 12.39,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1006",
+     "attributes": {
+      "Size": "OA Drift 15x28 Acetal"
+     },
+     "price_cad": 13.36,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1007",
+     "attributes": {
+      "Size": "OA Drift 15x30 Acetal"
+     },
+     "price_cad": 13.45,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1008",
+     "attributes": {
+      "Size": "OA Drift 15x32 Acetal"
+     },
+     "price_cad": 16.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1009",
+     "attributes": {
+      "Size": "OA Drift 17x26 Acetal"
+     },
+     "price_cad": 12.73,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1010",
+     "attributes": {
+      "Size": "OA Drift 17x28 Acetal"
+     },
+     "price_cad": 13.45,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1011",
+     "attributes": {
+      "Size": "OA Drift 17x30 Acetal"
+     },
+     "price_cad": 13.45,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1012",
+     "attributes": {
+      "Size": "OA Drift 17x35 Acetal"
+     },
+     "price_cad": 16.77,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1013",
+     "attributes": {
+      "Size": "OA Drift 18x30 Acetal"
+     },
+     "price_cad": 13.53,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1144",
+     "attributes": {
+      "Size": "OA Drift 18x32 Acetal"
+     },
+     "price_cad": 11.18,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1014",
+     "attributes": {
+      "Size": "OA Drift 20x32 Acetal"
+     },
+     "price_cad": 16.49,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1015",
+     "attributes": {
+      "Size": "OA Drift 20x37 Acetal"
+     },
+     "price_cad": 16.64,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1016",
+     "attributes": {
+      "Size": "OA Drift 25x37 Acetal"
+     },
+     "price_cad": 17.06,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/handle-m8",
+   "title": "Handle M8",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: HM8-1 Use this instead of one of the nuts and a wrench. Not necessary, but pretty sweet. Pairs well when using the Stud Stop. Made of anodized aluminum.",
+   "variants": [
+    {
+     "sku": "PA1033",
+     "attributes": {
+      "Choose Color": "Dry Hero Dirt"
+     },
+     "price_cad": 29.5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "BS1098",
+     "attributes": {
+      "Choose Color": "Sand du jour"
+     },
+     "price_cad": 29.5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "BS1099",
+     "attributes": {
+      "Choose Color": "Organic Cardboard"
+     },
+     "price_cad": 29.5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/stud-stop",
+   "title": "Stud Stop",
+   "categories": [
+    "Bearing Replacement"
+   ],
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This simple threaded stop slides over the threads when it is tilted, but then engages the threaded stud when it is squared to the tool. Real convenient for quickly setting up a stop for the tool to press against. Purchase this to reduce excessive “nut twiddling”. NOTE Already contained in the following kits: HSBP-1 Acetal HSBP-2 Aluminum ALT Drift ALTD-2 The Hub &amp; Suspension Bearing Press EXPANSION (HSBP-1X) and the Basic Bearing Press kits DO NOT come with the Stud Stop.",
+   "variants": [
+    {
+     "sku": "HA1118",
+     "attributes": {},
+     "price_cad": 19.8,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1-p5t98-shhxl",
+   "title": "Drift RE Pack - Aluminum",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1140",
+     "attributes": {},
+     "price_cad": 87.26,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1-p5t98-shhxl-2m6dy",
+   "title": "Drift RE Pack - Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. THIS IS A PRE-ORDER. Purchase now. Shipping will happen when inventory arrives. Expected ship date is the last week of September. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1139",
+     "attributes": {},
+     "price_cad": 48.55,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/sleeve-pack-step-alum",
+   "title": "Sleeve Pack with Step - Aluminum",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This Sleeve pack comes with an aluminum Step piece. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1056",
+     "attributes": {},
+     "price_cad": 98.31,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/sleeve-pack-alum",
+   "title": "Sleeve Pack - Aluminum",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1142",
+     "attributes": {},
+     "price_cad": 85.92,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/sleeve-pack-step-acetal",
+   "title": "Sleeve Pack with Step - Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. This Sleeve pack comes with an acetal Step piece. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1055",
+     "attributes": {},
+     "price_cad": 55.34,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/sleeve-pack-acetal",
+   "title": "Sleeve Pack - Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1141",
+     "attributes": {},
+     "price_cad": 48.55,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1-p5t98-shhxl-2m6dy-eyw78-92t4s-fhmlz",
+   "title": "Long Pilot Pack - Aluminum",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1138",
+     "attributes": {},
+     "price_cad": 49.94,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1-p5t98-shhxl-2m6dy-eyw78-92t4s-fhmlz-8cdpd",
+   "title": "Long Pilot Pack - Acetal",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. See product page for details.",
+   "variants": [
+    {
+     "sku": "KT1137",
+     "attributes": {},
+     "price_cad": 28.34,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/hsbp-1x",
+   "title": "Hub & Suspension Bearing Press EXPANSION",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Model: HSBP-1X For those who already purchased the original Suspension Bearing Press or the Basic Bearing Press. This expansion kit includes all the parts to expand the OG Suspension Bearing Press to the full blown HSBP-1 Acetal (BUT DOES NOT include the Stud Stop). &nbsp;All parts on the HSBP-1 foam stand in a box with a removable lid.",
+   "variants": [
+    {
+     "sku": "KT1001",
+     "attributes": {},
+     "price_cad": 95,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/drift-re",
+   "title": "Drift RE - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Drift RE piece Choose the size which relates to your bearing outer diameter. Choose either aluminum or acetal material. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1188",
+     "attributes": {
+      "Size & Material": "DRIFT RE 16 Acetal"
+     },
+     "price_cad": 4.29,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1189",
+     "attributes": {
+      "Size & Material": "DRIFT RE 19 Acetal"
+     },
+     "price_cad": 4.81,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1190",
+     "attributes": {
+      "Size & Material": "DRIFT RE 21 Acetal"
+     },
+     "price_cad": 4.97,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1191",
+     "attributes": {
+      "Size & Material": "DRIFT RE 22 Acetal"
+     },
+     "price_cad": 5.29,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1192",
+     "attributes": {
+      "Size & Material": "DRIFT RE 24 Acetal"
+     },
+     "price_cad": 5.4,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PS1193",
+     "attributes": {
+      "Size & Material": "DRIFT RE 26 Acetal"
+     },
+     "price_cad": 5.54,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1194",
+     "attributes": {
+      "Size & Material": "DRIFT RE 28 Acetal"
+     },
+     "price_cad": 6.02,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1195",
+     "attributes": {
+      "Size & Material": "DRIFT RE 30 Acetal"
+     },
+     "price_cad": 6.13,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1196",
+     "attributes": {
+      "Size & Material": "DRIFT RE 32 Acetal"
+     },
+     "price_cad": 7.13,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1197",
+     "attributes": {
+      "Size & Material": "DRIFT RE 35 Acetal"
+     },
+     "price_cad": 7.8,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1198",
+     "attributes": {
+      "Size & Material": "DRIFT RE 37 Acetal"
+     },
+     "price_cad": 8.29,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1199",
+     "attributes": {
+      "Size & Material": "DRIFT RE 41 Acetal"
+     },
+     "price_cad": 9.05,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1200",
+     "attributes": {
+      "Size & Material": "DRIFT RE 16 Aluminum"
+     },
+     "price_cad": 5.84,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1201",
+     "attributes": {
+      "Size & Material": "DRIFT RE 19 Aluminum"
+     },
+     "price_cad": 6.36,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1202",
+     "attributes": {
+      "Size & Material": "DRIFT RE 21 Aluminum"
+     },
+     "price_cad": 6.7,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1203",
+     "attributes": {
+      "Size & Material": "DRIFT RE 22 Aluminum"
+     },
+     "price_cad": 6.88,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1204",
+     "attributes": {
+      "Size & Material": "DRIFT RE 24 Aluminum"
+     },
+     "price_cad": 7.14,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1205",
+     "attributes": {
+      "Size & Material": "DRIFT RE 26 Aluminum"
+     },
+     "price_cad": 8,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1206",
+     "attributes": {
+      "Size & Material": "DRIFT RE 28 Aluminum"
+     },
+     "price_cad": 8.54,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1207",
+     "attributes": {
+      "Size & Material": "DRIFT RE 30 Aluminum"
+     },
+     "price_cad": 8.66,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1208",
+     "attributes": {
+      "Size & Material": "DRIFT RE 32 Aluminum"
+     },
+     "price_cad": 9.23,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1209",
+     "attributes": {
+      "Size & Material": "DRIFT RE 35 Aluminum"
+     },
+     "price_cad": 10.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1210",
+     "attributes": {
+      "Size & Material": "DRIFT RE 37 Aluminum"
+     },
+     "price_cad": 10.6,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1211",
+     "attributes": {
+      "Size & Material": "DRIFT RE 41 Aluminum"
+     },
+     "price_cad": 11.98,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/pilot-short",
+   "title": "Pilot Short - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Pilot Short piece. The size relates to the bearing inner diameter. Choose either aluminum or acetal material. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1155",
+     "attributes": {
+      "Size & Material": "PILOT 10 Short Acetal"
+     },
+     "price_cad": 2.52,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1157",
+     "attributes": {
+      "Size & Material": "PILOT 11 Short Acetal"
+     },
+     "price_cad": 2.66,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1159",
+     "attributes": {
+      "Size & Material": "PILOT 12 Short Acetal"
+     },
+     "price_cad": 2.75,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1161",
+     "attributes": {
+      "Size & Material": "PILOT 15 Short Acetal"
+     },
+     "price_cad": 2.81,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1163",
+     "attributes": {
+      "Size & Material": "PILOT 17 Short Acetal"
+     },
+     "price_cad": 2.88,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1165",
+     "attributes": {
+      "Size & Material": "PILOT 18 Short Acetal"
+     },
+     "price_cad": 3.02,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1167",
+     "attributes": {
+      "Size & Material": "PILOT 20 Short Acetal"
+     },
+     "price_cad": 3.29,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1169",
+     "attributes": {
+      "Size & Material": "PILOT 25 Short Acetal"
+     },
+     "price_cad": 3.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1171",
+     "attributes": {
+      "Size & Material": "PILOT 10 Short Aluminum"
+     },
+     "price_cad": 4.37,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1173",
+     "attributes": {
+      "Size & Material": "PILOT 11 Short Aluminum"
+     },
+     "price_cad": 4.48,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1175",
+     "attributes": {
+      "Size & Material": "PILOT 12 Short Aluminum"
+     },
+     "price_cad": 4.69,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1177",
+     "attributes": {
+      "Size & Material": "PILOT 15 Short Aluminum"
+     },
+     "price_cad": 4.69,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1179",
+     "attributes": {
+      "Size & Material": "PILOT 17 Short Aluminum"
+     },
+     "price_cad": 4.96,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1181",
+     "attributes": {
+      "Size & Material": "PILOT 18 Short Aluminum"
+     },
+     "price_cad": 5.09,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1183",
+     "attributes": {
+      "Size & Material": "PILOT 20 Short Aluminum"
+     },
+     "price_cad": 5.47,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1185",
+     "attributes": {
+      "Size & Material": "PILOT 23 Short Aluminum"
+     },
+     "price_cad": 5.93,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1186",
+     "attributes": {
+      "Size & Material": "PILOT 25 Short Aluminum"
+     },
+     "price_cad": 5.74,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/pilot-long",
+   "title": "Pilot Long - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Pilot Long piece. The size relates to the bearing inner diameter. Choose either aluminum or acetal material. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1156",
+     "attributes": {
+      "Size & Material": "PILOT 10 Long Acetal"
+     },
+     "price_cad": 2.93,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1158",
+     "attributes": {
+      "Size & Material": "PILOT 11 Long Acetal"
+     },
+     "price_cad": 3.12,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1160",
+     "attributes": {
+      "Size & Material": "PILOT 12 Long Acetal"
+     },
+     "price_cad": 3.35,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1162",
+     "attributes": {
+      "Size & Material": "PILOT 15 Long Acetal"
+     },
+     "price_cad": 3.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1164",
+     "attributes": {
+      "Size & Material": "PILOT 17 Long Acetal"
+     },
+     "price_cad": 3.65,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1166",
+     "attributes": {
+      "Size & Material": "PILOT 18 Long Acetal"
+     },
+     "price_cad": 3.89,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1168",
+     "attributes": {
+      "Size & Material": "PILOT 20 Long Acetal"
+     },
+     "price_cad": 4.1,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1170",
+     "attributes": {
+      "Size & Material": "PILOT 25 Long Acetal"
+     },
+     "price_cad": 4.32,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1172",
+     "attributes": {
+      "Size & Material": "PILOT 10 Long Aluminum"
+     },
+     "price_cad": 4.62,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1174",
+     "attributes": {
+      "Size & Material": "PILOT 11 Long Aluminum"
+     },
+     "price_cad": 4.67,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1176",
+     "attributes": {
+      "Size & Material": "PILOT 12 Long Aluminum"
+     },
+     "price_cad": 5.15,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1178",
+     "attributes": {
+      "Size & Material": "PILOT 15 Long Aluminum"
+     },
+     "price_cad": 5.21,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1180",
+     "attributes": {
+      "Size & Material": "PILOT 17 Long Aluminum"
+     },
+     "price_cad": 5.78,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1182",
+     "attributes": {
+      "Size & Material": "PILOT 18 Long Aluminum"
+     },
+     "price_cad": 5.09,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1184",
+     "attributes": {
+      "Size & Material": "PILOT 20 Long Aluminum"
+     },
+     "price_cad": 6.4,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1187",
+     "attributes": {
+      "Size & Material": "PILOT 25 Long Aluminum"
+     },
+     "price_cad": 6.73,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/sleeve",
+   "title": "Sleeve - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Sleeve, Sleeve Long and Sleeve 6 pieces The size relates to the bearing outer diameter. Choose either aluminum or acetal material. Sleeve 6 only comes in acetal. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1212",
+     "attributes": {
+      "Size & Material": "SLEEVE 16 Acetal"
+     },
+     "price_cad": 4.99,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1213",
+     "attributes": {
+      "Size & Material": "SLEEVE 19 Acetal"
+     },
+     "price_cad": 5.12,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1214",
+     "attributes": {
+      "Size & Material": "SLEEVE 22 Acetal"
+     },
+     "price_cad": 5.55,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1215",
+     "attributes": {
+      "Size & Material": "SLEEVE 24 Acetal"
+     },
+     "price_cad": 5.84,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1216",
+     "attributes": {
+      "Size & Material": "SLEEVE 26 Acetal"
+     },
+     "price_cad": 6.76,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1217",
+     "attributes": {
+      "Size & Material": "SLEEVE 28 Acetal"
+     },
+     "price_cad": 7.42,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1218",
+     "attributes": {
+      "Size & Material": "SLEEVE 30 Acetal"
+     },
+     "price_cad": 7.81,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1219",
+     "attributes": {
+      "Size & Material": "SLEEVE 32 Acetal"
+     },
+     "price_cad": 8.01,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1220",
+     "attributes": {
+      "Size & Material": "SLEEVE 35 Acetal"
+     },
+     "price_cad": 8.75,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1222",
+     "attributes": {
+      "Size & Material": "SLEEVE 37 Acetal"
+     },
+     "price_cad": 8.92,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1221",
+     "attributes": {
+      "Size & Material": "SLEEVE Long Acetal"
+     },
+     "price_cad": 10.34,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1234",
+     "attributes": {
+      "Size & Material": "SLEEVE 6"
+     },
+     "price_cad": 13.6,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1223",
+     "attributes": {
+      "Size & Material": "SLEEVE 16 Aluminum"
+     },
+     "price_cad": 6.51,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1224",
+     "attributes": {
+      "Size & Material": "SLEEVE 19 Aluminum"
+     },
+     "price_cad": 7.58,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1225",
+     "attributes": {
+      "Size & Material": "SLEEVE 22 Aluminum"
+     },
+     "price_cad": 7.77,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1226",
+     "attributes": {
+      "Size & Material": "SLEEVE 24 Aluminum"
+     },
+     "price_cad": 7.89,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1227",
+     "attributes": {
+      "Size & Material": "SLEEVE 26 Aluminum"
+     },
+     "price_cad": 9.36,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1228",
+     "attributes": {
+      "Size & Material": "SLEEVE 28 Aluminum"
+     },
+     "price_cad": 9.59,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1229",
+     "attributes": {
+      "Size & Material": "SLEEVE 30 Aluminum"
+     },
+     "price_cad": 9.71,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1230",
+     "attributes": {
+      "Size & Material": "SLEEVE 32 Aluminum"
+     },
+     "price_cad": 9.83,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1231",
+     "attributes": {
+      "Size & Material": "SLEEVE 35 Aluminum"
+     },
+     "price_cad": 11.52,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1233",
+     "attributes": {
+      "Size & Material": "SLEEVE 37 Aluminum"
+     },
+     "price_cad": 12.19,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1232",
+     "attributes": {
+      "Size & Material": "SLEEVE Long Aluminum"
+     },
+     "price_cad": 13.95,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/alt-drift-pieces",
+   "title": "ALT Drift - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual ALT Drift and ALT Rod pieces. The size relates to the bearing inner diameter. IMPORTANT - ALT Drifts need to be used with ALT Rods and other pieces. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1235",
+     "attributes": {
+      "Color": "ALT Rod"
+     },
+     "price_cad": 19.87,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1236",
+     "attributes": {
+      "Color": "ALT Drift 15"
+     },
+     "price_cad": 16.35,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1237",
+     "attributes": {
+      "Color": "ALT Drift 17"
+     },
+     "price_cad": 16.68,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1238",
+     "attributes": {
+      "Color": "ALT Drift 18"
+     },
+     "price_cad": 16.96,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1239",
+     "attributes": {
+      "Color": "ALT Drift 20"
+     },
+     "price_cad": 17.19,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1240",
+     "attributes": {
+      "Color": "ALT Drift 25"
+     },
+     "price_cad": 17.4,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/stud-pieces",
+   "title": "Stud - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual threaded Studs M8×1.25 thread in high strength stainless steel See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1145",
+     "attributes": {
+      "Size": "Stud M8x120"
+     },
+     "price_cad": 11.03,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "PA1146",
+     "attributes": {
+      "Size": "Stud M8x180"
+     },
+     "price_cad": 13.26,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1147",
+     "attributes": {
+      "Size": "Stud M8x240"
+     },
+     "price_cad": 15.4,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/standard-nut-pieces",
+   "title": "Standard Nut - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual shoulder standard nuts M8×1.25 thread Contains 2 nuts with different wrench size. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1148",
+     "attributes": {},
+     "price_cad": 3,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/step-piece",
+   "title": "Step - Piece",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Step pieces A Step is necessary to use with all Sleeve pieces. Choose either aluminum or acetal material. Identically shaped so aluminum Step fits all acetal Sleeves and vise versa. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1149",
+     "attributes": {
+      "Material": "Step M8 Acetal"
+     },
+     "price_cad": 9.37,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1150",
+     "attributes": {
+      "Material": "Step M8 Aluminum"
+     },
+     "price_cad": 14.14,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/stop-ctr-piece",
+   "title": "Stop CTR - Piece",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Stop CTR piece See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1151",
+     "attributes": {},
+     "price_cad": 12.08,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/stop-oal-piece",
+   "title": "Stop OAL - Piece",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Stop OAL piece See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1154",
+     "attributes": {},
+     "price_cad": 14.77,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/spacer-tube-pieces",
+   "title": "Spacer Tube - Pieces",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. Individual Spacer Tube pieces Choose either aluminum or acetal material. See Pieces page for details.",
+   "variants": [
+    {
+     "sku": "PA1152",
+     "attributes": {
+      "Material": "Spacer Tube Acetal"
+     },
+     "price_cad": 8.78,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": false,
+     "stock": 0
+    },
+    {
+     "sku": "PA1153",
+     "attributes": {
+      "Material": "Spacer Tube Aluminum"
+     },
+     "price_cad": 10.61,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/o-ring-8mm",
+   "title": "O-Ring 8mm",
+   "excerpt": "Before you order, check “Inventory Update” on HOMEPAGE. These O-Rings are useful to keep pieces in place on the 8mm threaded Stud. Contains 5 O-Rings.",
+   "variants": [
+    {
+     "sku": "PA1241",
+     "attributes": {},
+     "price_cad": 3.68,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  },
+  {
+   "url": "https://www.altalt.ca/products/replacement-parts",
+   "title": "Replacement Parts",
+   "excerpt": "Replacement or additional parts can be purchased here. First, contact me through email to organize which parts you need and what the cost of your order will be.",
+   "variants": [
+    {
+     "sku": "RP1057",
+     "attributes": {
+      "Cost": "Replacement Parts $3"
+     },
+     "price_cad": 3,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1132",
+     "attributes": {
+      "Cost": "Replacement Parts $5"
+     },
+     "price_cad": 5,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1131",
+     "attributes": {
+      "Cost": "Replacement Parts $10"
+     },
+     "price_cad": 10,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1125",
+     "attributes": {
+      "Cost": "Replacement Parts $15"
+     },
+     "price_cad": 15,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1119",
+     "attributes": {
+      "Cost": "Replacement Parts $20"
+     },
+     "price_cad": 20,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1120",
+     "attributes": {
+      "Cost": "Replacement Parts $25"
+     },
+     "price_cad": 25,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1121",
+     "attributes": {
+      "Cost": "Replacement Parts $30"
+     },
+     "price_cad": 30,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1122",
+     "attributes": {
+      "Cost": "Replacement Parts $35"
+     },
+     "price_cad": 35,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1123",
+     "attributes": {
+      "Cost": "Replacement Parts $40"
+     },
+     "price_cad": 40,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1124",
+     "attributes": {
+      "Cost": "Replacement Parts $45"
+     },
+     "price_cad": 45,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1058",
+     "attributes": {
+      "Cost": "Replacement Parts $50"
+     },
+     "price_cad": 50,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1059",
+     "attributes": {
+      "Cost": "Replacement Parts $55"
+     },
+     "price_cad": 55,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1060",
+     "attributes": {
+      "Cost": "Replacement Parts $60"
+     },
+     "price_cad": 60,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1061",
+     "attributes": {
+      "Cost": "Replacement Parts $65"
+     },
+     "price_cad": 65,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1062",
+     "attributes": {
+      "Cost": "Replacement Parts $70"
+     },
+     "price_cad": 70,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1063",
+     "attributes": {
+      "Cost": "Replacement Parts $75"
+     },
+     "price_cad": 75,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1064",
+     "attributes": {
+      "Cost": "Replacement Parts $80"
+     },
+     "price_cad": 80,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1065",
+     "attributes": {
+      "Cost": "Replacement Parts $85"
+     },
+     "price_cad": 85,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1066",
+     "attributes": {
+      "Cost": "Replacement Parts $90"
+     },
+     "price_cad": 90,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1067",
+     "attributes": {
+      "Cost": "Replacement Parts $95"
+     },
+     "price_cad": 95,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    },
+    {
+     "sku": "RP1068",
+     "attributes": {
+      "Cost": "Replacement Parts $100"
+     },
+     "price_cad": 100,
+     "on_sale": false,
+     "sale_price_cad": null,
+     "unlimited": true,
+     "stock": 0
+    }
+   ]
+  }
+ ]
+}
