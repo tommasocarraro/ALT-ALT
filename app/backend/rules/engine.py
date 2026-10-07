@@ -536,6 +536,38 @@ def instructions_for(result: dict) -> str:
     return "\n".join(out)
 
 
+def _scenes(spec: ArrangementSpec, rule_id: str, plan: List[Tuple[str, int, int]]) -> List[dict]:
+    """
+    What the part looks like when each job starts: which bearings are in their seats, and whether the spacer or
+    the axle is still in. Everything is there for the first removal; pieces disappear as they are taken out and
+    come back as they are installed.
+    """
+    kind = {"SP": None, "BSB": None if spec.has_spacer is False else "spacer", "OA": "axle"}[spec.type]
+    dims = lambda b: None if b.inner is None else {"inner": b.inner, "outer": b.outer, "width": b.width}
+    present = [[True] * len(slot) for slot in spec.slots]
+    middle, removing, scenes = kind is not None, True, []
+    for op_id, slot, position in plan:
+        installing = "install" in op_id
+        if installing and removing:            # all bearings are out: the installs start from an empty part
+            removing, middle = False, False
+            present = [[False] * len(s) for s in spec.slots]
+        if installing and position == 0 and any(any(p) for i, p in enumerate(present) if i != slot):
+            middle = kind is not None           # the spacer or the axle goes in before the second seat is filled
+        scenes.append({
+            "slots": [[{"dimensions": dims(b), "present": p} for b, p in zip(spec.slots[i], present[i])]
+                      for i in range(len(spec.slots))],
+            "middle": kind if middle else None,
+            "middle_kind": kind,
+            "worked": [slot, position],
+            "protrudes": rule_id == "over_axle",
+        })
+        if position < len(present[slot]):
+            present[slot][position] = installing
+        if not installing and position == 0:    # with one side open, the spacer falls out; the axle left with it
+            middle = False
+    return scenes
+
+
 def tools_for(spec: ArrangementSpec) -> dict:
     """Every job needed to remove and install the bearings of one arrangement, with the pieces of each job."""
     rule_id, assumed = rule_set_for(spec)
@@ -543,7 +575,10 @@ def tools_for(spec: ArrangementSpec) -> dict:
     slots = (spec.slots + [[] for _ in range(expected)])[:expected]
     spec = ArrangementSpec(**{**spec.__dict__, "slots": slots})
 
-    jobs = [_job(spec, rule_id, op_id, slot, position, assumed) for op_id, slot, position in _plan(spec, rule_id, assumed)]
+    plan = _plan(spec, rule_id, assumed)
+    jobs = [_job(spec, rule_id, op_id, slot, position, assumed) for op_id, slot, position in plan]
+    for job, scene in zip(jobs, _scenes(spec, rule_id, plan)):
+        job["scene"] = scene
     return {
         "arrangement": spec.name,
         "rule_set": rule_id,
