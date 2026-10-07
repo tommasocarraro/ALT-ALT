@@ -1,0 +1,845 @@
+SIMPLE PIVOT, ALLOY  (Simple Pivot)
+
+1. Remove: 6900 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 16 Aluminum: pushes the inner ring
+     c. Pilot Short 10 Aluminum: inside the bore, on the Stud
+     d. [the bearing to remove (6900 2RS), in its seat]
+     e. Sleeve 22 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     f. Step Aluminum: closes the open end of the sleeve
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Official diagram: 2SBP-R.pdf
+
+2. Install: 6900 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 22 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 10 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6900 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Drift RE 24 Aluminum: relief side gives 3 mm of room
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Step + Sleeve: if the pilot or the inner ring would touch the leverage drift before the bearing is home
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2SBP-I.pdf
+
+
+DOUBLE STACKED PIVOT, ALLOY  (Double Stacked Pivot)
+
+1. Remove 1st bearing with the ALT Extractor: 6902 2RS
+   Assemble in this order:
+     a. [the bearing to remove (6902 2RS), in its seat]
+     b. ALT Extractor 15: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
+
+2. Remove 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 16 Aluminum: pushes the inner ring
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the bearing to remove (6902 2RS), in its seat]
+     e. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     f. Step Aluminum: closes the open end of the sleeve
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   (No official diagram for this job.)
+
+3. Install 1st bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Drift RE 30 Aluminum: relief side gives 3 mm of room
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Step + Sleeve: if the pilot or the inner ring would touch the leverage drift before the bearing is home
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+4. Install 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Drift RE 30 Aluminum: relief side gives 3 mm of room
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Step + Sleeve: if the pilot or the inner ring would touch the leverage drift before the bearing is home
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+
+BSB PIVOT WITH A THIN SPACER RING, ALLOY  (BSB Pivot)
+
+1. Remove 1st bearing with the ALT Extractor: 61801 2RSR
+   Assemble in this order:
+     a. [the bearing to remove (61801 2RSR), in its seat]
+     b. ALT Extractor 12: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 22 Aluminum: no Sleeve for OD 21: next size up
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
+
+2. Remove 2nd bearing: 61801 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the part to the drift
+     c. Drift RE 16 Aluminum: pushes the inner ring
+     d. Pilot Short 12 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (61801 2RSR), in its seat]
+     f. Sleeve 22 Aluminum: no Sleeve for OD 21: next size up
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2BSB-R2.pdf
+
+3. Install 1st bearing: 61801 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 21 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 12 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61801 2RSR)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: leverages and centres in the opposite, empty seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2BSB-I1.pdf
+
+4. Install 2nd bearing: 61801 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 21 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 12 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61801 2RSR)]
+     e. [the spacer between the two bearings]
+     f. [the bearing in the other seat (61801 2RSR)]
+     g. Drift RE 21 Aluminum: rests against the 1st bearing
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 2 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the center: Pilot Short + Pilot Long: if the thin spacer ring can ride on the Pilot Long
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+
+BSB FRAME, SPACER MOVES, CARBON  (BSB Frame)
+
+1. Remove 1st bearing with the ALT Drift: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. ALT Rod: passes through the other bearing and the spacer, carrying the ALT Drift; the only part you turn, with an Allen key
+     b. [the bearing in the other seat (6902 2RS)]
+     c. [the spacer between the two bearings]
+     d. ALT Drift 15: pushes the bearing
+     e. Pilot Short 15 Acetal: inside the bore, on the Stud
+     f. [the bearing to remove (6902 2RS), in its seat]
+     g. Sleeve 28 Acetal: against the part, around the seat; the bearing or axle moves into it
+     h. Step Acetal: closes the open end of the sleeve
+     i. Stud Stop (or a Standard Nut): hold it still, do not turn it
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the sleeve.
+   Note: ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop.
+   Note: ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn.
+   Official diagram: 2BSB-R1.pdf
+
+2. Remove 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Acetal: reaches through the part to the drift
+     c. Drift RE 16 Acetal: pushes the inner ring
+     d. Pilot Short 15 Acetal: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Sleeve 28 Acetal: against the part, around the seat; the bearing or axle moves into it
+     g. Step Acetal: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2BSB-R2.pdf
+
+3. Install 1st bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Acetal: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Acetal: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: leverages and centres in the opposite, empty seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2BSB-I1.pdf
+
+4. Install 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Acetal: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Acetal: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the spacer between the two bearings]
+     f. Pilot Long 15 Acetal: sits in the 1st bearing and aligns the spacer
+     g. [the bearing in the other seat (6902 2RS)]
+     h. Drift RE 28 Acetal: rests against the 1st bearing
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 2 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2BSB-I2.pdf
+
+
+BSB FRAME, SPACER STUCK, ONE SIDE DOUBLE-STACKED, ALLOY  (BSB Frame)
+
+1. Remove 1st bearing with the ALT Extractor: 61803 2RSR
+   Assemble in this order:
+     a. [the bearing to remove (61803 2RSR), in its seat]
+     b. ALT Extractor 17: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 26 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
+
+2. Remove the outer bearing of the double-stacked seat: 61803 2RSR
+   Assemble in this order:
+     a. [the bearing to remove (61803 2RSR), in its seat]
+     b. ALT Extractor 17: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 26 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
+
+3. Remove 2nd bearing: 61803 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the part to the drift
+     c. Drift RE 19 Aluminum: pushes the inner ring
+     d. Pilot Short 17 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (61803 2RSR), in its seat]
+     f. Sleeve 26 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2BSB-R2.pdf
+
+4. Install 1st bearing: 61803 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 26 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 17 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61803 2RSR)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: leverages and centres in the opposite, empty seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2BSB-I1.pdf
+
+5. Install 2nd bearing: 61803 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 26 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 17 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61803 2RSR)]
+     e. [the spacer between the two bearings]
+     f. Pilot Long 17 Aluminum: sits in the 1st bearing and aligns the spacer
+     g. [the bearing in the other seat (61803 2RSR)]
+     h. Drift RE 26 Aluminum: rests against the 1st bearing
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 2 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2BSB-I2.pdf
+
+6. Install the outer bearing of the double-stacked seat: 61803 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 26 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 17 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61803 2RSR)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Drift RE 28 Aluminum: relief side gives 3 mm of room
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Step + Sleeve: if the pilot or the inner ring would touch the leverage drift before the bearing is home
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+
+BSB HUB, CENTRE-LOCK  (BSB Hub)
+
+1. Remove 1st bearing, disc side with the ALT Drift: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. ALT Rod: passes through the other bearing and the spacer, carrying the ALT Drift; the only part you turn, with an Allen key
+     b. [the bearing in the other seat (61804 2RSR)]
+     c. [the spacer between the two bearings]
+     d. ALT Drift 15: pushes the bearing
+     e. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     f. [the bearing to remove (6902 2RS), in its seat]
+     g. Sleeve Long Aluminum: on the centre-lock disc mount; the bearing or axle moves into it
+     h. Step Aluminum: closes the open end of the sleeve
+     i. Stud Stop (or a Standard Nut): hold it still, do not turn it
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the sleeve.
+   Note: ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop.
+   Note: ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn.
+   Official diagram: 2HUB-OB-R1-Disc.pdf
+
+2. Remove 2nd bearing, drive side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the hub to the drift
+     c. Drift RE 21 Aluminum: pushes the inner ring
+     d. Pilot Short 20 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (61804 2RSR), in its seat]
+     f. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Stop OAL: alternative
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2HUB-OAOB-R2-Drive.pdf
+
+3. Install 1st bearing, disc side: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Long 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: in the drive-side seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OAOB-I1-Disc.pdf
+
+4. Install 2nd bearing, drive side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 32 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 20 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61804 2RSR)]
+     e. [the spacer between the two bearings]
+     f. Pilot Long 20 Aluminum: sits in the 1st bearing and aligns the spacer
+     g. [the bearing in the other seat (6902 2RS)]
+     h. Sleeve Long Aluminum: on the centre-lock disc mount; the bearing or axle moves into it
+     i. Step Aluminum: closes the open end of the sleeve
+     j. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Drift RE: if the manufacturer asks to leverage against the 1st bearing
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OB-I2-Drive.pdf
+
+
+BSB HUB WITHOUT SPACER, 6-BOLT  (BSB Hub Variant (No Spacer))
+
+1. Remove 1st bearing, disc side with the ALT Drift: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. ALT Rod: passes through the other bearing and the spacer, carrying the ALT Drift; the only part you turn, with an Allen key
+     b. [the bearing in the other seat (6902 2RS)]
+     c. ALT Drift 15: pushes the bearing
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): hold it still, do not turn it
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the sleeve.
+   Note: ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop.
+   Note: ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn.
+   (No official diagram for this job.)
+
+2. Remove 2nd bearing, drive side: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the hub to the drift
+     c. Drift RE 16 Aluminum: pushes the inner ring
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Stop OAL: alternative
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   (No official diagram for this job.)
+
+3. Install 1st bearing, disc side: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Long 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: in the drive-side seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+4. Install 2nd bearing, drive side: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the bearing in the other seat (6902 2RS)]
+     f. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Alternative for the leverage: Drift RE: if the manufacturer asks to leverage against the 1st bearing
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+
+OVER-AXLE HUB, 6-BOLT  (Over Axle (hub or frame main pivot))
+
+1. Remove 1st bearing and axle, towards the disc side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE: size not set (rests on the end of the axle: choose with the part in hand)  <-- TO CHOOSE
+     c. Pilot Short: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     d. [the axle, inside the part]
+     e. Pilot Long: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     f. [the bearing to remove (61804 2RSR), in its seat]
+     g. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     h. Step Aluminum: closes the open end of the sleeve
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the sleeve.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Official diagram: 2HUB-OA-R1-Disc.pdf
+
+2. Remove 2nd bearing, drive side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the hub to the drift
+     c. Drift RE 21 Aluminum: pushes the inner ring
+     d. Pilot Short 20 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (61804 2RSR), in its seat]
+     f. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Stop OAL: alternative
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2HUB-OAOB-R2-Drive.pdf
+
+3. Install 1st bearing, disc side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 32 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Long 20 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (61804 2RSR)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: in the drive-side seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OAOB-I1-Disc.pdf
+
+4. Install 2nd bearing, drive side: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 32 Aluminum: pushes on the open end of the Over Axle Drift
+     c. Over Axle Drift 20x32: sized from the bearing: check the axle is not thinner where the drift slides
+     d. [the new bearing (61804 2RSR)]
+     e. Pilot Short: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     f. [the axle, inside the part]
+     g. Pilot Long: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     h. [the bearing in the other seat (61804 2RSR)]
+     i. Sleeve 6: against the 6-bolt disc mount; the bearing or axle moves into it
+     j. Step Aluminum: closes the open end of the sleeve
+     k. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 4 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut.
+   Note: Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.
+   Note: The bearing ID can be larger than the axle OD where the drift slides: size the drift to the axle.
+   Note: The sleeve is there because the axle end sticks out of the 1st bearing.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OA-I2-Drive.pdf
+
+
+OVER-AXLE FRAME MAIN PIVOT, CARBON  (Over Axle (hub or frame main pivot))
+
+1. Remove 1st bearing and axle, towards side A: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE: size not set (rests on the end of the axle: choose with the part in hand)  <-- TO CHOOSE
+     c. Pilot Short: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     d. [the axle, inside the part]
+     e. Pilot Long: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     f. [the bearing to remove (61804 2RSR), in its seat]
+     g. Sleeve 32 Acetal: against the part, around the seat; the bearing or axle moves into it
+     h. Step Acetal: closes the open end of the sleeve
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the sleeve.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: The rule names a hub leverage piece; on a frame, Step + Sleeve is used instead.
+   Official diagram: 2HUB-OA-R1-Disc.pdf
+
+2. Remove 2nd bearing, side B: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Acetal: reaches through the part to the drift
+     c. Drift RE 21 Acetal: pushes the inner ring
+     d. Pilot Short 20 Acetal: inside the bore, on the Stud
+     e. [the bearing to remove (61804 2RSR), in its seat]
+     f. Sleeve 32 Acetal: against the part, around the seat; the bearing or axle moves into it
+     g. Step Acetal: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Stop OAL: alternative
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Note: The rule names a hub leverage piece; on a frame, Step + Sleeve is used instead.
+   Official diagram: 2HUB-OAOB-R2-Drive.pdf
+
+3. Install 1st bearing, side A: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 32 Acetal: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Long 20 Acetal: inside the bore, on the Stud
+     d. [the new bearing (61804 2RSR)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: in the side B seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OAOB-I1-Disc.pdf
+
+4. Install 2nd bearing, side B: 61804 2RSR
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 32 Acetal: pushes on the open end of the Over Axle Drift
+     c. Over Axle Drift 20x32: sized from the bearing: check the axle is not thinner where the drift slides
+     d. [the new bearing (61804 2RSR)]
+     e. Pilot Short: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     f. [the axle, inside the part]
+     g. Pilot Long: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     h. [the bearing in the other seat (61804 2RSR)]
+     i. Sleeve 32 Acetal: against the part, around the seat; the bearing or axle moves into it
+     j. Step Acetal: closes the open end of the sleeve
+     k. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 4 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The Over Axle Drift slides over the axle and pushes the bearing into its seat. Always push the Over Axle Drift with the Drift RE, never with the nut.
+   Note: Never push on an Over Axle Drift with a nut, Stud Stop or Handle: always put a Drift RE behind it.
+   Note: The bearing ID can be larger than the axle OD where the drift slides: size the drift to the axle.
+   Note: The sleeve is there because the axle end sticks out of the 1st bearing.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2HUB-OA-I2-Drive.pdf
+
+
+OVER-AXLE SHORT, FRAME, ALLOY  (Over Axle Short)
+
+1. Remove 1st bearing and axle, towards side A: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Pilot Short: size not set (larger than the axle ID, so it pushes on the axle end: choose with the part in hand)  <-- TO CHOOSE
+     c. [the axle, inside the part]
+     d. [the bearing to remove (6902 2RS), in its seat]
+     e. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     f. Step Aluminum: closes the open end of the sleeve
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The pressing piece pushes on the end of the axle, and the axle carries the bearing on its other end out of the seat into the sleeve.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: The rule names a hub leverage piece; on a frame, Step + Sleeve is used instead.
+   (No official diagram for this job.)
+
+2. Remove 2nd bearing, side B: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the part to the drift
+     c. Drift RE 16 Aluminum: pushes the inner ring
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Stop OAL: alternative
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Note: The rule names a hub leverage piece; on a frame, Step + Sleeve is used instead.
+   (No official diagram for this job.)
+
+3. Install 1st bearing, side A: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Long 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: in the side B seat
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+4. Install 2nd bearing onto the axle: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: pushes the outer ring; relief side towards the bearing so the pilot has room to back out
+     c. Pilot Short 15 Aluminum: centres the bearing; the axle pushes it out as the bearing goes on
+     d. [the new bearing (6902 2RS)]
+     e. Pilot Short: size not set (fits inside the axle: choose with the part in hand)  <-- TO CHOOSE
+     f. [the axle, inside the part]
+     g. [the bearing in the other seat (6902 2RS)]
+     h. Drift RE 28 Aluminum: rests against the 1st bearing
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 2 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: Two pilots of different diameters: one for the bearing ID, one for the axle ID.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   (No official diagram for this job.)
+
+
+BSB FREEHUB, HG  (BSB Freehub)
+
+1. Remove 1st bearing with the ALT Drift: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. ALT Rod: passes through the other bearing and the spacer, carrying the ALT Drift; the only part you turn, with an Allen key
+     b. [the bearing in the other seat (6902 2RS)]
+     c. [the spacer between the two bearings]
+     d. ALT Drift 15: pushes the bearing
+     e. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     f. [the bearing to remove (6902 2RS), in its seat]
+     g. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     h. Step Aluminum: closes the open end of the sleeve
+     i. Stud Stop (or a Standard Nut): hold it still, do not turn it
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the sleeve.
+   Note: ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop.
+   Note: ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn.
+   Official diagram: 2Free-Each-R1.pdf
+
+2. Remove 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches through the freehub to the drift
+     c. Drift RE 16 Aluminum: pushes the inner ring
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     g. Step Aluminum: closes the open end of the sleeve
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Drift RE: optional, if the bearing has room to come out
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2Free-Each-R2.pdf
+
+3. Install 1st bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the part, with the empty seat towards the bearing]
+     f. Stop CTR: leverages and centres on the opposite end
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2Free-Each-I1.pdf
+
+4. Install 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the spacer between the two bearings]
+     f. Pilot Long 15 Aluminum: sits in the 1st bearing and aligns the spacer
+     g. [the bearing in the other seat (6902 2RS)]
+     h. Drift RE 28 Aluminum: rests against the 1st bearing
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2Free-Each-I2.pdf
+
+
+BSB FREEHUB, BOTH BEARINGS FROM ONE SIDE, XD  (BSB Freehub Variant (One Side))
+
+1. Remove 1st bearing with the ALT Drift: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. ALT Rod: passes through the other bearing and the spacer, carrying the ALT Drift; the only part you turn, with an Allen key
+     b. [the bearing in the other seat (6902 2RS)]
+     c. [the spacer between the two bearings]
+     d. ALT Drift 15: pushes the bearing
+     e. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     f. [the bearing to remove (6902 2RS), in its seat]
+     g. Stop OAL: rests against the part and clears the end of the axle
+     h. Stud Stop (or a Standard Nut): hold it still, do not turn it
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Move the spacer off its axis so the ALT Drift can catch the back of the bearing's inner ring. Hold the fastener at the other end still and turn only the ALT Rod, with an Allen key in its end: the bearing is pushed out into the Stop OAL.
+   Note: ALT Drift: it goes in from the far side, through the other bearing and the spacer, and pushes the inner ring from behind. If the Pilot does not fit the bearing ID, stop.
+   Note: ALT Drift: the ALT Rod threads onto the Stud and is the only part that is turned. The single fastener on the leverage side may be a nut, Stud Stop or Handle and must not turn.
+   Official diagram: 2Free-All-R1.pdf
+
+2. Remove 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: or a second Drift RE, if the press drift needs to reach further
+     c. Drift RE 16 Aluminum: pushes the inner ring
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the bearing to remove (6902 2RS), in its seat]
+     f. Drift RE 30 Aluminum: rests against the part
+     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat towards the leverage drift at the other end. If the tool starts to sit crooked, stop and check.
+   Alternative for the leverage: Step + Sleeve: if clearance runs out near the end: HG or Microspline freehub
+   Alternative for the leverage: Stop OAL: if clearance runs out near the end: XD or XDR freehub
+   Note: The arrangement picture shows a circlip between the bearings, but no diagram shows it: check for circlips before pressing.
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Official diagram: 2Free-All-R2.pdf
+
+3. Install 1st bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
+     b. Spacer Tube Aluminum: reaches down the freehub to the drift
+     c. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     d. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     e. [the new bearing (6902 2RS)]
+     f. [the part, with the empty seat towards the bearing]
+     g. Stop CTR: on the inboard end
+     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 1 O-ring on the Stud to keep the pilot from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2Free-All-I1.pdf
+
+4. Install 2nd bearing: 6902 2RS
+   Put these on the Stud in this order, from one end to the other:
+     a. Handle (or a Standard Nut): turn this end to tighten
+     b. Drift RE 28 Aluminum: flat side on the bearing, unless the manufacturer asks for the relief side
+     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
+     d. [the new bearing (6902 2RS)]
+     e. [the spacer between the two bearings]
+     f. Pilot Long 15 Aluminum: sits in the 1st bearing and aligns the spacer
+     g. [the bearing in the other seat (6902 2RS)]
+     h. Drift RE 30 Aluminum: on the inboard end of the freehub
+     i. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
+   Use 3 O-rings on the Stud to keep the pilots from sliding.
+   Stud length: choose with the part in hand.
+   Then: Start the bearing square in its seat, then tighten a nut until the bearing is fully home. It takes little force: if it gets hard, stop and check that the bearing is straight.
+   Note: The arrangement picture shows a circlip between the bearings, but no diagram shows it: check for circlips before pressing.
+   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+   Note: Which face of the Drift RE presses follows the manufacturer: the flat side by default, the relief side when the bearing has to be slightly loaded.
+   Official diagram: 2Free-All-I2.pdf
+
