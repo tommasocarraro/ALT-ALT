@@ -11,6 +11,7 @@ Pieces are coloured by what they are made of: acetal black, aluminium gold, stee
 Each piece carries the letter it has in the written instructions (a, b, c, ... in stack order), so the drawing
 needs no text of its own.
 """
+import math
 from typing import List, Optional, Tuple
 
 PX = 4.0            # pixels per millimetre
@@ -125,10 +126,23 @@ class _Canvas:
 
 
 def _thread(x1: float, x2: float) -> str:
-    """The Stud, hatched like a thread."""
-    box = f'x="{x1 * PX:.1f}" y="{-STUD_R * PX:.1f}" width="{(x2 - x1) * PX:.1f}" height="{2 * STUD_R * PX:.1f}"'
+    """The Stud, hatched like a thread. Plain lines, not a pattern: the PDF renderer does not draw patterns."""
+    r, pitch = STUD_R * PX, 5.0
+    box = f'x="{x1 * PX:.1f}" y="{-r:.1f}" width="{(x2 - x1) * PX:.1f}" height="{2 * r:.1f}"'
+    turns = int(((x2 - x1) * PX - pitch) // pitch) + 1
+    hatch = "".join(f"M{x1 * PX + k * pitch:.1f},{r:.1f} l{pitch:.1f},{-2 * r:.1f}" for k in range(max(turns, 0)))
     return (f'<rect {box} fill="#d9d2ca" stroke="{LINE}" stroke-width="0.8"/>'
-            f'<rect {box} fill="url(#thread)"/>')
+            f'<path d="{hatch}" fill="none" stroke="#6b7280" stroke-width="1.1"/>')
+
+
+def _turn_sign(cx: float, cy: float) -> str:
+    """A clockwise arrow, in pixels. Drawn, not typed: a "↻" character depends on the fonts of whoever shows it."""
+    r = 8.0
+    at = lambda deg, k=r: (cx + k * math.cos(math.radians(deg)), cy + k * math.sin(math.radians(deg)))
+    (x0, y0), (x1, y1) = at(-30), at(225)
+    head = [at(262, r), at(218, r - 5), at(218, r + 5)]
+    return (f'<path d="M{x0:.1f},{y0:.1f} A{r},{r} 0 1 1 {x1:.1f},{y1:.1f}" fill="none" stroke="{MOVE}" stroke-width="2.4"/>'
+            '<polygon points="' + " ".join(f"{x:.1f},{y:.1f}" for x, y in head) + f'" fill="{MOVE}"/>')
 
 
 def _bearing(c: _Canvas, x: float, d: dict) -> float:
@@ -506,21 +520,17 @@ def svg_for(job: dict) -> str:
 
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {-top_edge:.0f} {width:.0f} {top_edge + bottom_edge:.0f}" '
            f'width="{width:.0f}" height="{top_edge + bottom_edge:.0f}" font-family="Helvetica, Arial, sans-serif">',
-           '<defs><pattern id="thread" width="5" height="32" patternUnits="userSpaceOnUse" '
-           f'y="{-STUD_R * PX:.0f}"><path d="M0,{2 * STUD_R * PX:.0f} L5,0" stroke="#6b7280" stroke-width="1.1"/></pattern>'
-           f'<marker id="head" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">'
-           f'<path d="M0,0 L8,4 L0,8 z" fill="{MOVE}"/></marker></defs>',
            f'<rect x="0" y="{-top_edge:.0f}" width="{width:.0f}" height="{top_edge + bottom_edge:.0f}" fill="#ffffff"/>',
            f'<g transform="translate({total * PX:.1f},0) scale(-1,1)">' if mirrored else '<g>',
            rod] + c.shapes + ['</g>']
     for tx, ty in c.marks:
-        out.append(f'<text x="{flip(tx):.1f}" y="{ty:.1f}" font-size="26" font-weight="bold" text-anchor="middle" '
-                   f'fill="{MOVE}">↻</text>')
+        out.append(_turn_sign(flip(tx), ty - 9))
 
     # which way the bearing travels
     mx, mr, way = flip(moving[0] * PX), -(moving[1] + 3) * PX, -1 if mirrored else 1
-    out.append(f'<line x1="{mx - way * 16:.1f}" y1="{mr:.1f}" x2="{mx + way * 22:.1f}" y2="{mr:.1f}" stroke="{MOVE}" '
-               f'stroke-width="3" marker-end="url(#head)"/>')
+    tip = mx + way * 28
+    out.append(f'<line x1="{mx - way * 16:.1f}" y1="{mr:.1f}" x2="{tip - way * 12:.1f}" y2="{mr:.1f}" stroke="{MOVE}" stroke-width="3"/>'
+               f'<polygon points="{tip:.1f},{mr:.1f} {tip - way * 20:.1f},{mr - 9:.1f} {tip - way * 20:.1f},{mr + 9:.1f}" fill="{MOVE}"/>')
 
     for group, side in ((above, -1), (below, 1)):
         xs = _spread([l[0] for l in group], BADGE_R + 4, width - BADGE_R - 4)
@@ -533,7 +543,8 @@ def svg_for(job: dict) -> str:
             # a piece whose size is still to be chosen gets an amber badge
             out.append(f'<circle cx="{bx:.1f}" cy="{cy:.1f}" r="{BADGE_R}" fill="{"#fcd34d" if open_ else "#ffffff"}" '
                        f'stroke="{LINE}" stroke-width="1.2"/>')
-            out.append(f'<text x="{bx:.1f}" y="{cy + 5.5:.1f}" font-size="16" font-weight="bold" text-anchor="middle" '
+            out.append(f'<text x="{bx:.1f}" y="{cy + 5.5:.1f}" font-family="Helvetica, Arial, sans-serif" '
+                       f'font-size="16" font-weight="bold" text-anchor="middle" '
                        f'fill="{LINE}">{letter}</text>')
     out.append("</svg>")
     return "\n".join(out)

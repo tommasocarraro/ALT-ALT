@@ -115,6 +115,7 @@ app/backend/llm/                the only code that calls a model
 app/backend/rules/
     engine.py                   rule engine: rule set, jobs, options, sizes, catalogue lookup, cart, instructions
     drawing.py                  SVG section drawing of one job
+    pdf.py                      the instructions of a project as a PDF, with the drawings (PyMuPDF, laid out by hand)
 app/frontend/                   Create React App (TypeScript, Tailwind); nearly everything is in src/App.tsx
 data/rules/
     build_rules.py              SOURCE OF TRUTH for the rules. Edit this, then run it.
@@ -227,6 +228,9 @@ One SVG per job, a section cut through the middle. Conventions the owner asked f
 - **Colour by material:** acetal black, aluminium gold, steel grey; the bike part light blue.
 - Each piece carries the **letter** it has in the written steps (a, b, c in stack order). Pieces go above,
   bearings/spacer/axle/pilots below. Leaders end in a dot on the thing itself. Amber badge = size still open.
+- **Only plain shapes and letters.** The PDF embeds these SVGs through MuPDF, which draws no patterns or
+  markers, does not inherit `font-family`, and embeds a whole font for an unusual character: the thread, the
+  arrowhead and the "turn" sign are paths, and each letter names its own font.
 - The Stud is hatched like a thread. Bearings show a ball between two rings. O-rings are thin black bands.
 - **Axle:** a stepped hollow cylinder; shoulders touch the inner rings; journals go through the bearings and
   stick out on both sides (long axle) or stop half-way through them (short axle). Pilots listed next to the
@@ -248,6 +252,7 @@ One SVG per job, a section cut through the middle. Conventions the owner asked f
 | `POST /arrangements`, `PUT /arrangements/{id}` | save the questionnaire. `slots` is a list of bearing codes per seat: one list for SP, two for BSB and OA; two codes in one seat means double-stacked |
 | `GET /projects/{id}/tools` | jobs with pieces, stack, drawing (`svg`) and official diagram URL; and the cart |
 | `GET /projects/{id}/instructions` | the same jobs as plain text |
+| `GET /projects/{id}/instructions.pdf` | the same jobs as a PDF with the drawings: what the app's download button fetches |
 | `GET /catalog` | every individual piece, for the cart's pickers |
 | `PUT /projects/{id}/cart`, `DELETE /projects/{id}/cart?key=` | change, add or reset one cart line |
 
@@ -260,7 +265,15 @@ line the rules no longer produce is ignored.
 Project page: the PDF on the left (zoom, drag to pan), on the right "Bearings found" with sources and the
 arrangement questionnaire (type, spacer or axle details, component frame/hub/freehub, the bearing sequence
 editor, material). Below, "Tools and instructions": the editable cart, then one card per job with the drawing,
-the lettered steps, the action, alternatives, notes and the official diagram folded away.
+the lettered steps, the action, alternatives, notes and the official diagram folded away. The "Download
+instructions (PDF)" button sits between the cart and the job cards.
+
+### PDF (`app/backend/rules/pdf.py`)
+
+`pdf_for(project, results)`: a title band and a key to the drawings, then for every arrangement its name and,
+job after job, the title (arrangement, job, bearing and size), the drawing, the lettered steps, the action and
+the notes. A pink line separates the arrangements. A job is kept on one page when it fits, so most pages hold
+one job. Text uses the built-in Helvetica: characters outside Latin scripts would not print.
 
 ## Working conventions
 

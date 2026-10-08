@@ -515,6 +515,7 @@ function ToolsSection({ project }: { project: Project }) {
   const [catalog, setCatalog] = useState<CatalogItem[]>([]);
   const [version, setVersion] = useState(0); // bumped after every change to the cart
   const [error, setError] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState(false);
   // recompute whenever an arrangement is added or edited
   const signature = JSON.stringify(project.arrangements);
 
@@ -546,26 +547,35 @@ function ToolsSection({ project }: { project: Project }) {
   };
 
   const downloadInstructions = async () => {
-    const res = await fetch(`/projects/${project.id}/instructions`);
-    const url = URL.createObjectURL(new Blob([await res.text()], { type: "text/plain" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${project.title} - instructions.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    setDownloading(true);
+    try {
+      const res = await fetch(`/projects/${project.id}/instructions.pdf`);
+      if (!res.ok) throw new Error(`Failed to make the PDF (${res.status})`);
+      const url = URL.createObjectURL(await res.blob());
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${project.title} - instructions.pdf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e: any) { setError(e.message); }
+    setDownloading(false);
   };
 
   if (project.arrangements.length === 0) return null;
   return (
     <div className="lg:col-span-12 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div className="pb-3 border-b border-slate-200">
         <h3 className="text-lg font-semibold">Tools and instructions</h3>
-        <button className="px-3 py-1.5 rounded-xl border border-slate-300 hover:bg-slate-50" onClick={downloadInstructions}>Download instructions (.txt)</button>
       </div>
       {error && <div className="mt-3 rounded-xl border border-red-200 bg-red-50 p-3 text-red-700">{error}</div>}
       {!tools ? <div className="mt-3 text-sm text-slate-500">Working out the tools…</div> : (
         <>
           <CartView cart={tools.cart} catalog={catalog} onEdit={editCart} onReset={resetCartLine} />
+          <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
+            <div className="text-sm font-medium">Instructions</div>
+            <button className="px-3 py-1.5 rounded-xl border border-slate-300 hover:bg-slate-50 disabled:opacity-50" disabled={downloading}
+                    onClick={downloadInstructions}>{downloading ? "Making the PDF…" : "Download instructions (PDF)"}</button>
+          </div>
           {tools.arrangements.map((a, i) => (
             <div key={i} className="mt-6">
               <div className="font-semibold">{a.arrangement} <span className="font-normal text-slate-500">• {a.rule_set_name}</span></div>

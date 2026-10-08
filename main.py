@@ -19,7 +19,8 @@ from app.backend.rules.engine import (
     ArrangementSpec, BearingSpec, tools_for_project, cart_for, instructions_for, apply_cart_edits, catalog_items, BY_SKU,
 )
 from app.backend.rules.drawing import svg_for
-from fastapi.responses import PlainTextResponse
+from app.backend.rules.pdf import pdf_for
+from fastapi.responses import PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 # -----------------------------
@@ -535,6 +536,16 @@ def reset_cart_line(project_id: int, key: str):
 def get_project_instructions(project_id: int):
     """Step-by-step removal and install instructions for every arrangement of the project, as plain text."""
     return "\n\n".join(instructions_for(r) for r in _project_tools(project_id))
+
+
+@app.get("/projects/{project_id}/instructions.pdf")
+def get_project_instructions_pdf(project_id: int):
+    """The same instructions as a PDF, each job with its section drawing."""
+    results = _project_tools(project_id)
+    with SessionLocal() as db:
+        p = db.query(Project).filter(Project.id == project_id).one()
+        project = {"title": p.title, "manufacturer": p.manufacturer, "model": p.model}
+    return Response(pdf_for(project, results), media_type="application/pdf")
 
 
 def _bearing_codes_to_project_bearing_ids(db: Session, project_id: int, codes: List[str]) -> List[int]:
