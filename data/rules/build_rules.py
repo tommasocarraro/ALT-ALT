@@ -93,12 +93,18 @@ GENERAL_NOTES = [
     "corroded, wide or double-stacked bearings, and shop use.",
     "A Stud Stop may only sit against a piece larger than 20 mm, and is never the fastener that is turned.",
     "The Handle can replace a Standard Nut.",
+    "Always the fewest pieces. The ALT Extractor is the expensive one: once a project needs it for a bearing "
+    "that cannot come out any other way (a double-stacked seat, a first bearing the ALT Drift cannot reach), "
+    "every other bearing of the same ID in the project is removed with it too, with Step + Sleeve, instead "
+    "of with a Drift RE, a Spacer Tube or an ALT Drift bought for that removal alone.",
 ]
 
 OPEN_QUESTIONS = [
     "Open-bore hub, install of the 1st bearing: the diagram shows a Pilot Long. No reason is given; "
     "a Pilot Short may do.",
     "O-ring quantities are counted from the drawings.",
+    "Reusing the ALT Extractor: assumed to work for the 2nd bearing of an over-axle arrangement (the axle is out "
+    "by then), and assumed NOT to reach the inboard bearing of a one-side freehub, which keeps its drift.",
 ]
 
 

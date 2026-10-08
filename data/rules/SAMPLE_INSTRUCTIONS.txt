@@ -47,19 +47,17 @@ DOUBLE STACKED PIVOT, ALLOY  (Double Stacked Pivot)
    Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
    (No official diagram for this job.)
 
-2. Remove 2nd bearing: 6902 2RS
-   Put these on the Stud in this order, from one end to the other:
-     a. Handle (or a Standard Nut): turn this end to tighten
-     b. Drift RE 16 Aluminum: pushes the inner ring
-     c. Pilot Short 15 Aluminum: inside the bore, on the Stud
-     d. [the bearing to remove (6902 2RS), in its seat]
-     e. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
-     f. Step Aluminum: closes the open end of the sleeve
-     g. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
-   Use 1 O-ring on the Stud to keep the pilot from sliding.
-   Stud length: choose with the part in hand.
-   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
-   Note: A Stud Stop may replace either nut if it sits against a piece larger than 20 mm.
+2. Remove 2nd bearing with the ALT Extractor: 6902 2RS
+   Assemble in this order:
+     a. [the bearing to remove (6902 2RS), in its seat]
+     b. ALT Extractor 15: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 28 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: The project already needs the ALT Extractor 15, so it is used here too: no other pieces have to be bought for this removal.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
    (No official diagram for this job.)
 
 3. Install 1st bearing: 6902 2RS
@@ -111,21 +109,18 @@ BSB PIVOT WITH A THIN SPACER RING, ALLOY  (BSB Pivot)
    Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
    (No official diagram for this job.)
 
-2. Remove 2nd bearing: 61801 2RSR
-   Put these on the Stud in this order, from one end to the other:
-     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
-     b. Spacer Tube Aluminum: reaches through the part to the drift
-     c. Drift RE 16 Aluminum: pushes the inner ring
-     d. Pilot Short 12 Aluminum: inside the bore, on the Stud
-     e. [the bearing to remove (61801 2RSR), in its seat]
-     f. Sleeve 22 Aluminum: no Sleeve for OD 21: next size up
-     g. Step Aluminum: closes the open end of the sleeve
-     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
-   Use 1 O-ring on the Stud to keep the pilot from sliding.
-   Stud length: choose with the part in hand.
-   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
-   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
-   Official diagram: 2BSB-R2.pdf
+2. Remove 2nd bearing with the ALT Extractor: 61801 2RSR
+   Assemble in this order:
+     a. [the bearing to remove (61801 2RSR), in its seat]
+     b. ALT Extractor 12: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 22 Aluminum: no Sleeve for OD 21: next size up
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: The project already needs the ALT Extractor 12, so it is used here too: no other pieces have to be bought for this removal.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
 
 3. Install 1st bearing: 61801 2RSR
    Put these on the Stud in this order, from one end to the other:
@@ -259,21 +254,18 @@ BSB FRAME, SPACER STUCK, ONE SIDE DOUBLE-STACKED, ALLOY  (BSB Frame)
    Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
    (No official diagram for this job.)
 
-3. Remove 2nd bearing: 61803 2RSR
-   Put these on the Stud in this order, from one end to the other:
-     a. Handle (or a Standard Nut): turn this end to tighten (a Stud Stop does not suit this end)
-     b. Spacer Tube Aluminum: reaches through the part to the drift
-     c. Drift RE 19 Aluminum: pushes the inner ring
-     d. Pilot Short 17 Aluminum: inside the bore, on the Stud
-     e. [the bearing to remove (61803 2RSR), in its seat]
-     f. Sleeve 26 Aluminum: against the part, around the seat; the bearing or axle moves into it
-     g. Step Aluminum: closes the open end of the sleeve
-     h. Stud Stop (or a Standard Nut): holds the other end; it needs a piece larger than 20 mm to sit against
-   Use 1 O-ring on the Stud to keep the pilot from sliding.
-   Stud length: choose with the part in hand.
-   Then: Tighten a nut. The drift pushes on the inner ring and the bearing comes out of its seat into the sleeve. If the tool starts to sit crooked, stop and check.
-   Note: The nut on the Spacer Tube side must be a nut (not a Stud Stop). A Stud Stop may replace the nut on the leverage side.
-   Official diagram: 2BSB-R2.pdf
+3. Remove 2nd bearing with the ALT Extractor: 61803 2RSR
+   Assemble in this order:
+     a. [the bearing to remove (61803 2RSR), in its seat]
+     b. ALT Extractor 17: goes into the bearing and grips it when the bolt in its head is tightened with an Allen key; its stud points out through the sleeve
+     c. Sleeve 26 Aluminum: against the part, around the seat; the bearing or axle moves into it
+     d. Step Aluminum: closes the open end of the sleeve
+     e. Stud Stop (or a Standard Nut): at the back, on the extractor's stud, where it acts as the nut
+   Then: First set the depth of the ALT Extractor for the width of the bearing. Place the extractor in the bearing and tighten the bolt in its head with an Allen key to expand the collet until it grips. Slide the Sleeve and then the Step onto the extractor's stud, fit the Stud Stop behind them as the nut, and extract: the bearing is pulled out into the sleeve.
+   Note: The project already needs the ALT Extractor 17, so it is used here too: no other pieces have to be bought for this removal.
+   Note: ALT Extractor: it grips the bearing from the front, so nothing has to reach behind it. No diagram exists; the piece list was confirmed by the tool's owner.
+   Note: ALT Extractor: it has its own built-in rod, so no Stud. The fastener is a Standard Nut or a Stud Stop.
+   (No official diagram for this job.)
 
 4. Install 1st bearing: 61803 2RSR
    Put these on the Stud in this order, from one end to the other:

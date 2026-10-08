@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.backend.llm.logic import from_url_to_bearings
 from app.backend.utils import highlight_pdf
 from app.backend.rules.engine import (
-    ArrangementSpec, BearingSpec, tools_for, cart_for, instructions_for, apply_cart_edits, catalog_items, BY_SKU,
+    ArrangementSpec, BearingSpec, tools_for_project, cart_for, instructions_for, apply_cart_edits, catalog_items, BY_SKU,
 )
 from app.backend.rules.drawing import svg_for
 from fastapi.responses import PlainTextResponse
@@ -476,7 +476,7 @@ def _project_tools(project_id: int) -> List[dict]:
                 spacer_mobility=bsb.spacer_mobility if bsb else None,
                 axle_length=oa.axle_length if oa else None,
             ))
-        return [tools_for(spec) for spec in specs]
+        return tools_for_project(specs)
 
 
 @app.get("/projects/{project_id}/tools")

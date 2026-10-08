@@ -26,6 +26,8 @@ HAS_MATERIAL = {"drift_re", "pilot_short", "pilot_long", "sleeve", "sleeve_long"
 # leverage pieces that only make sense on a hub; on a frame the same job uses Step + Sleeve
 HUB_ONLY = {"sleeve_6", "sleeve_long", "stop_oal"}
 IN_HAND = "choose with the part in hand"
+# a job that would use other pieces, done with an ALT Extractor the project needs anyway: "reuse:<its operation id>"
+REUSE = "reuse:"
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -201,6 +203,44 @@ def _bearing(spec: ArrangementSpec, slot: int, position: int) -> Optional[Bearin
         return None
 
 
+def _extractor_size(bearing: Optional[BearingSpec]) -> Optional[float]:
+    """The size of the ALT Extractor that grips this bearing, if one exists."""
+    return bearing.inner if bearing and bearing.inner in AVAILABLE["alt_extractor"] else None
+
+
+def _normalised(spec: ArrangementSpec) -> ArrangementSpec:
+    """The same arrangement with exactly the seats its type has."""
+    expected = 1 if spec.type == "SP" else 2
+    return ArrangementSpec(**{**spec.__dict__, "slots": (spec.slots + [[] for _ in range(expected)])[:expected]})
+
+
+def extractors_needed(spec: ArrangementSpec) -> set:
+    """The sizes of ALT Extractor this arrangement cannot do without (a stacked seat, a bearing out of reach)."""
+    spec = _normalised(spec)
+    plan = _plan(spec, rule_set_for(spec)[0], [])
+    sizes = {_extractor_size(_bearing(spec, slot, position)) for op_id, slot, position in plan
+             if op_id == "stacked_remove" or op_id.startswith("remove_1st_extractor")}
+    return sizes - {None}
+
+
+def _reuse_extractors(spec: ArrangementSpec, rule_id: str, plan: List[Tuple[str, int, int]], owned: set) -> List[Tuple[str, int, int]]:
+    """
+    The ALT Extractor is the expensive piece: once the project has one, every other bearing of that bore comes out
+    with it too, instead of with pieces that would have to be bought for that removal alone.
+    """
+    def can_grip(op_id: str) -> bool:
+        if op_id in ("remove", "2nd_remove"):
+            return True
+        if rule_id in ("over_axle", "over_axle_short"):
+            return op_id.startswith("remove_2nd")       # the first bearing leaves on the axle, which fills its bore
+        if rule_id == "bsb_freehub_one_side" and op_id == "remove_2nd":
+            return False                                # deep inside the freehub, behind the circlip
+        return op_id.startswith(("remove_1st", "remove_2nd")) and "extractor" not in op_id
+
+    return [(REUSE + op_id if can_grip(op_id) and _extractor_size(_bearing(spec, slot, position)) in owned else op_id,
+             slot, position) for op_id, slot, position in plan]
+
+
 # ---------------------------------------------------------------------------------------------------
 # Picking options and sizes
 # ---------------------------------------------------------------------------------------------------
@@ -349,10 +389,16 @@ def _job(spec: ArrangementSpec, rule_id: str, op_id: str, slot: int, position: i
     other = _bearing(spec, 1 - slot, 0) if len(spec.slots) > 1 else None
 
     # the outer bearing of a stacked seat is handled like the outer bearing of a double stacked pivot
+    reused = op_id.startswith(REUSE)
     if op_id in ("stacked_remove", "stacked_install"):
         source = {"stacked_remove": "remove_1st_extractor", "stacked_install": "2nd_install"}[op_id]
         op = next(o for o in RULE_SETS["double_stacked_pivot"]["operations"] if o["id"] == source)
         title = ("Remove" if op_id == "stacked_remove" else "Install") + " the outer bearing of the double-stacked seat"
+    elif reused:
+        # the job keeps its name, and is done like every other extraction
+        replaced = next(o for o in RULE_SETS[rule_id]["operations"] if o["id"] == op_id[len(REUSE):])
+        op = next(o for o in RULE_SETS["double_stacked_pivot"]["operations"] if o["id"] == "remove_1st_extractor")
+        title = replaced["title"].replace(" with the ALT Drift", "") + " with the ALT Extractor"
     else:
         op = next(o for o in RULE_SETS[rule_id]["operations"] if o["id"] == op_id)
         title = op["title"]
@@ -361,6 +407,9 @@ def _job(spec: ArrangementSpec, rule_id: str, op_id: str, slot: int, position: i
             title = title.replace(f"the {hub_side}", side).replace(hub_side, side)
 
     notes = list(op["notes"]) + [op["hardware"]["note"]]
+    if reused:
+        notes.insert(0, f"The project already needs the ALT Extractor {_fmt(bearing.inner)}, so it is used here too: "
+                        "no other pieces have to be bought for this removal.")
     lines, alternatives = [], []
     for role in ("press", "center", "leverage"):
         pieces, alts = _pick(op[role], spec, op["operation"], assumed, notes)
@@ -568,14 +617,18 @@ def _scenes(spec: ArrangementSpec, rule_id: str, plan: List[Tuple[str, int, int]
     return scenes
 
 
-def tools_for(spec: ArrangementSpec) -> dict:
-    """Every job needed to remove and install the bearings of one arrangement, with the pieces of each job."""
+def tools_for(spec: ArrangementSpec, extractors: Optional[set] = None) -> dict:
+    """
+    Every job needed to remove and install the bearings of one arrangement, with the pieces of each job.
+
+    :param extractors: sizes of ALT Extractor that other arrangements of the project need; the ones this
+                       arrangement needs itself are added to them
+    """
     rule_id, assumed = rule_set_for(spec)
-    expected = 1 if spec.type == "SP" else 2
-    slots = (spec.slots + [[] for _ in range(expected)])[:expected]
-    spec = ArrangementSpec(**{**spec.__dict__, "slots": slots})
+    spec = _normalised(spec)
 
     plan = _plan(spec, rule_id, assumed)
+    plan = _reuse_extractors(spec, rule_id, plan, set(extractors or ()) | extractors_needed(spec))
     jobs = [_job(spec, rule_id, op_id, slot, position, assumed) for op_id, slot, position in plan]
     for job, scene in zip(jobs, _scenes(spec, rule_id, plan)):
         job["scene"] = scene
@@ -586,6 +639,12 @@ def tools_for(spec: ArrangementSpec) -> dict:
         "assumptions": list(dict.fromkeys(assumed)),
         "jobs": jobs,
     }
+
+
+def tools_for_project(specs: List[ArrangementSpec]) -> List[dict]:
+    """The jobs of every arrangement of one project, sharing the ALT Extractors that any of them needs."""
+    extractors = set().union(*(extractors_needed(spec) for spec in specs)) if specs else set()
+    return [tools_for(spec, extractors) for spec in specs]
 
 
 def cart_for(results: List[dict]) -> dict:
