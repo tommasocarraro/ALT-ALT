@@ -92,6 +92,11 @@ Key decisions the rules encode:
   off-axis, is at least 10 mm long, and the bearing ID is 15/17/18/20/25. Otherwise ALT Extractor.
 - **A double-stacked seat:** the outer bearing always comes out with the ALT Extractor; the rest follows the
   simple pivot rules.
+- **Fewest pieces: reuse the ALT Extractor.** It is the expensive piece. Once any arrangement of the project
+  needs one (stacked seat, or a first bearing the ALT Drift cannot do), every other bearing of the same ID in
+  the project comes out with it too (Extractor + Step + Sleeve), instead of Drift RE + Spacer Tube or ALT Drift.
+  Not applied to the first bearing of an over-axle (the axle is in its bore) nor to the inboard bearing of a
+  one-side freehub (assumed out of reach; see the open questions in `build_rules.py`).
 - **Hub leverage:** Sleeve 6 for 6-bolt, Sleeve Long for centre-lock, Stop OAL on the drive side. On a frame
   the same job uses Step + Sleeve.
 - **Freehub leverage:** Step + Sleeve for HG/Microspline, Stop OAL for XD/XDR.
@@ -191,13 +196,15 @@ corrects a rule, change `build_rules.py`, regenerate, and keep the status honest
 
 ### Rule engine (`app/backend/rules/engine.py`)
 
-`tools_for(ArrangementSpec)` does, in order:
+`tools_for_project(specs)` collects the ALT Extractor sizes that any arrangement cannot do without
+(`extractors_needed`) and passes them to `tools_for` for each arrangement, which does, in order:
 
 1. `rule_set_for`: questionnaire answers -> one of the ten rule sets, plus a list of assumptions when an
    answer was left blank.
 2. `_plan`: the jobs, in order. Removal starts with the first seat of the sequence (disc side on a hub; the
    outboard bearing on a one-side freehub). A double-stacked seat inside a BSB or OA adds an extractor job for
-   the outer bearing and a simple-pivot install for it.
+   the outer bearing and a simple-pivot install for it. `_reuse_extractors` then turns every removal that an
+   extractor already in the project can do into an extractor job (operation id `reuse:<original id>`).
 3. `_job`: for each job, pick the option whose condition holds, size each piece (`_size`), look it up in the
    catalogue, and build the `stack`. Unresolved pieces carry the reason. The two ends of the Stud become a
    Handle (turned) and a Stud Stop (holds), replacing plain nuts.
@@ -213,7 +220,10 @@ top. `instructions_for` renders plain text.
 One SVG per job, a section cut through the middle. Conventions the owner asked for:
 
 - The **whole part** is shown as it is when the job starts, with all remaining bearings, spacer and axle.
-  The bearing being worked on always travels to the right (pink arrow).
+- **The part never turns between drawings:** side A (disc side) on the left, side B on the right, the open end
+  of a single seat on the right. The tool changes sides instead, and the pink arrow shows which way the bearing
+  travels. (The job is laid out with the bearing travelling right, then the picture is mirrored when needed:
+  `_mirrored`. Text must stay out of the mirrored group.)
 - **Colour by material:** acetal black, aluminium gold, steel grey; the bike part light blue.
 - Each piece carries the **letter** it has in the written steps (a, b, c in stack order). Pieces go above,
   bearings/spacer/axle/pilots below. Leaders end in a dot on the thing itself. Amber badge = size still open.

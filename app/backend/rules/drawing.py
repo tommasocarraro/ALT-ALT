@@ -1,7 +1,9 @@
 """
 Draws one job of the rule engine as a section view: the whole part as it is when the job starts (every bearing,
 spacer and axle still in it), cut through the middle, with the tool pieces in the order of the engine's `stack`.
-The bearing being worked on always travels to the right: out of the part on a removal, into it on an install.
+The part never turns between the drawings of one arrangement: side A (the disc side of a hub) is on the left,
+side B on the right, and the open end of a single seat on the right. The tool is what changes sides, and the pink
+arrow shows which way the bearing being worked on travels.
 
 Diameters are to scale (they come from the bearing and from the piece sizes); lengths are only indicative,
 because the real lengths of the pieces are not in the catalogue.
@@ -37,6 +39,7 @@ class _Canvas:
     def __init__(self) -> None:
         self.shapes: List[str] = []
         self.labels: List[Tuple[float, float, str, bool]] = []     # target x, target y, letter, size still open?
+        self.marks: List[Tuple[float, float]] = []                 # where a "turn this" sign goes
         self.max_r = 0.0
 
     @staticmethod
@@ -113,8 +116,7 @@ class _Canvas:
 
     def turn(self, x: float, r: float) -> None:
         """Marks the piece that is turned."""
-        self.shapes.append(f'<text x="{x * PX:.1f}" y="{-(r + 1.5) * PX:.1f}" font-size="26" font-weight="bold" '
-                           f'text-anchor="middle" fill="{MOVE}">↻</text>')
+        self.marks.append((x * PX, -(r + 1.5) * PX))
         self.max_r = max(self.max_r, r + 8)
 
     def label(self, x: float, r: float, index: int, above: bool, resolved: bool = True) -> None:
@@ -213,8 +215,9 @@ def _length(item: dict) -> float:
 
 def _axis(scene: dict, removing: bool, fallback: dict) -> List[dict]:
     """
-    The seats and what lies between them, left to right, turned so that the bearing being worked on travels to
-    the right: on a removal its seat is on the right of the part, on an install on the left.
+    The seats and what lies between them, left to right, as the tool is laid out: with the bearing being worked on
+    travelling to the right, so its seat on the right of the part on a removal and on the left on an install.
+    `_mirrored` says when that is the part seen from behind.
     """
     slots, worked = scene["slots"], list(scene["worked"])
 
@@ -233,6 +236,16 @@ def _axis(scene: dict, removing: bool, fallback: dict) -> List[dict]:
         seat = {"kind": "seat", "dims": fallback, "present": removing, "worked": True}
         elems = elems + [seat] if removing else [seat] + elems
     return elems
+
+
+def _mirrored(scene: dict, removing: bool) -> bool:
+    """
+    Whether the layout of `_axis` shows the part the wrong way round. The part is always seen from the same
+    side: side A on the left and side B on the right, or the open end of a single seat on the right.
+    """
+    if len(scene["slots"]) == 1:
+        return not removing
+    return removing == (scene["worked"][0] == 0)
 
 
 def svg_for(job: dict) -> str:
@@ -484,6 +497,13 @@ def svg_for(job: dict) -> str:
     row = BADGE_R + 6
     top_edge, bottom_edge = body + 2 * row, body + 2 * row
 
+    # everything was laid out with the bearing travelling to the right; when that shows the part from behind,
+    # the picture is mirrored, so that the part stays put and the tool changes sides
+    mirrored = _mirrored(scene, removing)
+    flip = (lambda px: total * PX - px) if mirrored else (lambda px: px)
+    above = sorted((flip(tx), ty, letter, open_) for tx, ty, letter, open_ in above)
+    below = sorted((flip(tx), ty, letter, open_) for tx, ty, letter, open_ in below)
+
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {-top_edge:.0f} {width:.0f} {top_edge + bottom_edge:.0f}" '
            f'width="{width:.0f}" height="{top_edge + bottom_edge:.0f}" font-family="Helvetica, Arial, sans-serif">',
            '<defs><pattern id="thread" width="5" height="32" patternUnits="userSpaceOnUse" '
@@ -491,11 +511,15 @@ def svg_for(job: dict) -> str:
            f'<marker id="head" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">'
            f'<path d="M0,0 L8,4 L0,8 z" fill="{MOVE}"/></marker></defs>',
            f'<rect x="0" y="{-top_edge:.0f}" width="{width:.0f}" height="{top_edge + bottom_edge:.0f}" fill="#ffffff"/>',
-           rod] + c.shapes
+           f'<g transform="translate({total * PX:.1f},0) scale(-1,1)">' if mirrored else '<g>',
+           rod] + c.shapes + ['</g>']
+    for tx, ty in c.marks:
+        out.append(f'<text x="{flip(tx):.1f}" y="{ty:.1f}" font-size="26" font-weight="bold" text-anchor="middle" '
+                   f'fill="{MOVE}">↻</text>')
 
-    # which way the bearing travels: always to the right
-    mx, mr = moving[0] * PX, -(moving[1] + 3) * PX
-    out.append(f'<line x1="{mx - 16:.1f}" y1="{mr:.1f}" x2="{mx + 22:.1f}" y2="{mr:.1f}" stroke="{MOVE}" '
+    # which way the bearing travels
+    mx, mr, way = flip(moving[0] * PX), -(moving[1] + 3) * PX, -1 if mirrored else 1
+    out.append(f'<line x1="{mx - way * 16:.1f}" y1="{mr:.1f}" x2="{mx + way * 22:.1f}" y2="{mr:.1f}" stroke="{MOVE}" '
                f'stroke-width="3" marker-end="url(#head)"/>')
 
     for group, side in ((above, -1), (below, 1)):
